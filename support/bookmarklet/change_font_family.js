@@ -2,6 +2,7 @@
  * Change Page Font-Family to specific google-fonts family name.
  * ex.
  *  changeFontFamilyGF('Kanit');
+ *  changeFontFamilyGF('Sarabun');
  *  changeFontFamilyGF('Pridi');
  * @param {*} ff font-family(for google-fonts)
  */
