@@ -3,22 +3,60 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Kanit|Sarabun" rel="stylesheet">
+    <style>
+        .stirngs {
+            padding: 5px;
+            background: lightgray;
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
     <h1>ブックマークレット</h1>
-    以下リンク先URLをブックマーク（お気に入り）に追加して使用する
+    ブックマーク（お気に入り）に登録して使用する（
+    <a href="https://qiita.com/aqril_1132/items/b5f9040ccb8cbc705d04">
+        ※ブックマークレット登録方法
+    </a>
+    ）
+
 
     <h2>ページ内フォント変更</h2>
-    <h3>読みやすいフォントへ変更</h3>
-    <a href="javascript:function changeFontFamilyGF(ff) {    var head = document.getElementsByTagName('head');    var link = document.createElement('link');    link.setAttribute('href', 'https:\/\/fonts.googleapis.com\/css?family=' + ff);    link.setAttribute('rel', 'stylesheet');    var style = document.createElement('style');    style.setAttribute('type', 'text\/css');    style.innerHTML = '* {font-family: ' + ff + ' !important;}';    head[0].appendChild(link);    head[0].appendChild(style);}changeFontFamilyGF('Sarabun');">GoogleFontsのSarabunにフォントファミリーを変更する</a>
-    <div><span style="font-family: 'Sarabun', sans-serif;">กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮะาเใไโฤฤๅ</span></div>
+    <h3>
+        <a href="javascript:function changeFontFamilyGF(ff) {    var head = document.getElementsByTagName('head');    var link = document.createElement('link');    link.setAttribute('href', 'https:\/\/fonts.googleapis.com\/css?family=' + ff);    link.setAttribute('rel', 'stylesheet');    var style = document.createElement('style');    style.setAttribute('type', 'text\/css');    style.innerHTML = '* {font-family: ' + ff + ' !important;}';    head[0].appendChild(link);    head[0].appendChild(style);}changeFontFamilyGF('Sarabun');">
+            読みやすいフォントへ変更
+        </a>
+    </h3>
+    <ul>
+        <li>ページ内のフォントがおしゃれフォントで、読みづらいときに使用することを想定</li>
+        <li>画像の中の文字は変更できない</li>
+        <li>最初のフォントに戻す場合は、ページを再読み込み（リロード）する</li>
+        <li>ページ内のすべてのフォントをGoogleFontsのSarabunに変更している</li>
+    </ul>
+    <div class="stirngs">
+        <span style="font-family: 'Sarabun', sans-serif;">
+            กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮะาเใไโฤฤๅ
+        </span>
+    </div>
 
-    <h3>おしゃれフォントへ変更</h3>
-    <a href="javascript:function changeFontFamilyGF(ff) {    var head = document.getElementsByTagName('head');    var link = document.createElement('link');    link.setAttribute('href', 'https:\/\/fonts.googleapis.com\/css?family=' + ff);    link.setAttribute('rel', 'stylesheet');    var style = document.createElement('style');    style.setAttribute('type', 'text\/css');    style.innerHTML = '* {font-family: ' + ff + ' !important;}';    head[0].appendChild(link);    head[0].appendChild(style);}changeFontFamilyGF('Kanit');">GoogleFontsのKanitにフォントファミリーを変更する</a>
-    <div><span style="font-family: 'Kanit', sans-serif;">กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮะาเใไโฤฤๅ</span></div>
+    <h3>
+        <a href="javascript:function changeFontFamilyGF(ff) {    var head = document.getElementsByTagName('head');    var link = document.createElement('link');    link.setAttribute('href', 'https:\/\/fonts.googleapis.com\/css?family=' + ff);    link.setAttribute('rel', 'stylesheet');    var style = document.createElement('style');    style.setAttribute('type', 'text\/css');    style.innerHTML = '* {font-family: ' + ff + ' !important;}';    head[0].appendChild(link);    head[0].appendChild(style);}changeFontFamilyGF('Kanit');">
+            おしゃれフォントへ変更
+        </a>
+    </h3>
+    <ul>
+        <li>タイ語学習者が、おしゃれフォントを読む訓練のために使用することを想定</li>
+        <li>画像の中の文字は変更できない</li>
+        <li>最初のフォントに戻す場合は、ページを再読み込み（リロード）する</li>
+        <li>ページ内のすべてのフォントをGoogleFontsのKanitに変更している</li>
+    </ul>
+    <div class="stirngs">
+        <span style="font-family: 'Kanit', sans-serif;">
+            กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮะาเใไโฤฤๅ
+        </span>
+    </div>
 
-    <h3>※使用イメージ</h3>
+    <h3>※ブックマークに登録した状態での、使用イメージ</h3>
     <img src="img/font_change.gif">
 </body>
 
