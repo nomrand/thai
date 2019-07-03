@@ -1,0 +1,55 @@
+body, html {
+    position: relative;
+    width : 100%;
+    height : 100%;
+    padding : 1%;
+}
+
+* {
+    margin : 0px;
+    padding : 0px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+}
+
+.container {
+    position: relative;
+    height : 10%;
+    width : 96%;
+    margin : auto;
+}
+.height40 {
+    height : 45%;
+}
+
+.container > * {
+    position: absolute;
+    width : 100%;
+    height : 100%;
+}
+
+.container > label {
+    height : 1.5em;
+    z-index: 100;
+
+    text-align: right;
+    vertical-align: bottom;
+}
+.container > label + * {
+    top : 1.5em;
+    height : calc(100% - 1.5em);
+}
+
+#inputCSS, #inputHTML, #drawContents {
+    border : 1px lightgray solid;
+    border-radius: 3px;
+
+    padding : 1%;
+    overflow: scroll;
+}
+
+
+

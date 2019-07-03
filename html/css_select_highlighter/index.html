@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CSS Selector Hightlighter</title>
+        <meta charset="utf-8">
+        <!-- STYLES -->
+        <link rel="stylesheet"
+                href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        <!-- MY STYLES -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/selector.css">
+</head>
+
+<body>
+        <div class="container">
+                <label for="inputCSS">CSS SELECTOR:</label>
+                <input id="inputCSS" type="text">
+        </div>
+        <div class="container height40">
+                <label for="inputHTML">HTML:</label>
+                <textarea id="inputHTML"></textarea>
+        </div>
+        <div class="container height40">
+                <div id="drawContents">
+                        <div id="OUTER_DIV" class="divsp">
+                                <div id="INNER_DIV">
+                                        <TABLE id="TABLE1">
+                                                <TR>
+                                                        <TD class="td1">1-1</TD>
+                                                        <TD class="td2">1-2</TD>
+                                                </TR>
+                                                <TR>
+                                                        <TD>
+                                                                <TABLE id="TABLE2">
+                                                                        <TR>
+                                                                                <TD class="td1">2-1_1-1</TD>
+                                                                                <TD class="td2">2-1_1-2</TD>
+                                                                        </TR>
+                                                                </TABLE>
+                                                        </TD>
+                                                        <TD>2-2</TD>
+                                                </TR>
+                                        </TABLE>
+                                </div>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="divsp">
+                        </div>
+                </div>
+        </div>
+        <input type="file" id="fileUpload" name="fileUpload">
+
+        <!-- SCRIPTS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="../../lib/js/jquery.format/jquery.format.js"></script>
+
+        <!-- MY SCRIPTS -->
+        <script src="js/control.js"></script>
+</body>
+
+</html>
