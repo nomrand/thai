@@ -14,9 +14,10 @@ $(document).ready(function () {
         if (file && window.FileReader) {
             var reader = new FileReader();
             reader.onload = function () {
-                $("#drawContents").html(reader.result)
+                let insideBody = reader.result.replace(/.*<body>/, "").replace(/<\/body>.*/, "");
+                $("#drawContents").html(insideBody);
                 htmlToIN();
-                htmlChanged();
+                inToHTML();
             }
 
             reader.readAsText(file);
@@ -29,6 +30,7 @@ $(document).ready(function () {
 
 function htmlToIN() {
     let htmlVal = $("#drawContents").html();
+    htmlVal = htmlVal.trim();
     $("#inputHTML").val(htmlVal);
     $("#inputHTML").format({ method: 'xmlmin' });
     $("#inputHTML").format({ method: 'xml' });
@@ -37,6 +39,7 @@ function htmlToIN() {
 function inToHTML() {
     let inval = $("#inputHTML").val();
     $("#drawContents").html(inval);
+    $("#drawContents > script, #drawContents > link").remove();
 
     htmlChanged();
 }
@@ -58,7 +61,7 @@ function htmlChanged() {
 function selectHTML(selector) {
     $("*").removeClass("selectedHTML");
     try {
-        $(selector).addClass("selectedHTML");
+        $("#drawContents " + selector).addClass("selectedHTML");
     } catch (e) {
         return false;
     }
