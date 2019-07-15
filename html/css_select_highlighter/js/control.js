@@ -14,11 +14,17 @@ $(document).ready(function () {
         if (file && window.FileReader) {
             var reader = new FileReader();
             reader.onload = function () {
-                let insideBody = reader.result.replace(/.*<body>/g, "").replace(/<\/body>.*/g, "");
-                insideBody = insideBody.replace(/\>.+\</g, "><");
-                $("#drawContents").html(insideBody);
+                let modResult = reader.result;
+                modResult = modResult.replace(/>[\s]+</g, "><").replace(/^[\s]+</, "<").replace(/>[\s]+$/, ">");
+                // inside body only
+                modResult = modResult.replace(/[\s\S]*<body>/, "").replace(/<\/body>[\s\S]*/, "");
+                // toHTML & delete no displayed tags (ex. scripts)
+                $("body>div>#drawContents").html(modResult);
                 htmlToIN();
+
+                // format
                 inToHTML();
+                htmlToIN();
             }
 
             reader.readAsText(file);
@@ -30,7 +36,7 @@ $(document).ready(function () {
 });
 
 function htmlToIN() {
-    let htmlVal = $("#drawContents").html();
+    let htmlVal = $("body>div>#drawContents").html();
     htmlVal = htmlVal.trim();
     $("#inputHTML").val(htmlVal);
     $("#inputHTML").format({ method: 'xmlmin' });
@@ -39,14 +45,14 @@ function htmlToIN() {
 
 function inToHTML() {
     let inval = $("#inputHTML").val();
-    $("#drawContents").html(inval);
-    $("#drawContents > script, #drawContents > link").remove();
+    $("body>div>#drawContents").html(inval);
+    $("body>div>#drawContents script, body>div>#drawContents link").remove();
 
     htmlChanged();
 }
 
 function htmlChanged() {
-    $("#drawContents *").each(function () {
+    $("body>div>#drawContents *").each(function () {
         let name = this.tagName;
         if (this.id) {
             name += "#" + this.id;
@@ -62,7 +68,7 @@ function htmlChanged() {
 function selectHTML(selector) {
     $("*").removeClass("selectedHTML");
     try {
-        $("#drawContents " + selector).addClass("selectedHTML");
+        $("body>div>#drawContents " + selector).addClass("selectedHTML");
     } catch (e) {
         return false;
     }
