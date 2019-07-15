@@ -14,7 +14,8 @@ $(document).ready(function () {
         if (file && window.FileReader) {
             var reader = new FileReader();
             reader.onload = function () {
-                let insideBody = reader.result.replace(/.*<body>/, "").replace(/<\/body>.*/, "");
+                let insideBody = reader.result.replace(/.*<body>/g, "").replace(/<\/body>.*/g, "");
+                insideBody = insideBody.replace(/\>.+\</g, "><");
                 $("#drawContents").html(insideBody);
                 htmlToIN();
                 inToHTML();
