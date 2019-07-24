@@ -2,19 +2,36 @@
 <html>
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
-  <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+  $(function () {
+    let aassets = $("<a-assets>");
+    $("a-scene").append(aassets);
+
+    for (let i = 0; i < 1; i++) {
+      let img = $("<img crossorigin='anonymous'>");
+      let idstr = "img000" + i;
+      idstr = idstr.substring(idstr.length - 6, idstr.length);
+      img.attr("id", idstr);
+      img.attr("src", "https://nomrand.github.io/thai/html/ar_js/pika.jpeg");
+      aassets.append(img);
+
+      let aimage = $("<a-image>");
+      aimage.attr("src", "#" + idstr);
+      $("a-scene").append(aimage);
+
+      $("a-scene").append("<a-marker-camera preset='hiro'></a-marker-camera>");
+    }
+  });
+</script>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <a-scene embedded arjs>
     <!--
-      <a-marker preset="hiro">
-          <a-box position='0 0.5 0' material='color: yellow;'></a-box>
-      </a-marker>
-      <a-entity camera></a-entity>
-      -->
-	    <a-assets>
-	        <img id="transpImage" src="pika.jpeg">
-	    </a-assets>
-    <a-image width="1" height="1" src="#transpImage"></a-image>
-    <a-marker-camera preset='hiro'></a-marker-camera>
-    </a-scene>
-  </body>
+    <a-text value="Hello, World!"></a-text>
+    -->
+  </a-scene>
+</body>
+
 </html>
