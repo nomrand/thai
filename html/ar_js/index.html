@@ -10,11 +10,12 @@
     let aassets = $("a-assets");
 
     for (let i = 0; i < data.length; i++) {
-      // a-camera 
-      //      let amarker = $("<a-marker preset='" + data[i].preset + "'>"); // for preset
+      // a-camera
       // for barcode marker
       // http://au.gmented.com/app/marker/marker.php
-      let amarker = $("<a-marker type='barcode' value='" + i + "'>"); // for barcode
+      let amarker = $("<a-marker type='barcode' value='" + i + "'>");
+      // // for preset marker
+      // let amarker = $("<a-marker preset='" + data[i].preset + "'>");
       $("a-scene").append(amarker);
 
       // image asset
@@ -26,10 +27,19 @@
 
       // image force load
       img.on("load", function () {
-        // to get width/height, a-image create after loaded
+        // a-image using asset
+        // to get width/height, creation must start after asset loaded
+        let aimage = $("<a-image>");
+        aimage.attr("src", "#" + idstr);
+        let params = $(location).attr('search');
+        if (params.indexOf('rotatex=yes') > 0) {
+          // ar on the marker
+          aimage.attr("rotation", "-90 0 0");
+        }
+
+        // get width/height ratio (ar image will have same size as marker)
         let h = this.height;
         let w = this.width;
-        // get width/height ratio
         if (h < w) {
           h = Math.round(h / w * 100) / 100;
           w = 1;
@@ -37,19 +47,11 @@
           w = Math.round(w / h * 100) / 100;
           h = 1;
         }
-        // a-image using asset
-        let aimage = $("<a-image>");
-        aimage.attr("src", "#" + idstr);
-        let params = $(location).attr('search');
-        if (params.indexOf('rotatex=yes') > 0) {
-          aimage.attr("rotation", "-90 0 0");
-        }
         aimage.attr("width", w);
         aimage.attr("height", h);
         amarker.append(aimage);
       });
       aassets.append(img);
-
     }
   });
 </script>
@@ -57,11 +59,6 @@
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_9_3; debugUIEnabled:false;'>
     <a-assets></a-assets>
-    <!--
-    <a-text value="Hello, World!"></a-text>
-    -->
-
-    <!-- add a simple camera -->
     <a-entity camera></a-entity>
   </a-scene>
 </body>
