@@ -3,34 +3,63 @@
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="data.js"></script>
 
 <script type="text/javascript">
   $(function () {
-    let aassets = $("<a-assets>");
-    $("a-scene").append(aassets);
+    let aassets = $("a-assets");
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < data.length; i++) {
+      // a-camera 
+      //      let amarker = $("<a-marker preset='" + data[i].preset + "'>"); // for preset
+      // for barcode marker
+      // http://au.gmented.com/app/marker/marker.php
+      let amarker = $("<a-marker type='barcode' value='" + i + "'>"); // for barcode
+      $("a-scene").append(amarker);
+
+      // image asset
       let img = $("<img crossorigin='anonymous'>");
       let idstr = "img000" + i;
       idstr = idstr.substring(idstr.length - 6, idstr.length);
       img.attr("id", idstr);
-      img.attr("src", "https://nomrand.github.io/thai/html/ar_js/pika.jpeg");
+      img.attr("src", data[i].image);
+
+      // image force load
+      img.on("load", function () {
+        // to get width/height, a-image create after loaded
+        let h = this.height;
+        let w = this.width;
+        // get width/height ratio
+        if (h < w) {
+          h = Math.round(h / w * 100) / 100;
+          w = 1;
+        } else {
+          w = Math.round(w / h * 100) / 100;
+          h = 1;
+        }
+        // a-image using asset
+        let aimage = $("<a-image>");
+        aimage.attr("src", "#" + idstr);
+        aimage.attr("rotation", "-90 0 0");
+        aimage.attr("width", w);
+        aimage.attr("height", h);
+        amarker.append(aimage);
+      });
       aassets.append(img);
 
-      let aimage = $("<a-image>");
-      aimage.attr("src", "#" + idstr);
-      $("a-scene").append(aimage);
-
-      $("a-scene").append("<a-marker-camera preset='hiro'></a-marker-camera>");
     }
   });
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
+  <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_9_3;'>
+    <a-assets></a-assets>
     <!--
     <a-text value="Hello, World!"></a-text>
     -->
+
+    <!-- add a simple camera -->
+    <a-entity camera></a-entity>
   </a-scene>
 </body>
 
