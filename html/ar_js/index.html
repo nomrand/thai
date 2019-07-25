@@ -40,7 +40,10 @@
         // a-image using asset
         let aimage = $("<a-image>");
         aimage.attr("src", "#" + idstr);
-        aimage.attr("rotation", "-90 0 0");
+        let params = $(location).attr('search');
+        if (params.indexOf('rotatex=yes') > 0) {
+          aimage.attr("rotation", "90 0 0");
+        }
         aimage.attr("width", w);
         aimage.attr("height", h);
         amarker.append(aimage);
