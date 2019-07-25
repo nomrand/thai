@@ -1,7 +1,7 @@
 let data = [
-    { image: "https://nomrand.github.io/thai/docs/img/font_change.gif", },
-    { image: "https://nomrand.github.io/thai/html/ar_js/test.png", },
-    { image: "https://nomrand.github.io/thai/html/ar_js/test.gif", },
+    { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/000.png", },
+    { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/001.png", },
+    { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/002.png", },
     { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/003.png", },
     { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/004.png", },
     { image: "https://nomrand.github.io/thai/html/ar_js/marker_images/005.png", },
