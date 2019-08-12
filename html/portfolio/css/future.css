@@ -8,3 +8,74 @@ nav td:nth-of-type(4) {
 header h1::first-letter {
     color: crimson;
 }
+
+.subcontents {
+    display: inline-block;
+}
+
+.dream_cell {
+    position: relative;
+    width : 100px;
+    height : 80px;
+    padding : 20px;
+    margin : 10px;
+    border-radius: 20px;
+    overflow: hidden;
+
+    font-size: 2rem;
+    float: left;
+
+	/* Set our transitions up. */
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+}
+.dream_cell:hover {
+    max-width : 90%;
+    width : 200px;
+    max-height : 80%;
+    height : auto;
+}
+.dream_cell p:nth-child(1) {
+    color: rgba(0, 0, 0, 0);
+}
+.dream_cell p::first-line {
+    color: white;
+}
+.dream_cell:hover p {
+    color: white;
+}
+.dream_cell p:nth-child(2) {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    top: 3rem;
+}
+.dream_cell:hover p:nth-child(2) {
+    display: none;
+}
+
+.dream_cell:nth-of-type(1) {
+    background-color: mediumvioletred;
+}
+.dream_cell:nth-of-type(2) {
+    background-color: midnightblue;
+}
+.dream_cell:nth-of-type(3) {
+    background-color: sienna;
+}
+.dream_cell:nth-of-type(4) {
+    background-color: darkslategray;
+}
+.dream_cell:nth-of-type(5) {
+    background-color: darkslateblue;
+}
+.dream_cell:nth-of-type(6) {
+    background-color: khaki;
+}
+.dream_cell:nth-of-type(7) {
+    background-color: darkolivegreen;
+}
+.dream_cell:nth-of-type(8) {
+    background-color: maroon;
+}
