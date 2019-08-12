@@ -1,0 +1,65 @@
+@charset "utf-8";
+nav td:nth-of-type(1) {
+    pointer-events: none;
+    background-color: gray;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
+}
+
+/* IMAGE */
+#contents_table td:nth-of-type(1) img {
+    width : 100%;
+}
+
+/* TEXT */
+#subcont_table {
+    background-color: rgb(25, 25, 25);
+    border-radius: 5px;
+    padding : 10px;
+}
+
+#subcont_table td {
+    display: flex;
+    padding : 3px;
+
+    border-bottom: 2px solid lightgray;
+    border-radius: 0px;
+}
+#subcont_table td span:nth-of-type(1) {
+    font-weight: bold;
+    color: lightgray;
+}
+#subcont_table td span:nth-of-type(2) {
+    margin-left:auto;
+}
+#subcont_table a {
+    width : auto;
+    height : auto;
+}
+
+/* CONT */
+aside > div {
+    width : 100%;
+    max-height : 0px;
+    overflow: hidden;
+
+    background-color: rgb(25, 25, 25);
+    border-radius: 5px;
+
+	/* Set our transitions up. */
+	-webkit-transition: max-height 0.8s;
+	-moz-transition: max-height 0.8s;
+	transition: max-height 0.8s;
+}
+
+aside > div img {
+    max-height : calc(100% - 1rem);
+    max-width : 17%;
+    margin : 1%;
+}
+aside > div div {
+    margin : 1%;
+}
+
+aside > div:target {
+    max-height : 250px;
+}
