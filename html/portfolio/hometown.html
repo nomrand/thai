@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/slide.js"></script>
+    <link rel="stylesheet" href="css/hometown.css">
 </head>
 
 <body>
@@ -29,7 +27,7 @@
                     <table>
                         <tr>
                             <td><a href="index.html">Home</a></td>
-                            <td><a href="education.html">Education</a></td>
+                            <td><a href="education.html#highschool">Education</a></td>
                             <td><a href="hometown.html">Hometown</a></td>
                             <td><a href="future.html">Future</a></td>
                         </tr>
@@ -43,53 +41,72 @@
             <td>
                 <table id="contents_table">
                     <tr>
-                        <!-- IMAGE -->
                         <td>
-                            <img src="img/astronaut.jpg">
-                        </td>
-                        <!-- TEXTS -->
-                        <td>
-                            <table id="subcont_table">
-                                <tr>
-                                    <td>
-                                        <span>Name:</span>
-                                        <span>Satoshi Nomura</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Age:</span>
-                                        <span>37 years old</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Occupation:</span>
-                                        <span>Volunteer from Japan</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Hobby:</span>
-                                        <span>Cycling, Read Manga</span>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div>
+                                <!-- TEXTS -->
+                                <div class="subcontents">
+                                    <h4>Pref. Gunma (จังหวัดกุนมะ)</h4>
+                                    <ul>
+                                        <li><a href="#lb_snow">Cold climate & a lot of snow</a></li>
+                                        <li><a href="#lb_mountain">Full of mountains (like Loei)</a></li>
+                                        <li><a href="#lb_gunma">Famous charactor, Gunma-chan</a></li>
+                                    </ul>
+                                </div>
+                                <!-- MAP -->
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5583291.610384908!2d134.96768797494985!3d37.15466286578023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601e6085c836ae59%3A0xd799356889717292!2z5pel5pys44CB576k6aas55yM!5e0!3m2!1sja!2sth!4v1565601823791!5m2!1sja!2sth"
+                                    width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
-
-        <!-- FOOTER -->
-        <tr>
-            <td>
-                <footer>
-                    © Satoshi's Website All Rights Reserved.
-                </footer>
-            </td>
-        </tr>
     </table>
+    </td>
+    </tr>
+
+    <!-- FOOTER -->
+    <tr>
+        <td>
+            <footer>
+                © Satoshi's Website All Rights Reserved.
+            </footer>
+        </td>
+    </tr>
+    </table>
+
+    <div id="lightbox_div">
+        <div id="lb_snow">
+            <a href="">
+                <div class=" modalguard">
+                    <iframe src="https://www.youtube.com/embed/m3fJ2dHmWo0?start=20" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </a>
+        </div>
+
+        <div id="lb_mountain">
+            <a href="">
+                <div class=" modalguard">
+                    <iframe src="https://www.youtube.com/embed/-FwxHilb2yQ?wmode=transparent" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </a>
+        </div>
+
+        <div id="lb_gunma">
+            <a href="">
+                <div class=" modalguard">
+                    <iframe src="https://www.youtube.com/embed/-RaPq2F9Onc" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

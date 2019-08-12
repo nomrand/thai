@@ -1,14 +1,4 @@
 @charset "utf-8";
-/* TEST CODE */
-/*
-table {
-    border : 1px solid gray;
-}
- td {
-    border : 1px dotted gray;
-}
-*/
-
 * {
     margin : 0px;
 }
@@ -23,7 +13,7 @@ body {
     word-wrap: break-word;
 }
 table {
-    height : 90%;
+    height : 100%;
     width : 100%;
     border-spacing: 5px;
     box-sizing: border-box;

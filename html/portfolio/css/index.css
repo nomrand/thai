@@ -12,6 +12,7 @@ header h1::first-letter {
 /* IMAGE */
 #contents_table tr:nth-of-type(1) img {
     width : 100%;
+    height : auto;
 }
 
 /* TEXT */

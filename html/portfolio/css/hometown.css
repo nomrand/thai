@@ -1,0 +1,74 @@
+@charset "utf-8";
+nav td:nth-of-type(3) {
+    pointer-events: none;
+    background-color: gray;
+    color : lightslategray;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
+}
+header h1::first-letter {
+    color: darkmagenta;
+}
+
+/* contents */
+#contents_table tr td {
+    position: relative;
+    height : 310px;
+}
+#contents_table tr td > div {
+    position : absolute;
+    top: 0px;
+    left: 0px;
+
+    width : 100%;
+}
+
+/* in one content */
+#contents_table tr td > div {
+    display : flex;
+}
+#contents_table tr td > div > * {
+    width : 50%;
+    padding : 5px;
+}
+
+#contents_table tr td > div li {
+    padding-top : 10px;
+}
+#lightbox_div div {
+    width : 100%;
+    height : 100%;
+    top : 0px;
+    left: 0px;
+}
+#lightbox_div > div {
+    position: fixed;
+    opacity: 0;
+    z-index: -1;
+}
+#lightbox_div > div:target {
+    opacity: 1;
+    z-index: 100;
+
+	/* Set our transitions up. */
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	transition: opacity 1s;
+}
+#lightbox_div > div:target .modalguard {
+    position: absolute;
+    z-index: -1;
+
+    opacity: 1;
+    background-color: rgba(100, 100, 100, 0.8);
+
+    display: flex; /* 子要素をflexboxで揃える */
+    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+    align-items: center;  /* 子要素をflexboxにより中央に配置する */
+}
+.modalguard iframe {
+    opacity: 1.0;
+
+    width:90%;
+    height:50%;
+}

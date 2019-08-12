@@ -29,11 +29,10 @@ header h1::first-letter {
 	transition: opacity 0.8s;
 }
 #contents_table tr td > div:target {
-
-
     opacity : 1;
     z-index: 10;
 }
+
 /* navi for each contents */
 .subcont_navi {
     position : absolute;

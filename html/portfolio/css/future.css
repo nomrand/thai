@@ -1,0 +1,10 @@
+@charset "utf-8";
+nav td:nth-of-type(4) {
+    pointer-events: none;
+    background-color: gray;
+    color : lightslategray;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
+}
+header h1::first-letter {
+    color: crimson;
+}
