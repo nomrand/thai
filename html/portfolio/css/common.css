@@ -35,6 +35,9 @@ td {
 h1 {
     font-size : 3rem;
 }
+h1::first-letter {
+    color : crimson;
+}
 a, a:link, a:visited {
     text-decoration: none;
     color : inherit;
