@@ -8,6 +8,9 @@ nav td:nth-of-type(1) {
 header h1::first-letter {
     color: cadetblue;
 }
+header h1 {
+    text-decoration:  underline cadetblue;
+}
 
 /* IMAGE */
 #contents_table tr:nth-of-type(1) img {

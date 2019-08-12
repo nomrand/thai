@@ -8,6 +8,9 @@ nav td:nth-of-type(4) {
 header h1::first-letter {
     color: crimson;
 }
+header h1 {
+    text-decoration:  underline crimson;
+}
 
 .subcontents {
     display: inline-block;

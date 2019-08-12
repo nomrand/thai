@@ -32,9 +32,6 @@ td {
 h1 {
     font-size : 3rem;
 }
-header h1::first-letter {
-    opacity: 0.5;
-}
 h4 {
     font-size : 1.2rem;
 }

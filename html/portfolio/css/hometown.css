@@ -8,6 +8,9 @@ nav td:nth-of-type(3) {
 header h1::first-letter {
     color: darkmagenta;
 }
+header h1 {
+    text-decoration:  underline darkmagenta;
+}
 
 /* contents */
 #contents_table tr td {
