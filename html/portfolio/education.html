@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/education.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/slide.js"></script>
 </head>
 
 <body>
@@ -29,7 +27,7 @@
                     <table>
                         <tr>
                             <td><a href="index.html">Home</a></td>
-                            <td><a href="education.html">Education</a></td>
+                            <td><a href="education.html#highschool">Education</a></td>
                             <td><a href="hometown.html">Hometown</a></td>
                             <td><a href="future.html">Future</a></td>
                         </tr>
@@ -43,38 +41,94 @@
             <td>
                 <table id="contents_table">
                     <tr>
-                        <!-- IMAGE -->
                         <td>
-                            <img src="img/astronaut.jpg">
-                        </td>
-                        <!-- TEXTS -->
-                        <td>
-                            <table id="subcont_table">
-                                <tr>
-                                    <td>
-                                        <span>Name:</span>
-                                        <span>Satoshi Nomura</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Age:</span>
-                                        <span>37 years old</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Occupation:</span>
-                                        <span>Volunteer from Japan</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Hobby:</span>
-                                        <span>Cycling, Read Manga</span>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div id="highschool">
+                                <!-- MAP -->
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1645783.7575782777!2d138.00101665043755!3d36.10793516727852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601e8cc32e0daf8d%3A0x207d7e6356e87ed8!2z576k6aas5bel5qWt6auY562J5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sth!4v1565596617068!5m2!1sja!2sth"
+                                    width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <!-- TEXTS -->
+                                <div class="subcontents">
+                                    <h4>In my high school days</h4>
+                                    <p>
+                                        I've studied about "Information Engineering" (mainly programming) at
+                                        <a href="http://www.gunma-ct.ac.jp/" target="_blank">Kosen for 5 years</a>.
+                                    </p>
+                                    <p>
+                                        At there, I've participated in Robocon once like <a
+                                            href="https://www.nhk.or.jp/robocon/kosen/zenkoku.html" target="_blank">this
+                                            (It's not me 555...)</a>
+                                    </p>
+                                    <div>
+                                        <h5>Learned</h5>
+                                        <ul>
+                                            <li>Programming(C Language)</li>
+                                            <li>Basic of electronic circuit</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="subcont_navi">
+                                    <a href="#office"><img src="img/triangle.png"></a>
+                                    <a href="#college"><img src="img/triangle.png"></a>
+                                </div>
+                            </div>
+
+                            <div id="college">
+                                <!-- MAP -->
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1660744.9999226318!2d138.2146586504897!3d35.61188228172006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60191d0f7e1c595b%3A0x3e28f1e3ea6180a2!2z5p2x5Lqs6YCg5b2i5aSn5a2m!5e0!3m2!1sja!2sth!4v1565597254513!5m2!1sja!2sth"
+                                    width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <!-- TEXTS -->
+                                <div class="subcontents">
+                                    <h4>In my college days</h4>
+                                    <p>
+                                        I've studied "Media Art" in <a href="https://www.zokei.ac.jp/"
+                                            target="_blank">Private Art School in Tokyo</a>.
+                                    </p>
+                                    <p>
+                                        * "Media Art" is a word has many meanings. But in this website, it means "Art
+                                        with Programming".
+                                    </p>
+                                    <div>
+                                        <h5>Learned</h5>
+                                        <ul>
+                                            <li>Programming(JavaScript)</li>
+                                            <li>Very little technics about art(such as PhotoShop, 3DCG, or so)</li>
+                                            <li>And ... many important & fun things!!!</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="subcont_navi">
+                                    <a href="#highschool"><img src="img/triangle.png"></a>
+                                    <a href="#office"><img src="img/triangle.png"></a>
+                                </div>
+                            </div>
+
+                            <div id="office">
+                                <!-- MAP -->
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1660759.601346838!2d138.62889973184798!3d35.6111789536036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188a7460f4add1%3A0x6ff52aa19cdd3d23!2z5ZOB5bed44K344O844K144Kk44OJ6aeF!5e0!3m2!1sja!2sth!4v1565599457868!5m2!1sja!2sth"
+                                    width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <!-- TEXTS -->
+                                <div class="subcontents">
+                                    <h4>When I'm an office worker ...</h4>
+                                    <p>
+                                        I've worked for company in the center of Tokyo. And made many computer systems
+                                        such as bank system.
+                                    </p>
+                                    <div>
+                                        <h5>Learned</h5>
+                                        <ul>
+                                            <li>Programming(Java, HTML, CSS, DB&SQL, Networking)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="subcont_navi">
+                                    <a href="#college"><img src="img/triangle.png"></a>
+                                    <a href="#highschool"><img src="img/triangle.png"></a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </table>

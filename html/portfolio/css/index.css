@@ -5,6 +5,9 @@ nav td:nth-of-type(1) {
     color : lightslategray;
     box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
 }
+header h1::first-letter {
+    color: cadetblue;
+}
 
 /* IMAGE */
 #contents_table tr:nth-of-type(1) img {
@@ -12,29 +15,19 @@ nav td:nth-of-type(1) {
 }
 
 /* TEXT */
-#subcont_table {
-    background-color: rgb(25, 25, 25);
-    border-radius: 5px;
-    padding : 10px;
-}
-
-#subcont_table td {
+.subcontents td {
     display: flex;
     padding : 3px;
 
     border-bottom: 2px solid lightgray;
     border-radius: 0px;
 }
-#subcont_table td span:nth-of-type(1) {
+.subcontents td span:nth-of-type(1) {
     font-weight: bold;
-    color: lightgray;
+    color: gainsboro;
 }
-#subcont_table td span:nth-of-type(2) {
+.subcontents td span:nth-of-type(2) {
     margin-left:auto;
-}
-#subcont_table a {
-    width : auto;
-    height : auto;
 }
 
 /* CONT */

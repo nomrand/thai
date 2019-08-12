@@ -2,5 +2,72 @@
 nav td:nth-of-type(2) {
     pointer-events: none;
     background-color: gray;
+    color : lightslategray;
     box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
+}
+header h1::first-letter {
+    color: olivedrab;
+}
+
+/* common for each contents */
+#contents_table tr td {
+    position: relative;
+    height : 360px;
+}
+#contents_table tr td > div {
+    position : absolute;
+    top: 0px;
+    left: 0px;
+
+    width : 100%;
+    opacity : 0;
+    z-index: -1;
+
+	/* Set our transitions up. */
+	-webkit-transition: opacity 0.8s;
+	-moz-transition: opacity 0.8s;
+	transition: opacity 0.8s;
+}
+#contents_table tr td > div:target {
+
+
+    opacity : 1;
+    z-index: 10;
+}
+/* navi for each contents */
+.subcont_navi {
+    position : absolute;
+    left : 0px;
+    top: 310px;
+    width : 100% !important;
+
+    display : flex;
+}
+.subcont_navi > * {
+    margin : auto;
+}
+.subcont_navi a:nth-of-type(1) img {
+    transform: rotate(-90deg);
+}
+.subcont_navi a:nth-of-type(2) img {
+    transform: rotate(90deg);
+}
+
+/* in one content */
+#contents_table tr td > div {
+    display : flex;
+}
+#contents_table tr td > div > * {
+    width : 50%;
+    padding : 5px;
+}
+.subcontents > p {
+    margin: 1%;
+}
+.subcontents div {
+    position: absolute;
+    bottom: 0px;
+    color: gainsboro;
+
+    margin: 3%;
 }
