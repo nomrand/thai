@@ -1,0 +1,26 @@
+@charset "utf-8";
+#contents_table > tbody > tr {
+    display : flex;
+    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+    align-items: center;  /* 子要素をflexboxにより中央に配置する */
+
+    width : 100%;
+}
+
+#contents_table > tbody > tr > td {
+    width : 100%;
+}
+
+#contents_table > tbody > tr > td > div {
+    display : flex;
+    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+    align-items: center;  /* 子要素をflexboxにより中央に配置する */
+
+    width : 100%;
+}
+
+#contents_table > tbody > tr > td > div > * {
+    width : 100%;
+}

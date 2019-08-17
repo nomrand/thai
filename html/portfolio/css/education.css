@@ -15,7 +15,7 @@ header h1 {
 /* common for each contents */
 #contents_table tr td {
     position: relative;
-    height : 360px;
+    display : flex;
 }
 #contents_table tr td > div {
     position : absolute;
@@ -40,7 +40,7 @@ header h1 {
 .subcont_navi {
     position : absolute;
     left : 0px;
-    top: 310px;
+    bottom : -60px;
     width : 100% !important;
 
     display : flex;
@@ -65,6 +65,9 @@ header h1 {
 }
 .subcontents > p {
     margin: 1%;
+}
+.subcontents > p:last-of-type {
+    margin-bottom : calc(5rem + 6%);
 }
 .subcontents div {
     position: absolute;
