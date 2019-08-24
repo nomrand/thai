@@ -2,7 +2,7 @@ html {
     height : 100%;
     width : 100%;
     font-family: 'Helvetica','Arial','Hiragino Sans',sans-serif;
-    background-color: rgb(25, 25, 25);
+    background-color: black;
 }
 
 header h1 {
@@ -45,4 +45,12 @@ label{
 input[type="checkbox"]:checked + label {
     background:#3cb371;
     color:#fff;
+}
+
+#chartdiv {
+    position: relative;
+    background-color: rgb(25, 25, 25);
+    border-radius: 5px;
+    margin : 5px;
+    margin-top : 20px;
 }
