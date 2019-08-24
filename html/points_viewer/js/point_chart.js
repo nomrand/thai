@@ -4,6 +4,13 @@ let CHART = null;
 let UNDISP_CLASSES = [];
 
 $(function () {
+    const param = getUrlParam();
+    if (param["class"]) {
+        $('input#cls5' + param["class"]).prop('checked', true);
+    } else {
+        $('input').prop('checked', true);
+    }
+
     $('input[name=disp]').change(function () {
         chartRemake();
     })
@@ -30,10 +37,15 @@ $(function () {
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'Students',  // ラベル
-                            fontSize: 14,         // フォントサイズ
+                            fontSize: 16,         // フォントサイズ
+                            fontColor: "#DDD",
                         },
                         ticks: {
                             fontSize: 10,         // フォントサイズ
+                            fontColor: "#DDD",
+                        },
+                        gridLines: {
+                            color: "#444",
                         },
                     },
                 ],
@@ -44,8 +56,16 @@ $(function () {
                         scaleLabel: {             // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'points',  // ラベル
-                            fontSize: 14,          // フォントサイズ
-                        }
+                            fontSize: 16,          // フォントサイズ
+                            fontColor: "#DDD",
+                        },
+                        ticks: {
+                            fontSize: 16,         // フォントサイズ
+                            fontColor: "#DDD",
+                        },
+                        gridLines: {
+                            color: "#444",
+                        },
                     }
                 ]
             },
@@ -54,6 +74,7 @@ $(function () {
                     boxWidth: 10,
                     padding: 10,        //凡例の各要素間の距離
                     fontSize: 16,
+                    fontColor: "#FFF",
                 },
                 display: true,
             },
@@ -87,8 +108,8 @@ function getData() {
             return {
                 label: val,
                 data: data,
-                //                borderColor: rgbaStr(hueRGB(15, index), 1),
-                backgroundColor: rgbaStr(hueRGB(15, index), 0.6),
+                borderColor: rgbaStr(hueRGB(15, index)),
+                backgroundColor: rgbaStr(hueRGB(15, index)),
             };
         });
 }
@@ -112,6 +133,5 @@ function chartRemake() {
     CHART.data.datasets = getData();
     CHART.update({
         duration: 800,
-        easing: 'easeOutBounce'
     });
 }

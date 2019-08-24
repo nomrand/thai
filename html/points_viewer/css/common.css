@@ -1,6 +1,14 @@
 html {
     height : 100%;
     width : 100%;
+    font-family: 'Helvetica','Arial','Hiragino Sans',sans-serif;
+    background-color: rgb(25, 25, 25);
+}
+
+header h1 {
+    color : white;
+    font-size: 3rem;
+    margin: 0px;
 }
 
 .flexdix, .flexdix > * {
@@ -21,15 +29,16 @@ label{
     font-weight: bolder;
     position:relative;
     display:inline-block;
-    font-size:16px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
     cursor:pointer;
 
-    text-align: center;
     width : 15%;
     border-radius:5px;
-    
-    background:#efefef;
-    color:#aaa;
+    background-color: gray;
+    color: lightslategray;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
     transition:0.3s;
 }
 
