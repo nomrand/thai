@@ -19,23 +19,31 @@ function hueRGB(huemax, huei) {
         huei -= huemax;
     }
 
-    let decAfter = HueConst.length / huemax * huei;
+    let decAfter = (HueConst.length - 1) / huemax * huei;
     let decBefore = Math.floor(decAfter);
     decAfter -= decBefore;
 
     return toRGB(HueConst[decBefore], HueConst[decBefore + 1], decAfter);
 }
-function blRGB(fromRGB, diff) {
-    return toRGB(fromRGB, [255, 255, 255], diff);
+
+function bkRGB(fromRGB, diff) {
+    return toRGB(fromRGB, [0, 0, 0], diff);
 }
 function whRGB(fromRGB, diff) {
-    return toRGB(fromRGB, [0, 0, 0], diff);
+    return toRGB(fromRGB, [255, 255, 255], diff);
 }
 function toRGB(fromRGB, toRGB, diff) {
     return [
-        Math.abs(toRGB[0] - fromRGB[0] * diff),
-        Math.abs(toRGB[1] - fromRGB[1] * diff),
-        Math.abs(toRGB[2] - fromRGB[2] * diff),
+        Math.floor(fromRGB[0] + (toRGB[0] - fromRGB[0]) * diff),
+        Math.floor(fromRGB[1] + (toRGB[1] - fromRGB[1]) * diff),
+        Math.floor(fromRGB[2] + (toRGB[2] - fromRGB[2]) * diff),
+    ];
+}
+function capRGB(fromRGB, top, bot) {
+    return [
+        Math.max(bot, Math.min(top, fromRGB[0])),
+        Math.max(bot, Math.min(top, fromRGB[1])),
+        Math.max(bot, Math.min(top, fromRGB[2])),
     ];
 }
 function rgbaStr(rgb, alpha) {

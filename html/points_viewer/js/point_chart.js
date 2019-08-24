@@ -105,11 +105,12 @@ function getData() {
                 return dval.points[index];
             });
 
+            let cl = rgbaStr(whRGB(capRGB(hueRGB(20, Math.floor(index * 2.7)), 200, 50), 0.15));
             return {
                 label: val,
                 data: data,
-                borderColor: rgbaStr(hueRGB(15, index)),
-                backgroundColor: rgbaStr(hueRGB(15, index)),
+                borderColor: cl,
+                backgroundColor: cl,
             };
         });
 }
