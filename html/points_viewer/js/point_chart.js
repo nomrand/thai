@@ -1,4 +1,4 @@
-const BAR_HEIGHT_PER_STUDENT = 14;
+const BAR_HEIGHT_PER_STUDENT = 24;
 const CTX = $("#chart").get(0).getContext("2d");
 let CHART = null;
 let UNDISP_CLASSES = [];
@@ -7,8 +7,6 @@ $(function () {
     const param = getUrlParam();
     if (param["class"]) {
         $('input#cls5' + param["class"]).prop('checked', true);
-    } else {
-        $('input').prop('checked', true);
     }
 
     $('input[name=disp]').change(function () {
@@ -37,11 +35,11 @@ $(function () {
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'Students',  // ラベル
-                            fontSize: 16,         // フォントサイズ
+                            fontSize: 20,         // フォントサイズ
                             fontColor: "#DDD",
                         },
                         ticks: {
-                            fontSize: 10,         // フォントサイズ
+                            fontSize: 12,         // フォントサイズ
                             fontColor: "#DDD",
                         },
                         gridLines: {
@@ -56,7 +54,7 @@ $(function () {
                         scaleLabel: {             // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'points',  // ラベル
-                            fontSize: 16,          // フォントサイズ
+                            fontSize: 20,          // フォントサイズ
                             fontColor: "#DDD",
                         },
                         ticks: {
