@@ -4,12 +4,9 @@ let CHART = null;
 let UNDISP_CLASSES = [];
 
 $(function () {
-    $('input[name=undisp]').change(function () {
+    $('input[name=disp]').change(function () {
         chartRemake();
     })
-    $("#chartdiv, #chart").css("height",
-        (24 * BAR_HEIGHT_PER_STUDENT + 500) + "px");
-
 
     let labels = getLabel();
     let datasets = getData();
@@ -33,18 +30,21 @@ $(function () {
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'Students',  // ラベル
-                            fontSize: 16,         // フォントサイズ
+                            fontSize: 14,         // フォントサイズ
+                        },
+                        ticks: {
+                            fontSize: 10,         // フォントサイズ
                         },
                     },
-                ]
-                , xAxes: [
+                ],
+                xAxes: [
                     {
                         position: 'top',
                         stacked: true,              //積み上げ棒グラフの設定
                         scaleLabel: {             // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'points',  // ラベル
-                            fontSize: 16,          // フォントサイズ
+                            fontSize: 14,          // フォントサイズ
                         }
                     }
                 ]
@@ -53,12 +53,10 @@ $(function () {
                 labels: {
                     boxWidth: 10,
                     padding: 10,        //凡例の各要素間の距離
+                    fontSize: 16,
                 },
                 display: true,
             },
-            tooltips: {
-                mode: "index"
-            }
         }
     });
     chartRemake();
@@ -66,7 +64,7 @@ $(function () {
 
 function getLabel() {
     let undispClasses = [];
-    $('input[name=undisp]').each(function () {
+    $('input[name=disp]').each(function () {
         if (!$(this).prop('checked')) {
             undispClasses.push($(this).val());
         }
@@ -75,11 +73,7 @@ function getLabel() {
     return CHART_DATA.data.
         filter(val => !UNDISP_CLASSES.includes(val.class)).
         map(function (val, index) {
-            if (UNDISP_CLASSES.length == 0) {
-                return val.class + " No." + pad0(2, val.number);
-            } else {
-                return val.class + " No." + pad0(2, val.number) + "  " + val.name;
-            }
+            return val.class + " No." + pad0(2, val.number);
         });
 }
 function getData() {
@@ -93,23 +87,31 @@ function getData() {
             return {
                 label: val,
                 data: data,
-                borderColor: rgbaStr(hueRGB(50, index), 1),
-                backgroundColor: rgbaStr(hueRGB(50, index), 0.4),
+                //                borderColor: rgbaStr(hueRGB(15, index), 1),
+                backgroundColor: rgbaStr(hueRGB(15, index), 0.6),
             };
         });
 }
 
 function updateCondition() {
     UNDISP_CLASSES = [];
-    $('input[name=undisp]').each(function () {
+    $('input[name=disp]').each(function () {
         if (!$(this).prop('checked')) {
             UNDISP_CLASSES.push($(this).val());
         }
     })
+
+    $("#chartdiv, #chart").css("height",
+        (CHART_DATA.data.
+            filter(val => !UNDISP_CLASSES.includes(val.class)).length * BAR_HEIGHT_PER_STUDENT) + "px");
+    CHART.resize();
 }
 function chartRemake() {
     updateCondition();
     CHART.data.labels = getLabel();
     CHART.data.datasets = getData();
-    CHART.update();
+    CHART.update({
+        duration: 800,
+        easing: 'easeOutBounce'
+    });
 }

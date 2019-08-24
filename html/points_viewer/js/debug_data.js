@@ -129,7 +129,7 @@ const CHART_DATA = {
             "points": [
                 22,
                 12,
-                -1
+                0
             ]
         },
         {
@@ -140,7 +140,7 @@ const CHART_DATA = {
             "points": [
                 23,
                 13,
-                -2
+                0
             ]
         },
         {
@@ -151,7 +151,7 @@ const CHART_DATA = {
             "points": [
                 24,
                 14,
-                -3
+                0
             ]
         },
         {
@@ -162,7 +162,7 @@ const CHART_DATA = {
             "points": [
                 25,
                 15,
-                -4
+                0
             ]
         },
         {
@@ -173,7 +173,7 @@ const CHART_DATA = {
             "points": [
                 26,
                 16,
-                -5
+                0
             ]
         },
         {
@@ -184,7 +184,7 @@ const CHART_DATA = {
             "points": [
                 27,
                 17,
-                -6
+                0
             ]
         },
         {
@@ -195,7 +195,7 @@ const CHART_DATA = {
             "points": [
                 28,
                 18,
-                -7
+                0
             ]
         },
         {
@@ -206,7 +206,7 @@ const CHART_DATA = {
             "points": [
                 29,
                 19,
-                -8
+                0
             ]
         },
         {
@@ -217,7 +217,7 @@ const CHART_DATA = {
             "points": [
                 30,
                 20,
-                -9
+                0
             ]
         },
         {
@@ -228,7 +228,7 @@ const CHART_DATA = {
             "points": [
                 31,
                 21,
-                -10
+                00
             ]
         },
         {
@@ -239,7 +239,7 @@ const CHART_DATA = {
             "points": [
                 32,
                 22,
-                -11
+                01
             ]
         },
         {
@@ -250,7 +250,7 @@ const CHART_DATA = {
             "points": [
                 33,
                 23,
-                -12
+                02
             ]
         },
         {
@@ -261,7 +261,7 @@ const CHART_DATA = {
             "points": [
                 34,
                 24,
-                -13
+                03
             ]
         },
         {
@@ -393,7 +393,7 @@ const CHART_DATA = {
             "points": [
                 22,
                 12,
-                -1
+                0
             ]
         },
         {
@@ -404,7 +404,7 @@ const CHART_DATA = {
             "points": [
                 23,
                 13,
-                -2
+                0
             ]
         },
         {
@@ -415,7 +415,7 @@ const CHART_DATA = {
             "points": [
                 24,
                 14,
-                -3
+                0
             ]
         },
         {
@@ -426,7 +426,7 @@ const CHART_DATA = {
             "points": [
                 25,
                 15,
-                -4
+                0
             ]
         },
         {
@@ -437,7 +437,7 @@ const CHART_DATA = {
             "points": [
                 26,
                 16,
-                -5
+                0
             ]
         },
         {
@@ -448,7 +448,7 @@ const CHART_DATA = {
             "points": [
                 27,
                 17,
-                -6
+                0
             ]
         },
         {
@@ -459,7 +459,7 @@ const CHART_DATA = {
             "points": [
                 28,
                 18,
-                -7
+                0
             ]
         },
         {
@@ -470,7 +470,7 @@ const CHART_DATA = {
             "points": [
                 29,
                 19,
-                -8
+                0
             ]
         },
         {
@@ -481,7 +481,7 @@ const CHART_DATA = {
             "points": [
                 30,
                 20,
-                -9
+                0
             ]
         },
         {
@@ -492,7 +492,7 @@ const CHART_DATA = {
             "points": [
                 31,
                 21,
-                -10
+                00
             ]
         },
         {
@@ -503,7 +503,7 @@ const CHART_DATA = {
             "points": [
                 32,
                 22,
-                -11
+                01
             ]
         },
         {
@@ -514,7 +514,7 @@ const CHART_DATA = {
             "points": [
                 33,
                 23,
-                -12
+                02
             ]
         },
         {
@@ -525,7 +525,7 @@ const CHART_DATA = {
             "points": [
                 34,
                 24,
-                -13
+                03
             ]
         },
         {
@@ -657,7 +657,7 @@ const CHART_DATA = {
             "points": [
                 22,
                 12,
-                -1
+                0
             ]
         },
         {
@@ -668,7 +668,7 @@ const CHART_DATA = {
             "points": [
                 23,
                 13,
-                -2
+                0
             ]
         },
         {
@@ -679,7 +679,7 @@ const CHART_DATA = {
             "points": [
                 24,
                 14,
-                -3
+                0
             ]
         },
         {
@@ -690,7 +690,7 @@ const CHART_DATA = {
             "points": [
                 25,
                 15,
-                -4
+                0
             ]
         },
         {
@@ -701,7 +701,7 @@ const CHART_DATA = {
             "points": [
                 26,
                 16,
-                -5
+                0
             ]
         },
         {
@@ -712,7 +712,7 @@ const CHART_DATA = {
             "points": [
                 27,
                 17,
-                -6
+                0
             ]
         },
         {
@@ -723,7 +723,7 @@ const CHART_DATA = {
             "points": [
                 28,
                 18,
-                -7
+                0
             ]
         },
         {
@@ -734,7 +734,7 @@ const CHART_DATA = {
             "points": [
                 29,
                 19,
-                -8
+                0
             ]
         },
         {
@@ -745,7 +745,7 @@ const CHART_DATA = {
             "points": [
                 30,
                 20,
-                -9
+                0
             ]
         },
         {
@@ -756,7 +756,7 @@ const CHART_DATA = {
             "points": [
                 31,
                 21,
-                -10
+                00
             ]
         },
         {
@@ -767,7 +767,7 @@ const CHART_DATA = {
             "points": [
                 32,
                 22,
-                -11
+                01
             ]
         },
         {
@@ -778,7 +778,7 @@ const CHART_DATA = {
             "points": [
                 33,
                 23,
-                -12
+                02
             ]
         },
         {
@@ -789,7 +789,7 @@ const CHART_DATA = {
             "points": [
                 34,
                 24,
-                -13
+                03
             ]
         },
         {
@@ -921,7 +921,7 @@ const CHART_DATA = {
             "points": [
                 22,
                 12,
-                -1
+                0
             ]
         },
         {
@@ -932,7 +932,7 @@ const CHART_DATA = {
             "points": [
                 23,
                 13,
-                -2
+                0
             ]
         },
         {
@@ -943,7 +943,7 @@ const CHART_DATA = {
             "points": [
                 24,
                 14,
-                -3
+                0
             ]
         },
         {
@@ -954,7 +954,7 @@ const CHART_DATA = {
             "points": [
                 25,
                 15,
-                -4
+                0
             ]
         },
         {
@@ -965,7 +965,7 @@ const CHART_DATA = {
             "points": [
                 26,
                 16,
-                -5
+                0
             ]
         },
         {
@@ -976,7 +976,7 @@ const CHART_DATA = {
             "points": [
                 27,
                 17,
-                -6
+                0
             ]
         },
         {
@@ -987,7 +987,7 @@ const CHART_DATA = {
             "points": [
                 28,
                 18,
-                -7
+                0
             ]
         },
         {
@@ -998,7 +998,7 @@ const CHART_DATA = {
             "points": [
                 29,
                 19,
-                -8
+                0
             ]
         },
         {
@@ -1009,7 +1009,7 @@ const CHART_DATA = {
             "points": [
                 30,
                 20,
-                -9
+                0
             ]
         },
         {
@@ -1020,7 +1020,7 @@ const CHART_DATA = {
             "points": [
                 31,
                 21,
-                -10
+                00
             ]
         },
         {
@@ -1031,7 +1031,7 @@ const CHART_DATA = {
             "points": [
                 32,
                 22,
-                -11
+                01
             ]
         },
         {
@@ -1042,7 +1042,7 @@ const CHART_DATA = {
             "points": [
                 33,
                 23,
-                -12
+                02
             ]
         },
         {
@@ -1053,7 +1053,7 @@ const CHART_DATA = {
             "points": [
                 34,
                 24,
-                -13
+                03
             ]
         },
         {
@@ -1185,7 +1185,7 @@ const CHART_DATA = {
             "points": [
                 22,
                 12,
-                -1
+                0
             ]
         },
         {
@@ -1196,7 +1196,7 @@ const CHART_DATA = {
             "points": [
                 23,
                 13,
-                -2
+                0
             ]
         },
         {
@@ -1207,7 +1207,7 @@ const CHART_DATA = {
             "points": [
                 24,
                 14,
-                -3
+                0
             ]
         },
         {
@@ -1218,7 +1218,7 @@ const CHART_DATA = {
             "points": [
                 25,
                 15,
-                -4
+                0
             ]
         },
         {
@@ -1229,7 +1229,7 @@ const CHART_DATA = {
             "points": [
                 26,
                 16,
-                -5
+                0
             ]
         },
         {
@@ -1240,7 +1240,7 @@ const CHART_DATA = {
             "points": [
                 27,
                 17,
-                -6
+                0
             ]
         },
         {
@@ -1251,7 +1251,7 @@ const CHART_DATA = {
             "points": [
                 28,
                 18,
-                -7
+                0
             ]
         },
         {
@@ -1262,7 +1262,7 @@ const CHART_DATA = {
             "points": [
                 29,
                 19,
-                -8
+                0
             ]
         },
         {
@@ -1273,7 +1273,7 @@ const CHART_DATA = {
             "points": [
                 30,
                 20,
-                -9
+                0
             ]
         },
         {
@@ -1284,7 +1284,7 @@ const CHART_DATA = {
             "points": [
                 31,
                 21,
-                -10
+                00
             ]
         },
         {
@@ -1295,7 +1295,7 @@ const CHART_DATA = {
             "points": [
                 32,
                 22,
-                -11
+                01
             ]
         },
         {
@@ -1306,7 +1306,7 @@ const CHART_DATA = {
             "points": [
                 33,
                 23,
-                -12
+                02
             ]
         },
         {
@@ -1317,7 +1317,7 @@ const CHART_DATA = {
             "points": [
                 34,
                 24,
-                -13
+                03
             ]
         },
         {

@@ -2,3 +2,38 @@ html {
     height : 100%;
     width : 100%;
 }
+
+.flexdix, .flexdix > * {
+    display : flex;
+    justify-content: space-around;
+    width : 100%;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+
+    display: none;
+}
+
+label{
+    font-weight: bolder;
+    position:relative;
+    display:inline-block;
+    font-size:16px;
+    cursor:pointer;
+
+    text-align: center;
+    width : 15%;
+    border-radius:5px;
+    
+    background:#efefef;
+    color:#aaa;
+    transition:0.3s;
+}
+
+input[type="checkbox"]:checked + label {
+    background:#3cb371;
+    color:#fff;
+}
