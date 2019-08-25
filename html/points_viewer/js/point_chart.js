@@ -1,7 +1,7 @@
 const BAR_HEIGHT_PER_STUDENT = 24;
 const CTX = $("#chart").get(0).getContext("2d");
 let CHART = null;
-let UNDISP_CLASSES = [];
+let DISPLAY_TARGET_DATA = [];
 
 $(function () {
     const param = getUrlParam();
@@ -76,30 +76,30 @@ $(function () {
                 },
                 display: true,
             },
+            tooltips: {
+                footerFontSize: 16,
+                callbacks: {
+                    footer: function (tooltipItem, chart) {
+                        // comment                        
+                        return separateWords(DISPLAY_TARGET_DATA[tooltipItem[tooltipItem.length - 1].index].comment, ' ', 40).join("\n");
+                    },
+                },
+            },
         }
     });
     chartRemake();
 });
 
 function getLabel() {
-    let undispClasses = [];
-    $('input[name=disp]').each(function () {
-        if (!$(this).prop('checked')) {
-            undispClasses.push($(this).val());
-        }
-    })
-
-    return CHART_DATA.data.
-        filter(val => !UNDISP_CLASSES.includes(val.class)).
-        map(function (val, index) {
-            return val.class + " No." + pad0(2, val.number);
-        });
+    return DISPLAY_TARGET_DATA.map((val, index) => getLabelValue(val));
+}
+function getLabelValue(val) {
+    return val.class + " No." + pad0(2, val.number);
 }
 function getData() {
     return CHART_DATA.work.
-        filter(val => !UNDISP_CLASSES.includes(val.class)).
         map(function (val, index) {
-            let data = CHART_DATA.data.map(function (dval, dindex) {
+            let data = DISPLAY_TARGET_DATA.map(function (dval, dindex) {
                 return dval.points[index];
             });
 
@@ -114,16 +114,16 @@ function getData() {
 }
 
 function updateCondition() {
-    UNDISP_CLASSES = [];
+    let undispClass = [];
     $('input[name=disp]').each(function () {
         if (!$(this).prop('checked')) {
-            UNDISP_CLASSES.push($(this).val());
+            undispClass.push($(this).val());
         }
     })
+    DISPLAY_TARGET_DATA = CHART_DATA.data.filter(val => !undispClass.includes(val.class))
 
     $("#chartdiv, #chart").css("height",
-        (CHART_DATA.data.
-            filter(val => !UNDISP_CLASSES.includes(val.class)).length * BAR_HEIGHT_PER_STUDENT) + "px");
+        (DISPLAY_TARGET_DATA.length * BAR_HEIGHT_PER_STUDENT) + "px");
     CHART.resize();
 }
 function chartRemake() {

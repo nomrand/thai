@@ -5,6 +5,7 @@ const CHART_DATA = {
             "number": "1",
             "nickname": "",
             "name": "AAA01",
+            "comment": "วันนี้เราจะมาดูกันว่า Lorem Ipsum คืออะไร และแจกเครื่องมือสร้าง Lorem Ipsum ภาษาไทยดี ๆ ครับ เวลาดูงานดีไซน์ของ Designer เก่ง ๆ ในต่างประเทศเราพบได้บ่อย ๆ",
             "points": [
                 11,
                 1,
@@ -25,6 +26,7 @@ const CHART_DATA = {
             "number": "2",
             "nickname": "",
             "name": "AAA02",
+            "comment": "This is comment next line? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "points": [
                 12,
                 2,
@@ -45,6 +47,7 @@ const CHART_DATA = {
             "number": "3",
             "nickname": "",
             "name": "AAA03",
+            "comment": "",
             "points": [
                 13,
                 3,
@@ -65,6 +68,7 @@ const CHART_DATA = {
             "number": "4",
             "nickname": "",
             "name": "AAA04",
+            "comment": null,
             "points": [
                 14,
                 4,

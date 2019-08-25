@@ -8,7 +8,15 @@ html {
 header h1 {
     color : white;
     font-size: 3rem;
-    margin: 0px;
+    margin: 6px;
+    margin-top: 11px;
+
+    text-decoration: underline cadetblue;
+}
+
+.flexdix {
+    margin: 5px;
+    margin-top: 10px;
 }
 
 .flexdix, .flexdix > * {
@@ -34,7 +42,7 @@ label{
     text-align: center;
     cursor:pointer;
 
-    width : 15%;
+    width : 16%;
     border-radius:5px;
     background-color: gray;
     color: lightslategray;
