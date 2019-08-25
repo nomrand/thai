@@ -38,6 +38,9 @@ function separateWords(str, sep, maxCharNum) {
             }
         }
     }
+    if (oneLine.length > 0) {
+        ret.push(oneLine);
+    }
 
     return ret;
 }
