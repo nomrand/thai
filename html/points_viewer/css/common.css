@@ -53,6 +53,7 @@ label{
 input[type="checkbox"]:checked + label {
     background:#3cb371;
     color:#fff;
+    box-shadow:none;
 }
 
 #chartdiv {
