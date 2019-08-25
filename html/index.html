@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Satoshi's Website Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="common/css/split/common.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>Satoshi's Website</h1>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div><A zref="points_viewer/chart.html">Student Score</A></div>
+        <div><A zref="portfolio/index.html">Who is Satoshi?</A></div>
+        <div>XXXX</div>
+        <div>XXXX</div>
+        <div>XXXX</div>
+        <div>XXXX</div>
+    </nav>
+    <!-- CONTANTS -->
+    <div id="contentsDiv">
+        <div class="classDivs">
+            <h3>AR2</h3>
+            <div class="classMain">
+                <h4>Pattern AR (a kind of Marker Based AR)</h4>
+            </div>
+            <div class="classWork"><a target=" _blank"
+                    href="https://drive.google.com/open?id=1fGei1RJ7B-vVFzGReEWuL4nvnHA6EdzA">
+                    Work (Make AR Cartoon)</a>
+            </div>
+        </div>
+        <div class="classDivs finished">
+            <h3>AR1</h3>
+            <div class="classMain">
+                <h4>introduction</h4>
+                <ul>
+                    <li>AR & VR & MR</li>
+                    <li>Example (Location Based / Marker Based / Markerless)</li>
+                </ul>
+            </div>
+            <div class="classWork"><a target=" _blank"
+                    href="https://drive.google.com/open?id=1We97mzCth1Yy5aKJ_NiPJdYcAaruF6S9">
+                    Work (Test & Report)</a></div>
+        </div>
+
+        <div class="classDivs finished">
+            <h3>Machine Learning2</h3>
+            <div class="classMain">
+                <h4>Create Image Classifier</h4>
+                <ul>
+                    <li>TensorFlow (=ML System Application)</li>
+                    <li>Inception V3 (=ML Model)</li>
+                </ul>
+            </div>
+            <div class="classWork"><a target=" _blank"
+                    href="https://drive.google.com/drive/folders/112H3NkpXr-3u73_hIka7aFGO7TuBMh8I?usp=sharing">
+                    Data
+                </a>
+            </div>
+        </div>
+        <div class="classDivs finished">
+            <h3>Machine Learning1</h3>
+            <div class="classMain">
+                <h4>Introduction (Play ML)</h4>
+                <ul>
+                    <li><a target=" _blank" href="https://paintschainer.preferred.tech/index_en.html">PaintsChainer</a>
+                    </li>
+                    <li><a target=" _blank" href="https://developer.ibm.com/exchanges/models/">MAX (Model Asset
+                            eXchange)</a></li>
+                </ul>
+            </div>
+            <div class="classWork"></div>
+        </div>
+
+        <div class="classDivs finished">
+            <h3>Typing</h3>
+            <div class="classMain">
+                <h4>Typing Practice</h4>
+                <ul>
+                    <li>
+                        <a target=" _blank" href="https://nomrand.github.io/typing/static/">
+                            Satoshi's TYPING GAME
+                        </a>
+                    </li>
+                    <li>
+                        <a target=" _blank" href="https://www.typingclub.com/sportal/program-3.game">
+                            Typing Jungle
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="classWork"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © Satoshi's Website All Rights Reserved.
+    </footer>
+
+
+    <!-- Library Script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('nav').css('width', '200px');
+            setTimeout(function () {
+                $('nav').css('color', 'white');
+            }, 500);
+
+
+            $(".classDivs").click(function () {
+                $(this).toggleClass("opened");
+            });
+            $('nav a').click(function () {
+                $('nav').css('width', '100%');
+                $('nav').css('color', 'rgb(25,25,25)');
+
+
+                (function (self) {
+                    setTimeout(function () {
+                        location.href = $(self).attr("zref");
+                    }, 1500);
+                })(this);
+            })
+
+            $(".finished").each(function () {
+                $(this).append($("<p>finished</p>"));
+            });
+        });
+    </script>
+</body>
+
+</html>
