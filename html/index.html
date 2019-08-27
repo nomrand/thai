@@ -2,100 +2,326 @@
 <html>
 
 <head>
-    <title>Satoshi's Website Index</title>
+    <title>Satoshi's Class Index</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="common/css/split/common.css">
+    <style>
+        @charset "utf-8";
+
+        * {
+            margin: 0px;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 100%;
+            font-family: 'Helvetica', 'Arial', 'Hiragino Sans', sans-serif;
+            word-wrap: break-word;
+        }
+
+        div {
+            text-align: left;
+        }
+
+        a,
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a.open_window {
+            background: url("common/img/open_window.png") no-repeat center right;
+            background-size: contain;
+            margin-right: 1px;
+            padding-right: 20px;
+        }
+
+        header {
+            position: fixed;
+            text-align: left;
+            left: 10px;
+            top: 10px;
+
+            z-index: 101;
+
+            font-size: 18px;
+            color: white;
+            opacity: 0;
+            /* goes to 1.0 */
+            transition: all 1.5s;
+
+            text-decoration: underline white;
+        }
+
+        nav {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+
+            height: 100%;
+            width: 200px;
+            background-color: rgb(25, 25, 25);
+
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            flex-direction: column;
+
+            z-index: 100;
+
+            transition: all 1.5s;
+        }
+
+        nav.maxWidth {
+            width: 100%;
+        }
+
+        nav>div {
+            margin: 10px;
+            color: white;
+            opacity: 0;
+            /* goes to 1.0 */
+            transition: all 1.5s;
+        }
+
+        #contentsDiv {
+            position: absolute;
+            left: 200px;
+            top: 0px;
+
+            height: 100%;
+            width: calc(100%-200px);
+            background-color: white;
+            color: black;
+        }
+
+        footer {
+            opacity: 0.3;
+            z-index: 100;
+            position: fixed;
+
+            bottom: 0px;
+            right: 0px;
+        }
+
+
+        div.classDivs {
+            position: relative;
+            float: left;
+
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 1px rgba(125, 125, 125, 0.5);
+
+            max-width: 240px;
+            width: auto;
+            max-height: 2rem;
+            background-color: rgb(25, 25, 25);
+            color: white;
+
+            transition: all 1s;
+        }
+
+        div.classDivs.finished {
+            background-color: rgb(100, 100, 100);
+            color: rgb(200, 200, 200);
+        }
+
+        div.classDivs.opened {
+            max-width: 500px;
+            max-height: 500px;
+            height: auto;
+        }
+
+        div.classDivs>h3 {
+            font-size: 1.2rem;
+        }
+
+        div.classDivs h4 {
+            font-size: 1rem;
+            border-left: 4px solid white;
+            padding-left: 4px;
+        }
+
+        div.classDivs>.classMeta {
+            font-size: 0.8rem;
+            color: lightgray;
+        }
+
+        div.classContents {
+            display: inline-block;
+            text-align: left;
+
+            margin: 5px;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding: 5px;
+            padding-left: 0px;
+            padding-right: 0px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        div.classContents:empty {
+            display: none;
+        }
+
+        nav>img {
+            opacity: 0.0;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: 5px;
+            top: 5px;
+
+            transition: all 1.5s;
+        }
+
+        @media only screen and (max-width: 500px) {
+            #contentsDiv {
+                left: 50px;
+            }
+
+            nav.smallWidth {
+                left: -150px;
+            }
+
+            nav.smallWidth.maxWidth {
+                left: 0px;
+            }
+
+            nav.smallWidth>div {
+                display: none;
+            }
+
+            nav.smallWidth>img {
+                opacity: 0.8;
+            }
+
+            nav.smallWidth.maxWidth>img {
+                opacity: 0.0;
+            }
+
+            header.smallWidth {
+                left: -150px;
+                opacity: 0.0 !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- HEADER -->
     <header>
-        <h1>Satoshi's Website</h1>
+        <h1>Satoshi's<br>Class<br>Index</h1>
     </header>
 
     <!-- NAVIGATION -->
-    <nav>
+    <nav class="maxWidth">
         <div><A zref="points/chart.html">Student Score</A></div>
         <div><A zref="website/index.html">Who is Satoshi?</A></div>
-        <div>XXXX</div>
-        <div>XXXX</div>
-        <div>XXXX</div>
-        <div>XXXX</div>
+        <img src="common/img/right.png">
     </nav>
     <!-- CONTANTS -->
     <div id="contentsDiv">
         <div class="classDivs">
             <h3>AR2</h3>
-            <div class="classMain">
+            <div class="classMeta">
+                26 สิงหาคม 2019
+            </div>
+            <div class="classContents">
                 <h4>Pattern AR (a kind of Marker Based AR)</h4>
             </div>
-            <div class="classWork"><a target=" _blank"
-                    href="https://drive.google.com/open?id=1fGei1RJ7B-vVFzGReEWuL4nvnHA6EdzA">
-                    Work (Make AR Cartoon)</a>
+            <div class="classContents">
+                <h4><a class="open_window" target=" _blank"
+                        href="https://drive.google.com/open?id=1fGei1RJ7B-vVFzGReEWuL4nvnHA6EdzA">
+                        Work (Make AR Cartoon)</a></h4>
             </div>
         </div>
         <div class="classDivs finished">
             <h3>AR1</h3>
-            <div class="classMain">
+            <div class="classMeta">
+                26 สิงหาคม 2019
+            </div>
+            <div class="classContents">
                 <h4>introduction</h4>
                 <ul>
                     <li>AR & VR & MR</li>
                     <li>Example (Location Based / Marker Based / Markerless)</li>
                 </ul>
             </div>
-            <div class="classWork"><a target=" _blank"
-                    href="https://drive.google.com/open?id=1We97mzCth1Yy5aKJ_NiPJdYcAaruF6S9">
-                    Work (Test & Report)</a></div>
+            <div class="classContents">
+                <h4><a class="open_window" target=" _blank"
+                        href="https://drive.google.com/open?id=1We97mzCth1Yy5aKJ_NiPJdYcAaruF6S9">
+                        Work (Test & Report)</a></h4>
+            </div>
         </div>
 
         <div class="classDivs finished">
             <h3>Machine Learning2</h3>
-            <div class="classMain">
+            <div class="classMeta">
+                26 สิงหาคม 2019
+            </div>
+            <div class="classContents">
                 <h4>Create Image Classifier</h4>
                 <ul>
                     <li>TensorFlow (=ML System Application)</li>
                     <li>Inception V3 (=ML Model)</li>
                 </ul>
             </div>
-            <div class="classWork"><a target=" _blank"
-                    href="https://drive.google.com/drive/folders/112H3NkpXr-3u73_hIka7aFGO7TuBMh8I?usp=sharing">
-                    Data
-                </a>
+            <div class="classContents">
+                <h4><a class="open_window" target=" _blank"
+                        href="https://drive.google.com/drive/folders/112H3NkpXr-3u73_hIka7aFGO7TuBMh8I?usp=sharing">
+                        Data</a></h4>
             </div>
         </div>
         <div class="classDivs finished">
             <h3>Machine Learning1</h3>
-            <div class="classMain">
+            <div class="classMeta">
+                26 สิงหาคม 2019
+            </div>
+            <div class="classContents">
                 <h4>Introduction (Play ML)</h4>
                 <ul>
-                    <li><a target=" _blank" href="https://paintschainer.preferred.tech/index_en.html">PaintsChainer</a>
+                    <li><a class="open_window" target=" _blank"
+                            href="https://paintschainer.preferred.tech/index_en.html">PaintsChainer</a>
                     </li>
-                    <li><a target=" _blank" href="https://developer.ibm.com/exchanges/models/">MAX (Model Asset
+                    <li><a class="open_window" target=" _blank" href="https://developer.ibm.com/exchanges/models/">MAX
+                            (Model Asset
                             eXchange)</a></li>
                 </ul>
             </div>
-            <div class="classWork"></div>
+            <div class="classContents"></div>
         </div>
 
         <div class="classDivs finished">
             <h3>Typing</h3>
-            <div class="classMain">
+            <div class="classMeta">
+                26 สิงหาคม 2019
+            </div>
+            <div class="classContents">
                 <h4>Typing Practice</h4>
                 <ul>
                     <li>
-                        <a target=" _blank" href="https://nomrand.github.io/typing/static/">
+                        <a class="open_window" target=" _blank" href="https://nomrand.github.io/typing/static/">
                             Satoshi's TYPING GAME
                         </a>
                     </li>
                     <li>
-                        <a target=" _blank" href="https://www.typingclub.com/sportal/program-3.game">
+                        <a class="open_window" target=" _blank"
+                            href="https://www.typingclub.com/sportal/program-3.game">
                             Typing Jungle
                         </a>
                     </li>
                 </ul>
             </div>
-            <div class="classWork"></div>
+            <div class="classContents"></div>
         </div>
     </div>
 
@@ -108,21 +334,35 @@
     <!-- Library Script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="common/js/color.js"></script>
     <script>
         $(function () {
-            $('nav').css('width', '200px');
+            let cl = rgbaStr(bkRGB(capRGB(hueRGB(20, Math.random() * 20), 200, 50), 0.15));
+            $('header').css('text-decoration', "underline " + cl);
+
+            $('nav').removeClass("maxWidth");
+            $('nav').css('background-color', "black");
             setTimeout(function () {
-                $('nav').css('color', 'white');
+                $('nav > div').css('opacity', '1.0');
             }, 500);
+            setTimeout(function () {
+                $('header').css('opacity', '1.0');
+
+                $("nav").click(function () {
+                    $(this).toggleClass("smallWidth");
+                    $("header").toggleClass("smallWidth");
+                });
+            }, 1000);
 
 
             $(".classDivs").click(function () {
                 $(this).toggleClass("opened");
             });
             $('nav a').click(function () {
-                $('nav').css('width', '100%');
-                $('nav').css('color', 'rgb(25,25,25)');
-
+                $('nav').addClass("maxWidth");
+                $('nav').css('background-color', 'rgb(25, 25, 25)');
+                $('nav > div').css('opacity', '0');
+                $('header').css('opacity', '0');
 
                 (function (self) {
                     setTimeout(function () {
