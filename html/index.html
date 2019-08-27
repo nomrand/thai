@@ -218,12 +218,12 @@
 
 <body>
     <!-- HEADER -->
-    <header>
+    <header class="smallWidth">
         <h1>Satoshi's<br>Class<br>Index</h1>
     </header>
 
     <!-- NAVIGATION -->
-    <nav class="maxWidth">
+    <nav class="maxWidth smallWidth">
         <div><A zref="points/chart.html">Student Score</A></div>
         <div><A zref="website/index.html">Who is Satoshi?</A></div>
         <img src="common/img/right.png">
@@ -337,9 +337,7 @@
     <script src="common/js/color.js"></script>
     <script>
         $(function () {
-            let cl = rgbaStr(bkRGB(capRGB(hueRGB(20, Math.random() * 20), 200, 50), 0.15));
-            $('header').css('text-decoration', "underline " + cl);
-
+            changeTitleColor();
             $('nav').removeClass("maxWidth");
             $('nav').css('background-color', "black");
             setTimeout(function () {
@@ -349,6 +347,9 @@
                 $('header').css('opacity', '1.0');
 
                 $("nav").click(function () {
+                    if ($(this).hasClass("smallWidth")) {
+                        changeTitleColor();
+                    }
                     $(this).toggleClass("smallWidth");
                     $("header").toggleClass("smallWidth");
                 });
@@ -375,6 +376,11 @@
                 $(this).append($("<p>finished</p>"));
             });
         });
+
+        function changeTitleColor() {
+            let cl = rgbaStr(bkRGB(capRGB(hueRGB(20, Math.random() * 20), 200, 50), 0.15));
+            $('header').css('text-decoration', "underline " + cl);
+        }
     </script>
 </body>
 
