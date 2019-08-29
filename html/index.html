@@ -359,6 +359,8 @@
                 classDiv.addClass("classDivs");
                 if (classData.isFinished) {
                     classDiv.addClass("finished");
+                } else {
+                    classDiv.addClass("opened");
                 }
                 classDiv.append($("<h3>" + classData.name + "</h3>"));
 
