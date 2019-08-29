@@ -26,6 +26,24 @@
             text-align: left;
         }
 
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 5px;
+        }
+
+        h2 span {
+            display: inline-block;
+            transition: all 1.5s;
+        }
+
+        h2 span:hover {
+            transform: rotate(2turn);
+        }
+
         a,
         a:link,
         a:visited {
@@ -37,7 +55,7 @@
             background: url("common/img/open_window.png") no-repeat center right;
             background-size: contain;
             margin-right: 1px;
-            padding-right: 20px;
+            padding-right: 22px;
         }
 
         header {
@@ -81,11 +99,16 @@
         }
 
         nav>div {
-            margin: 10px;
+            margin: 20px;
+            margin-top: 0px;
             color: white;
             opacity: 0;
             /* goes to 1.0 */
             transition: all 1.5s;
+        }
+
+        nav>div:nth-of-type(1) {
+            margin-top: auto;
         }
 
         #contentsDiv {
@@ -114,6 +137,7 @@
             float: left;
 
             margin: 10px;
+            margin-top: 0px;
             padding: 10px;
             border-radius: 5px;
             overflow: hidden;
@@ -151,7 +175,7 @@
 
         div.classDivs>.classMeta {
             font-size: 0.8rem;
-            color: lightgray;
+            color: rgb(125, 125, 125);
         }
 
         div.classContents {
@@ -201,7 +225,7 @@
             }
 
             nav.smallWidth>img {
-                opacity: 0.8;
+                opacity: 0.4;
             }
 
             nav.smallWidth.maxWidth>img {
@@ -219,7 +243,7 @@
 <body>
     <!-- HEADER -->
     <header class="smallWidth">
-        <h1>Satoshi's<br>Class<br>Index</h1>
+        <h1>Satoshi's<br>ClassWork<br>Index</h1>
     </header>
 
     <!-- NAVIGATION -->
@@ -230,99 +254,9 @@
     </nav>
     <!-- CONTANTS -->
     <div id="contentsDiv">
-        <div class="classDivs">
-            <h3>AR2</h3>
-            <div class="classMeta">
-                26 สิงหาคม 2019
-            </div>
-            <div class="classContents">
-                <h4>Pattern AR (a kind of Marker Based AR)</h4>
-            </div>
-            <div class="classContents">
-                <h4><a class="open_window" target=" _blank"
-                        href="https://drive.google.com/open?id=1fGei1RJ7B-vVFzGReEWuL4nvnHA6EdzA">
-                        Work (Make AR Cartoon)</a></h4>
-            </div>
-        </div>
-        <div class="classDivs finished">
-            <h3>AR1</h3>
-            <div class="classMeta">
-                26 สิงหาคม 2019
-            </div>
-            <div class="classContents">
-                <h4>introduction</h4>
-                <ul>
-                    <li>AR & VR & MR</li>
-                    <li>Example (Location Based / Marker Based / Markerless)</li>
-                </ul>
-            </div>
-            <div class="classContents">
-                <h4><a class="open_window" target=" _blank"
-                        href="https://drive.google.com/open?id=1We97mzCth1Yy5aKJ_NiPJdYcAaruF6S9">
-                        Work (Test & Report)</a></h4>
-            </div>
-        </div>
-
-        <div class="classDivs finished">
-            <h3>Machine Learning2</h3>
-            <div class="classMeta">
-                26 สิงหาคม 2019
-            </div>
-            <div class="classContents">
-                <h4>Create Image Classifier</h4>
-                <ul>
-                    <li>TensorFlow (=ML System Application)</li>
-                    <li>Inception V3 (=ML Model)</li>
-                </ul>
-            </div>
-            <div class="classContents">
-                <h4><a class="open_window" target=" _blank"
-                        href="https://drive.google.com/drive/folders/112H3NkpXr-3u73_hIka7aFGO7TuBMh8I?usp=sharing">
-                        Data</a></h4>
-            </div>
-        </div>
-        <div class="classDivs finished">
-            <h3>Machine Learning1</h3>
-            <div class="classMeta">
-                26 สิงหาคม 2019
-            </div>
-            <div class="classContents">
-                <h4>Introduction (Play ML)</h4>
-                <ul>
-                    <li><a class="open_window" target=" _blank"
-                            href="https://paintschainer.preferred.tech/index_en.html">PaintsChainer</a>
-                    </li>
-                    <li><a class="open_window" target=" _blank" href="https://developer.ibm.com/exchanges/models/">MAX
-                            (Model Asset
-                            eXchange)</a></li>
-                </ul>
-            </div>
-            <div class="classContents"></div>
-        </div>
-
-        <div class="classDivs finished">
-            <h3>Typing</h3>
-            <div class="classMeta">
-                26 สิงหาคม 2019
-            </div>
-            <div class="classContents">
-                <h4>Typing Practice</h4>
-                <ul>
-                    <li>
-                        <a class="open_window" target=" _blank" href="https://nomrand.github.io/typing/static/">
-                            Satoshi's TYPING GAME
-                        </a>
-                    </li>
-                    <li>
-                        <a class="open_window" target=" _blank"
-                            href="https://www.typingclub.com/sportal/program-3.game">
-                            Typing Jungle
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="classContents"></div>
-        </div>
+        <h2>
+            <span>C</span><span>l</span><span>a</span><span>s</span><span>s</span><span>W</span><span>o</span><span>r</span><span>k</span><span>s</span>
+        </h2>
     </div>
 
     <!-- FOOTER -->
@@ -335,6 +269,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="common/js/color.js"></script>
+    <script src="common/js/th_time.js"></script>
     <script>
         $(function () {
             changeTitleColor();
@@ -346,7 +281,7 @@
             setTimeout(function () {
                 $('header').css('opacity', '1.0');
 
-                $("nav").click(function () {
+                $(document).on("click", "nav", function () {
                     if ($(this).hasClass("smallWidth")) {
                         changeTitleColor();
                     }
@@ -356,10 +291,10 @@
             }, 1000);
 
 
-            $(".classDivs").click(function () {
+            $(document).on("click", ".classDivs", function () {
                 $(this).toggleClass("opened");
             });
-            $('nav a').click(function () {
+            $(document).on("click", 'nav a', function () {
                 $('nav').addClass("maxWidth");
                 $('nav').css('background-color', 'rgb(25, 25, 25)');
                 $('nav > div').css('opacity', '0');
@@ -380,6 +315,111 @@
         function changeTitleColor() {
             let cl = rgbaStr(bkRGB(capRGB(hueRGB(20, Math.random() * 20), 200, 50), 0.15));
             $('header').css('text-decoration', "underline " + cl);
+        }
+
+
+        let DATA = [
+            // {
+            //     "name": "xxx",
+            //     "date1": 1560358800000,
+            //     "date2": 1560445200000,
+            //     "list": [
+            //         {
+            //             "name": "xxx",
+            //             "link": "",
+            //             "list": [
+            //                 {
+            //                     "name": "xxx",
+            //                     "link": "xxx"
+            //                 },
+            //             ]
+            //         }
+            //     ],
+            //     "isFinished": "true",
+            // }
+        ];
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "xxxx",
+            success: function (data) {
+                DATA = data;
+                createClassWork();
+            }
+        });
+
+        function createClassWork() {
+            for (index in DATA.reverse()) {
+                let classData = DATA[index];
+                // CLASS
+                let classDiv = $("<div>");
+                classDiv.addClass("classDivs");
+                if (classData.isFinished) {
+                    classDiv.addClass("finished");
+                }
+                classDiv.append($("<h3>" + classData.name + "</h3>"));
+
+                // CLASS - META
+                let classMeta = $("<div>");
+                classDiv.append(classMeta);
+                classMeta.addClass("classMeta");
+                let dateText = thdate(new Date(classData.date1), " ", false, false, false);
+                if (classData.date2) {
+                    dateText += " - " + thdate(new Date(classData.date2), " ", false, false, false);
+                }
+                classMeta.append(dateText);
+
+                // CLASS - WORKS
+                for (subIndex in classData.list) {
+                    let subClassData = classData.list[subIndex];
+                    let subClassDiv = $("<div>");
+                    classDiv.append(subClassDiv);
+                    subClassDiv.addClass("classContents");
+
+                    let subTitle = "";
+
+                    if (subClassData.link) {
+                        subTitle = $('<a class="open_window" target="_blank" href=' + subClassData.link + '>');
+                        subTitle.append(subClassData.name);
+                    } else {
+                        subTitle = subClassData.name;
+                    }
+                    let subTitleOuter = $("<h4>");
+                    subTitleOuter.append(subTitle);
+                    subClassDiv.append(subTitleOuter);
+
+                    // CLASS - WORKS - LIST
+                    if (subClassData.list && subClassData.list.length > 0) {
+                        let ul = $("<ul>");
+                        subClassDiv.append(ul);
+                        for (listIndex in subClassData.list) {
+                            let listClassData = subClassData.list[listIndex];
+
+                            let listTitle = "";
+                            if (listClassData.link) {
+                                listTitle = $('<a class="open_window" target="_blank" href=' + listClassData.link + '>');
+                                listTitle.append(listStr(listClassData.name));
+                            } else {
+                                listTitle = listStr(listClassData.name);
+                            }
+                            let listTitleOuter = $("<li>");
+                            listTitleOuter.append(listTitle);
+                            ul.append(listTitleOuter);
+                        }
+                    }
+                }
+
+                $("#contentsDiv").append(classDiv);
+            }
+        }
+
+        function listStr(org) {
+            let mod = org;
+            mod = mod.replace(/^[ \t]*\*(.+)[\r\n]*/mg, '<ul><li>$1</li></ul>');
+            mod = mod.replace(/<\/ul><ul>/g, '');
+            mod = mod.replace(/\r?\n/g, '<br>');
+            return mod
         }
     </script>
 </body>
