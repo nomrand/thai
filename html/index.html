@@ -31,7 +31,7 @@
         }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin: 5px;
         }
 
@@ -141,7 +141,7 @@
             padding: 10px;
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 1px 1px rgba(125, 125, 125, 0.5);
+            box-shadow: 0 2px 2px rgba(125, 125, 125, 0.5);
 
             max-width: 240px;
             width: auto;
@@ -342,7 +342,7 @@
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "xxxx",
+            url: "",
             success: function (data) {
                 DATA = data;
                 createClassWork();
@@ -350,6 +350,8 @@
         });
 
         function createClassWork() {
+            let delay = 50;
+            let adelay = 200;
             for (index in DATA.reverse()) {
                 let classData = DATA[index];
                 // CLASS
@@ -411,6 +413,13 @@
                 }
 
                 $("#contentsDiv").append(classDiv);
+                classDiv.css({
+                    opacity: 0.0,
+                });
+                classDiv.animate({
+                    opacity: 1.0,
+                }, delay);
+                delay += adelay;
             }
         }
 
