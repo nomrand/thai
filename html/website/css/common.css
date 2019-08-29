@@ -91,3 +91,27 @@ footer {
     right: 0px;
 }
 
+.globalNav {
+    background-color: lightgray;
+    opacity: 0.2;
+    z-index: 100;
+    position: fixed;
+    width : 6rem;
+    height : 6rem;
+    border-bottom-left-radius: 3rem;
+
+    top: -3rem;
+    right: -3rem;
+}
+
+.globalNav #gnavBack {
+    z-index: 101;
+    position: fixed;
+    width : 1.8rem;
+    height : 1.8rem;
+
+    top: 0.2rem;
+    right: 0.2rem;
+    background-image: url("../../common/img/back.png");
+    background-size: contain;
+}
