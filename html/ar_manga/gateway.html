@@ -1,0 +1,62 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Manga Geteway</title>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript">
+    const FOLDER_TO_DATA = {
+      "51_01-12": "0501_01",
+      "51_13-24": "0501_02",
+      "52_01-12": "0502_01",
+      "52_13-24": "0502_02",
+      "53_01-12": "0503_01",
+      "53_13-24": "0503_02",
+      "54_01-12": "0504_01",
+      "54_13-24": "0504_02",
+      "55_01-12": "0505_01",
+      "55_13-24": "0505_02",
+      "56_01-12": "0506_01",
+      "56_13-24": "0506_02",
+    };
+    const SYSTEM_URL = "https://nomrand.github.io/thai/html/ar_manga/";
+    const QRCODE_URL = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=";
+
+    $(function () {
+      let folder = location.href.replace("/gateway.html", "");
+      folder = folder.replace(/[\?#].*/, "");
+      folder = folder.replace(/.+[\/]/, "");
+      if (!FOLDER_TO_DATA[folder]) {
+        return;
+      }
+
+      $("#scanlink").attr("href", SYSTEM_URL + "#" + FOLDER_TO_DATA[folder]);
+      $("#scanlink img").attr("src", QRCODE_URL + SYSTEM_URL + "#" + FOLDER_TO_DATA[folder]);
+    });
+  </script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>
+        <a id="scanlink">
+          <h1>AR Scan System</h1>
+          <img /><br>
+          Please <b>Scan</b> or <b>Click</b> the QR-CODE
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="./">
+          <h1>AR Manga PDF</h1>
+        </a>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
