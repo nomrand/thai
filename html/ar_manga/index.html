@@ -1,0 +1,115 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+  <script src="js/common.js"></script>
+  <script type="text/javascript">
+    let data = {};
+    $(function () {
+      $("a-scene").click(function () {
+        $("nav").toggleClass("hide");
+      });
+      $("a").click(function () {
+        document.location = "?random=" + (new Date()).getTime() + $(this).attr("href");
+      });
+
+      let dataid = location.hash.replace("#", "");
+      if (!dataid || !data[dataid]) {
+        dataid = '0501_01';
+      }
+      createAllMarker(data[dataid], $("a-scene"));
+
+    });
+  </script>
+  <script src="js/data0501_01.js"></script>
+  <script src="js/data0501_02.js"></script>
+  <script src="js/data0502_01.js"></script>
+  <script src="js/data0502_02.js"></script>
+  <script src="js/data0503_01.js"></script>
+  <script src="js/data0503_02.js"></script>
+  <script src="js/data0504_01.js"></script>
+  <script src="js/data0504_02.js"></script>
+  <script src="js/data0505_01.js"></script>
+  <script src="js/data0505_02.js"></script>
+  <script src="js/data0506_01.js"></script>
+  <script src="js/data0506_02.js"></script>
+
+  <style>
+    nav {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 95%;
+
+      z-index: 10000;
+      background: lightgray;
+      opacity: 0.5;
+      border-bottom-left-radius: 5px;
+
+      transition: all 1.5s;
+    }
+
+    nav.hide {
+      right: calc(10px - 95%);
+    }
+
+    nav table {
+      width: 100%;
+    }
+
+    nav td {
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    nav a {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body style='margin : 0px; overflow: hidden; display:flex;'>
+  <nav>
+    <table>
+      <tr>
+        <td>5/1(
+          <a href="#0501_01">No.1-12</a>
+          <a href="#0501_02">No.13-24</a>
+          )</td>
+        <td>5/2(
+          <a href="#0502_01">No.1-12</a>
+          <a href="#0502_02">No.13-24</a>
+          )</td>
+        <td>5/3(
+          <a href="#0503_01">No.1-12</a>
+          <a href="#0503_02">No.13-24</a>
+          )</td>
+      </tr>
+      <tr>
+        <td>5/4(
+          <a href="#0504_01">No.1-12</a>
+          <a href="#0504_02">No.13-24</a>
+          )</td>
+        <td>5/5(
+          <a href="#0505_01">No.1-12</a>
+          <a href="#0505_02">No.13-24</a>
+          )</td>
+        <td>5/6(
+          <a href="#0506_01">No.1-12</a>
+          <a href="#0506_02">No.13-24</a>
+          )</td>
+      </tr>
+    </table>
+  </nav>
+  <a-scene embedded arjs='patternRatio:0.90; debugUIEnabled: false; detectionMode: mono;'>
+    <!-- CAMERA -->
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
