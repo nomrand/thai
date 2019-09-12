@@ -1,4 +1,12 @@
 data["0504_01"] = [
+    { img: "./0504/ar5402/ar/pattern-kk.png", patt: "./0504/ar5402/ar/pattern-kk.patt", },
+    { img: "./0504/ar5402/ar/pattern-ko.png", patt: "./0504/ar5402/ar/pattern-ko.patt", },
+    { img: "./0504/ar5402/ar/pattern-lo.png", patt: "./0504/ar5402/ar/pattern-lo.patt", },
+    { img: "./0504/ar5402/ar/pattern-po.png", patt: "./0504/ar5402/ar/pattern-po.patt", },
+    { img: "./0504/ar5404/ar/pattern-1.png", patt: "./0504/ar5404/ar/pattern-1.patt", },
+    { img: "./0504/ar5404/ar/pattern-2.png", patt: "./0504/ar5404/ar/pattern-2.patt", },
+    { img: "./0504/ar5404/ar/pattern-3.png", patt: "./0504/ar5404/ar/pattern-3.patt", },
+    { img: "./0504/ar5404/ar/pattern-4.png", patt: "./0504/ar5404/ar/pattern-4.patt", },
     { img: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi2.png", patt: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi2.patt", },
     { img: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi3.png", patt: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi3.patt", },
     { img: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi5.png", patt: "./0504/ar5410/ar/pattern-D3ERIKsUYAASHLi5.patt", },

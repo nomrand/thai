@@ -1,4 +1,5 @@
 空フォルダ削除
 for /f "delims=" %d in ('dir . /ad /b /s') do rd "%d"
 
-
+ファイルリスト
+dir /s /b > list.txt
