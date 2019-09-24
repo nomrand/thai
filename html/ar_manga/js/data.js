@@ -447,4 +447,8 @@ let data = [
 {img: "./0506/ar5624/ar/pattern-2222.png",patt:"./0506/ar5624/ar/pattern-2222.patt",}, 
 {img: "./0506/ar5624/ar/pattern-22222.png",patt:"./0506/ar5624/ar/pattern-22222.patt",}, 
 {img: "./0506/ar5624/ar/pattern-l-19424-enjoy-your-meal.png",patt:"./0506/ar5624/ar/pattern-l-19424-enjoy-your-meal.patt",}, 
+{img: "./sample/01/ar/01.png",patt:"./sample/01/ar/01.patt",}, 
+{img: "./sample/01/ar/02.png",patt:"./sample/01/ar/02.patt",}, 
+{img: "./sample/01/ar/03.png",patt:"./sample/01/ar/03.patt",}, 
+{img: "./sample/01/ar/04.png",patt:"./sample/01/ar/04.patt",}, 
 ];

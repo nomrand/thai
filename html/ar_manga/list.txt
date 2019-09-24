@@ -13,6 +13,7 @@ D:\mydocument\document\projects\thai\html\ar_manga\index.html
 D:\mydocument\document\projects\thai\html\ar_manga\js
 D:\mydocument\document\projects\thai\html\ar_manga\list.txt
 D:\mydocument\document\projects\thai\html\ar_manga\qr
+D:\mydocument\document\projects\thai\html\ar_manga\sample
 D:\mydocument\document\projects\thai\html\ar_manga\__httpsev_tmp
 D:\mydocument\document\projects\thai\html\ar_manga\フォルダ整形.txt
 D:\mydocument\document\projects\thai\html\ar_manga\0501\ar5101
@@ -228,6 +229,7 @@ D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5213
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5214
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5215
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5216
+D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5217
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5218
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5219
 D:\mydocument\document\projects\thai\html\ar_manga\0502\ar5220
@@ -1164,6 +1166,16 @@ D:\mydocument\document\projects\thai\html\ar_manga\qr\0505_01.png
 D:\mydocument\document\projects\thai\html\ar_manga\qr\0505_02.png
 D:\mydocument\document\projects\thai\html\ar_manga\qr\0506_01.png
 D:\mydocument\document\projects\thai\html\ar_manga\qr\0506_02.png
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\01.patt
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\01.png
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\02.patt
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\02.png
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\03.patt
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\03.png
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\04.patt
+D:\mydocument\document\projects\thai\html\ar_manga\sample\01\ar\04.png
 D:\mydocument\document\projects\thai\html\ar_manga\__httpsev_tmp\python_script
 D:\mydocument\document\projects\thai\html\ar_manga\__httpsev_tmp\qrcode.html
 D:\mydocument\document\projects\thai\html\ar_manga\__httpsev_tmp\qrcode.org.html
