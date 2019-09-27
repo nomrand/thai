@@ -642,6 +642,7 @@ D:\mydocument\document\projects\thai\html\ar_manga\0503\ar5324\ar\pattern-4.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0503\ar5324\ar\pattern-4.png
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5402
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5404
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5410
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5411
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5412
@@ -651,6 +652,7 @@ D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5415
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5416
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5417
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5418
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5420
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5421
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5422
@@ -674,6 +676,15 @@ D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5404\ar\pattern-3.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5404\ar\pattern-3.png
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5404\ar\pattern-4.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5404\ar\pattern-4.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a1.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a1.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a2.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a2.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a3.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a3.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a4.jpg
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5409\ar\a4.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5410\ar
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5410\ar\pattern-D3ERIKsUYAASHLi2.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5410\ar\pattern-D3ERIKsUYAASHLi2.png
@@ -755,6 +766,15 @@ D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5418\ar\3ar.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5418\ar\3ar.png
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5418\ar\4ar.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5418\ar\4ar.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning1.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning1.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning2.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning2.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning3.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning3.png
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning4.patt
+D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5419\ar\morning4.png
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5420\ar
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5420\ar\1.patt
 D:\mydocument\document\projects\thai\html\ar_manga\0504\ar5420\ar\1.png
