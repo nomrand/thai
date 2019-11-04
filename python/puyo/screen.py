@@ -77,12 +77,18 @@ def draw():
                 pass
             else:
                 # Draw image
-                CANVAS.create_image(col * SIZE, row * SIZE,
-                                    image=PUYO_IMAGES[image_type-1], anchor=NW)
+                CANVAS.create_image(
+                    col * SIZE,
+                    row * SIZE,
+                    image=PUYO_IMAGES[image_type-1],
+                    anchor=NW)
 
             if (col, row) == TARGET_POS:
-                CANVAS.create_image(col * SIZE, row * SIZE,
-                                    image=PUYO_IMAGES[TARGET_IMAGE-1], anchor=NW)
+                CANVAS.create_image(
+                    col * SIZE,
+                    row * SIZE,
+                    image=PUYO_IMAGES[TARGET_IMAGE-1],
+                    anchor=NW)
 
     CANVAS.update()
 
