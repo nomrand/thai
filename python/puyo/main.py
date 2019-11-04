@@ -1,5 +1,4 @@
-import threading
-import time
-import print_screen
+import screen
 
-print_screen.start()
+
+screen.start()

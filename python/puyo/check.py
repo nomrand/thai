@@ -29,7 +29,8 @@ def check(matrix):
                     # delete found
                     for col2 in range(len(matrix_copy)):
                         for row2 in range(len(matrix_copy[col2])):
-                            # if delete found, there will be ALREADY_CHECKED to delete
+                            # if delete found,
+                            # there will be ALREADY_CHECKED to delete
                             if matrix_copy[col2][row2] == ALREADY_CHECKED:
                                 # change the original matrix to delete
                                 matrix[col2][row2] = 0

@@ -1,4 +1,4 @@
-import print_screen
+import screen
 
 
 def key(event):
@@ -10,15 +10,15 @@ def key(event):
 
     # Down
     if event.keysym == "Down" or event.keysym == "s" or event.keysym == "2":
-        print_screen.down()
+        screen.down()
 
     # Left
     if event.keysym == "Left" or event.keysym == "a" or event.keysym == "4":
-        print_screen.left()
+        screen.left()
 
     # Right
     if event.keysym == "Right" or event.keysym == "d" or event.keysym == "6":
-        print_screen.right()
+        screen.right()
 
 
 def click(event):
