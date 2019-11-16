@@ -5,6 +5,9 @@
     <title>Satoshi's Class Index</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         @charset "utf-8";
 
@@ -12,114 +15,41 @@
             margin: 0px;
         }
 
-        html,
-        body {
+        html {
             width: 100%;
             height: 100%;
-            position: absolute;
+        }
+
+        body {
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            margin: 10px;
+            background-color: black;
+
+            color: white;
             font-size: 100%;
             font-family: 'Helvetica', 'Arial', 'Hiragino Sans', sans-serif;
             word-wrap: break-word;
         }
 
-        div {
-            text-align: left;
+        header {
+            text-decoration: underline #007bff;
         }
 
         h1 {
-            font-size: 2rem;
+            font-weight: bold;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin: 5px;
+        .card {
+            background-color: rgb(50, 50, 50);
         }
 
-        h2 span {
-            display: inline-block;
-            transition: all 1.5s;
+        .card-header {
+            background-color: rgb(50, 50, 50);
         }
 
-        h2 span:hover {
-            transform: rotate(2turn);
-        }
-
-        a,
-        a:link,
-        a:visited {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        a.open_window {
-            background: url("common/img/open_window.png") no-repeat center right;
-            background-size: contain;
-            margin-right: 1px;
-            padding-right: 22px;
-        }
-
-        header {
-            position: fixed;
-            text-align: left;
-            left: 10px;
-            top: 10px;
-
-            z-index: 101;
-
-            font-size: 18px;
-            color: white;
-            opacity: 0;
-            /* goes to 1.0 */
-            transition: all 1.5s;
-
-            text-decoration: underline white;
-        }
-
-        nav {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-
-            height: 100%;
-            width: 200px;
-            background-color: rgb(25, 25, 25);
-
-            display: flex;
-            justify-content: center;
-            align-items: left;
-            flex-direction: column;
-
-            z-index: 100;
-
-            transition: all 1.5s;
-        }
-
-        nav.maxWidth {
+        .btn-primary {
             width: 100%;
-        }
-
-        nav>div {
-            margin: 20px;
-            margin-top: 0px;
-            color: white;
-            opacity: 0;
-            /* goes to 1.0 */
-            transition: all 1.5s;
-        }
-
-        nav>div:nth-of-type(1) {
-            margin-top: auto;
-        }
-
-        #contentsDiv {
-            position: absolute;
-            left: 200px;
-            top: 0px;
-
-            height: 100%;
-            width: calc(100%-200px);
-            background-color: white;
-            color: black;
         }
 
         footer {
@@ -130,133 +60,38 @@
             bottom: 0px;
             right: 0px;
         }
-
-
-        div.classDivs {
-            position: relative;
-            float: left;
-
-            margin: 10px;
-            margin-top: 0px;
-            padding: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 2px rgba(125, 125, 125, 0.5);
-
-            max-width: 240px;
-            width: auto;
-            max-height: 2rem;
-            background-color: rgb(25, 25, 25);
-            color: white;
-
-            transition: all 1s;
-        }
-
-        div.classDivs.finished {
-            background-color: rgb(100, 100, 100);
-            color: rgb(200, 200, 200);
-        }
-
-        div.classDivs.opened {
-            max-width: 500px;
-            max-height: 500px;
-            height: auto;
-        }
-
-        div.classDivs>h3 {
-            font-size: 1.2rem;
-        }
-
-        div.classDivs h4 {
-            font-size: 1rem;
-            border-left: 4px solid white;
-            padding-left: 4px;
-        }
-
-        div.classDivs>.classMeta {
-            font-size: 0.8rem;
-            color: rgb(125, 125, 125);
-        }
-
-        div.classContents {
-            display: inline-block;
-            text-align: left;
-
-            margin: 5px;
-            margin-left: 0px;
-            margin-right: 0px;
-            padding: 5px;
-            padding-left: 0px;
-            padding-right: 0px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        div.classContents:empty {
-            display: none;
-        }
-
-        nav>img {
-            opacity: 0.0;
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            right: 5px;
-            top: 5px;
-
-            transition: all 1.5s;
-        }
-
-        @media only screen and (max-width: 500px) {
-            #contentsDiv {
-                left: 50px;
-            }
-
-            nav.smallWidth {
-                left: -150px;
-            }
-
-            nav.smallWidth.maxWidth {
-                left: 0px;
-            }
-
-            nav.smallWidth>div {
-                display: none;
-            }
-
-            nav.smallWidth>img {
-                opacity: 0.4;
-            }
-
-            nav.smallWidth.maxWidth>img {
-                opacity: 0.0;
-            }
-
-            header.smallWidth {
-                left: -150px;
-                opacity: 0.0 !important;
-            }
-        }
     </style>
 </head>
 
 <body>
     <!-- HEADER -->
-    <header class="smallWidth">
-        <h1>Satoshi's<br>ClassWork<br>Index</h1>
+    <header>
+        <h1>Satoshi's Class Index</h1>
     </header>
 
-    <!-- NAVIGATION -->
-    <nav class="maxWidth smallWidth">
-        <div><A zref="points/chart.html">Student Score</A></div>
-        <div><A zref="website/index.html">Who is Satoshi?</A></div>
-        <img src="common/img/right.png">
-    </nav>
     <!-- CONTANTS -->
-    <div id="contentsDiv">
-        <h2>
-            <span>C</span><span>l</span><span>a</span><span>s</span><span>s</span><span>W</span><span>o</span><span>r</span><span>k</span><span>s</span>
-        </h2>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <h4 class="card-header">Python class for M4</h4>
+                <div class="card-body">
+                    <p>2019/2nd Semester</p>
+                    <a href="website_index/2019m4/index.html" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <h4 class="card-header">ICT/AR/ML class for M5</h4>
+                <div class="card-body">
+                    <p>2019/1st Semester</p>
+                    <a href="website_index/2019m5/index.html" class="btn btn-primary">Go</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- FOOTER -->
@@ -268,171 +103,9 @@
     <!-- Library Script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="common/js/color.js"></script>
-    <script src="common/js/th_time.js"></script>
-    <script>
-        $(function () {
-            changeTitleColor();
-            $('nav').removeClass("maxWidth");
-            $('nav').css('background-color', "black");
-            setTimeout(function () {
-                $('nav > div').css('opacity', '1.0');
-            }, 500);
-            setTimeout(function () {
-                $('header').css('opacity', '1.0');
-
-                $(document).on("click", "nav", function () {
-                    if ($(this).hasClass("smallWidth")) {
-                        changeTitleColor();
-                    }
-                    $(this).toggleClass("smallWidth");
-                    $("header").toggleClass("smallWidth");
-                });
-            }, 1000);
-
-
-            $(document).on("click", ".classDivs", function () {
-                $(this).toggleClass("opened");
-            });
-            $(document).on("click", 'nav a', function () {
-                $('nav').addClass("maxWidth");
-                $('nav').css('background-color', 'rgb(25, 25, 25)');
-                $('nav > div').css('opacity', '0');
-                $('header').css('opacity', '0');
-
-                (function (self) {
-                    setTimeout(function () {
-                        location.href = $(self).attr("zref");
-                    }, 1500);
-                })(this);
-            })
-
-            $(".finished").each(function () {
-                $(this).append($("<p>finished</p>"));
-            });
-        });
-
-        function changeTitleColor() {
-            let cl = rgbaStr(bkRGB(capRGB(hueRGB(20, Math.random() * 20), 200, 50), 0.15));
-            $('header').css('text-decoration', "underline " + cl);
-        }
-
-
-        let DATA = [
-            // {
-            //     "name": "xxx",
-            //     "date1": 1560358800000,
-            //     "date2": 1560445200000,
-            //     "list": [
-            //         {
-            //             "name": "xxx",
-            //             "link": "",
-            //             "list": [
-            //                 {
-            //                     "name": "xxx",
-            //                     "link": "xxx"
-            //                 },
-            //             ]
-            //         }
-            //     ],
-            //     "isFinished": "true",
-            // }
-        ];
-
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: "https://script.google.com/macros/s/AKfycbxf9DCDH_6wXWDeJM-x-5yrVigbu8HiCR3JVO6k7t-UvVV0Aqo/exec",
-            success: function (data) {
-                DATA = data;
-                createClassWork();
-            }
-        });
-
-        function createClassWork() {
-            let delay = 50;
-            let adelay = 200;
-            for (index in DATA.reverse()) {
-                let classData = DATA[index];
-                // CLASS
-                let classDiv = $("<div>");
-                classDiv.addClass("classDivs");
-                if (classData.isFinished) {
-                    classDiv.addClass("finished");
-                } else {
-                    classDiv.addClass("opened");
-                }
-                classDiv.append($("<h3>" + classData.name + "</h3>"));
-
-                // CLASS - META
-                let classMeta = $("<div>");
-                classDiv.append(classMeta);
-                classMeta.addClass("classMeta");
-                let dateText = thdate(new Date(classData.date1), " ", false, false, false);
-                if (classData.date2) {
-                    dateText += " - " + thdate(new Date(classData.date2), " ", false, false, false);
-                }
-                classMeta.append(dateText);
-
-                // CLASS - WORKS
-                for (subIndex in classData.list) {
-                    let subClassData = classData.list[subIndex];
-                    let subClassDiv = $("<div>");
-                    classDiv.append(subClassDiv);
-                    subClassDiv.addClass("classContents");
-
-                    let subTitle = "";
-
-                    if (subClassData.link) {
-                        subTitle = $('<a class="open_window" target="_blank" href=' + subClassData.link + '>');
-                        subTitle.append(subClassData.name);
-                    } else {
-                        subTitle = subClassData.name;
-                    }
-                    let subTitleOuter = $("<h4>");
-                    subTitleOuter.append(subTitle);
-                    subClassDiv.append(subTitleOuter);
-
-                    // CLASS - WORKS - LIST
-                    if (subClassData.list && subClassData.list.length > 0) {
-                        let ul = $("<ul>");
-                        subClassDiv.append(ul);
-                        for (listIndex in subClassData.list) {
-                            let listClassData = subClassData.list[listIndex];
-
-                            let listTitle = "";
-                            if (listClassData.link) {
-                                listTitle = $('<a class="open_window" target="_blank" href=' + listClassData.link + '>');
-                                listTitle.append(listStr(listClassData.name));
-                            } else {
-                                listTitle = listStr(listClassData.name);
-                            }
-                            let listTitleOuter = $("<li>");
-                            listTitleOuter.append(listTitle);
-                            ul.append(listTitleOuter);
-                        }
-                    }
-                }
-
-                $("#contentsDiv").append(classDiv);
-                classDiv.css({
-                    opacity: 0.0,
-                });
-                classDiv.animate({
-                    opacity: 1.0,
-                }, delay);
-                delay += adelay;
-            }
-        }
-
-        function listStr(org) {
-            let mod = org;
-            mod = mod.replace(/^[ \t]*\*(.+)[\r\n]*/mg, '<ul><li>$1</li></ul>');
-            mod = mod.replace(/<\/ul><ul>/g, '');
-            mod = mod.replace(/\r?\n/g, '<br>');
-            return mod
-        }
-    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
