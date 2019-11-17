@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Satoshi's Class Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        @charset "utf-8";
+
+        * {
+            margin: 0px;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            margin: 10px;
+            background-color: black;
+
+            color: white;
+            font-size: 100%;
+            font-family: 'Helvetica', 'Arial', 'Hiragino Sans', sans-serif;
+            word-wrap: break-word;
+        }
+
+        header {
+            text-decoration: underline #007bff;
+        }
+
+        header::first-letter {
+            color: #007bff;
+        }
+
+        h1 {
+            font-weight: bold;
+        }
+
+        h4 {
+            padding-top: 1rem;
+            font-size: 1.5rem;
+            height: 3rem;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        a,
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .pulldowndiv {
+            max-height: 3rem;
+            overflow: hidden;
+            transition: all 1s;
+        }
+
+        .pulldowndiv:target {
+            max-height: 50%;
+            overflow-y: auto;
+        }
+
+        .pulldowndiv:target h4::first-letter {
+            color: #007bff;
+        }
+
+        .pulldowndiv:target h4 a {
+            text-decoration: underline #007bff;
+        }
+
+        table {
+            border-radius: 5px;
+        }
+
+        thead {
+            color: lightslategray;
+            background-color: rgba(255, 255, 255, .075);
+        }
+
+        li.list-group-item {
+            background-color: #343a40;
+            border-radius: 10px;
+            margin: 1px;
+        }
+
+        footer {
+            opacity: 0.3;
+            z-index: 100;
+            position: fixed;
+
+            bottom: 0px;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Satoshi's Class Index</h1>
+    </header>
+
+    <!-- CONTANTS -->
+    <div class="pulldowndiv" id="exam">
+        <h4><a href="#exam">1. Mini Exam</a></h4>
+        <h5>Score</h5>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Theme</th>
+                    <th scope="col">Exam Coverage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class='clickable-row' data-href="https://forms.gle/aT3VNbsQcHbPsZ8u8">
+                    <td>2</td>
+                    <th scope="row">ชนิดข้อมูล 1 (Data Type 1)</th>
+                    <td>Text LESSON2 Page 13-16</td>
+                </tr>
+                <tr class='clickable-row' data-href="https://forms.gle/DT1R8CN1EYVfi3Y96">
+                    <td>1</td>
+                    <th scope="row">ขอบเขตของตัวแปร (Scope of Variable)</th>
+                    <td>Text LESSON1 Page 7</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pulldowndiv" id="technics">
+        <h4><a href="#technics">2. Python Technic</a></h4>
+        <ul class="list-group">
+            <a target="_blank" href="http://bit.ly/32KLOzp">
+                <li class="list-group-item">
+                    Get Data from DataTable & GUI Basic (รับข้อมูลจาก DataTable & พื้นฐานของ GUI)
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="pulldowndiv" id="miniproject">
+        <h4><a href="#miniproject">3. About Mini Project</a></h4>
+        <ul class="list-group">
+            <a target="_blank" href="http://bit.ly/2C8LoYz">
+                <li class="list-group-item">
+                    Project Information Document (เอกสารข้อมูลโครงการ)</li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="pulldowndiv" id="other">
+        <h4 style="opacity: 0.6;"><a href="#other">Other</a></h4>
+        <ul class="list-group">
+            <a target="_blank" href="http://www.pccloei.ac.th/satoshi/website/index.html">
+                <li class="list-group-item">Who is Satoshi?</li>
+            </a>
+        </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © Satoshi's Website All Rights Reserved.
+    </footer>
+
+
+    <!-- Library Script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".clickable-row").click(function () {
+                window.open($(this).data("href"), "_blank");
+            });
+            $(".pulldowndiv").click(function () {
+                $(".pulldowndiv").scrollTop(0);
+            });
+        });
+    </script>
+</body>
+
+</html>
