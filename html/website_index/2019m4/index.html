@@ -59,6 +59,10 @@
             color: inherit;
         }
 
+        .clickable-row {
+            cursor: pointer
+        }
+
         .pulldowndiv {
             max-height: 3rem;
             overflow: hidden;
@@ -90,7 +94,7 @@
         li.list-group-item {
             background-color: #343a40;
             border-radius: 10px;
-            margin: 1px;
+            margin: 3px;
         }
 
         footer {
@@ -112,9 +116,11 @@
     <!-- CONTANTS -->
     <div class="pulldowndiv" id="test">
         <h4><a href="#test">1. Mini Test</a></h4>
+        <!--
         <h5>
             <a target="_blank" class="btn btn-dark" href="../../php/spreadsheet/chart.html">Score</a>
         </h5>
+        -->
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -124,9 +130,16 @@
                 </tr>
             </thead>
             <tbody>
+                <!--
+                <tr class='clickable-row' data-href="https://forms.gle/LUVCkaoHu73QFGa87">
+                    <td>3</td>
+                    <th scope="row">ชนิดข้อมูล - ทัพเพิล (Tuple)</th>
+                    <td>LESSON2 Page 25-33</td>
+                </tr>
+                -->
                 <tr class='clickable-row' data-href="https://forms.gle/aT3VNbsQcHbPsZ8u8">
                     <td>2</td>
-                    <th scope="row">ชนิดข้อมูล 1 (Data Type 1)</th>
+                    <th scope="row">ชนิดข้อมูล - ลิสต์ (List)</th>
                     <td>LESSON2 Page 13-16</td>
                 </tr>
                 <tr class='clickable-row' data-href="https://forms.gle/DT1R8CN1EYVfi3Y96">
@@ -138,8 +151,19 @@
         </table>
     </div>
 
+    <div class="pulldowndiv" id="text">
+        <h4><a href="#text">2. Teaching Materials</a></h4>
+        <ul class="list-group">
+            <a target="_blank" href="https://drive.google.com/open?id=1MUFT_m4MTxReilj9Q878kB178XaLqUbpzcxUPkrv6HE">
+                <li class="list-group-item">
+                    Tuples (ทัพเพิล)
+                </li>
+            </a>
+        </ul>
+    </div>
+
     <div class="pulldowndiv" id="technics">
-        <h4><a href="#technics">2. Python Technic</a></h4>
+        <h4><a href="#technics">3. Python Technic</a></h4>
         <ul class="list-group">
             <a target="_blank" href="http://bit.ly/32KLOzp">
                 <li class="list-group-item">
@@ -150,7 +174,7 @@
     </div>
 
     <div class="pulldowndiv" id="miniproject">
-        <h4><a href="#miniproject">3. About Mini Project</a></h4>
+        <h4><a href="#miniproject">4. About Mini Project</a></h4>
         <ul class="list-group">
             <a target="_blank" href="http://bit.ly/2C8LoYz">
                 <li class="list-group-item">
@@ -163,18 +187,29 @@
                 <li class="list-group-item">
                     About Mini Presentation in December (การนำเสนอเล็ก ธันวาคม)
                     <ul>
-                        <li>ทุกคนในทุกกลุ่มต้องอธิบายความคืบหน้าและแผนของ mini project</li>
+                        <li>ทุกคนในทุกกลุ่มต้องอธิบายความคืบหน้าและแผนของ ฟังก์ชั่นของคุณ</li>
                         <li>ครูไม่ประเมินโค้ดที่เพิ่งถูกคัดลอกจากอินเทอร์เน็ตหรือเพื่อน</li>
-                        <li>ถ้าคุณไม่มีความสนใจในการเขียนโปรแกรมและ คุณไม่ได้เขียนโปรแกรมใด ๆ เลย เราเพียงแค่ลดคะแนนของคุณ</li>
+                        <li>ถ้าคุณไม่มีความสนใจในการเขียนโปรแกรมและ คุณไม่ได้เขียนโปรแกรมใด ๆ เลย
+                            เราเพียงแค่ลดคะแนนของคุณ</li>
                     </ul>
+                </li>
+            </a>
+        </ul>
+        <ul class="list-group">
+            <a target="_blank" href="https://drive.google.com/open?id=1qJ8WFEtbkVn2hF-W3gccW6iWgCQ6k_iF0XV2PI-qpGU">
+                <li class="list-group-item">
+                    Mini Presentation Rules (กฎระเบียบ การนำเสนอเล็ก)
                 </li>
             </a>
         </ul>
     </div>
 
     <div class="pulldowndiv" id="other">
-        <h4 style="opacity: 0.6;"><a href="#other">Appendix</a></h4>
+        <h4 style="opacity: 0.8;"><a href="#other">Appendix</a></h4>
         <ul class="list-group">
+            <a target="_blank" href="https://nomrand.github.io/typing/static/">
+                <li class="list-group-item">TYPING GAME made by Satoshi</li>
+            </a>
             <a target="_blank" href="../../website/index.html">
                 <li class="list-group-item">Who is Satoshi?</li>
             </a>
