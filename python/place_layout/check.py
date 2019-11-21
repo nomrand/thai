@@ -1,21 +1,22 @@
-def check_position(player, ng1, ng2, ng3):
-    # Check whether player is near ng1
-    if abs(player.winfo_x()+50/2 - ng1.winfo_x()) < 50/2:
-        if abs(player.winfo_y()+50/2 - ng1.winfo_y()) < 50/2:
-            return -1
+def check_position(plane, nglist):
 
-    # Check whether player is near ng2
-    if abs(player.winfo_x()+50/2 - ng2.winfo_x()) < 50/2:
-        if abs(player.winfo_y()+50/2 - ng2.winfo_y()) < 50/2:
-            return -1
+    # Loop all NG boxes, by list
+    for ng in nglist:
+        x_distance = abs((plane.winfo_x()+50/2) - (ng.winfo_x()+20/2))
+        y_distance = abs((plane.winfo_y()+50/2) - (ng.winfo_y()+20/2))
 
-    # Check whether player is near ng3
-    if abs(player.winfo_x()+50/2 - ng3.winfo_x()) < 50/2:
-        if abs(player.winfo_y()+50/2 - ng3.winfo_y()) < 50/2:
+        # Check if the plane is near to ng1
+        if x_distance < 50/2 and y_distance < 50/2:
+            # if plane is near to ng1, 2, 3
+            # return -1 (=game over)
             return -1
 
     # Check Game Clear
-    if player.winfo_y() < 0:
+    if plane.winfo_y() < 0:
+        # if plane touches goal
+        # return 1 (=game clear)
         return 1
 
+    # if plane don't touch any thing
+    # return 0 (=nothing happen)
     return 0
