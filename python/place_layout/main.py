@@ -1,8 +1,11 @@
 # This line is needed to use GUI
+# ↓ บรรทัดนี้จำเป็นต้องใช้ GUI
 from tkinter import *
 # This line is needed to show messagebox
+# ↓ บรรทัดนี้จำเป็นต้องแสดง messagebox
 from tkinter import messagebox
 # These 2 lines are needed to use image
+# ↓ 2 บรรทัดนี้จำเป็นสำหรับการใช้รูปภาพ
 import os
 from PIL import Image, ImageTk
 
@@ -34,22 +37,21 @@ image_box = ImageTk.PhotoImage(image=image_box)
 # Create NG label by images and set into list
 # (The list can be easily customized if the number of NG labels is changed from 2 to 3)
 # สร้าง NG label ด้วยภาพ และตั้ง label ที่สร้างในลิสต์
-# (หากจำนวน NG label เปลี่ยนเป็น 3 จาก 2 จะสามารถกำหนดเองได้ง่าย)
 # (ลิสต์ สามารถปรับแต่งได้ง่าย ถ้าจำนวน NG label เปลี่ยนจาก 2 เป็น 3)
 nglabel_list = []
-# NG Label1
-label1 = Label(root, image=image_box)
-label1.place(x=50, y=100)  # ตำแหน่ง จากมุมซ้ายบน
-nglabel_list.append(label1)  # ตั้งในลิสต์ ตำแหน่ง(index)=0
-# NG Label2
-label2 = Label(root, image=image_box)
-label2.place(x=150, y=100)  # ตำแหน่ง จากมุมซ้ายบน
-nglabel_list.append(label2)  # ตั้งในลิสต์ ตำแหน่ง(index)=1
+# NG Label ที่1
+nglabel_1 = Label(root, image=image_box)
+nglabel_1.place(x=50, y=100)  # ตำแหน่ง จากมุมซ้ายบน
+nglabel_list.append(nglabel_1)  # ตั้งในลิสต์ ตำแหน่ง(index)=0
+# NG Label ที่2
+nglabel_2 = Label(root, image=image_box)
+nglabel_2.place(x=150, y=100)  # ตำแหน่ง จากมุมซ้ายบน
+nglabel_list.append(nglabel_2)  # ตั้งในลิสต์ ตำแหน่ง(index)=1
 
 
 # ##########################################
 # ### 1-2. Create Plane label with image ###
-# ###    (สร้าง Plane label พร้อมรูปภาพ)    ###
+# ###    (สร้างเครื่องบิน label พร้อมรูปภาพ)    ###
 # ##########################################
 # ตั้งชื่อและตำแหน่งของภาพ (ไฟล์ airplane.png ในโฟลเดอร์ img)
 path_plane = os.path.join(os.path.dirname(__file__), 'img/airplane.png')
@@ -62,28 +64,35 @@ label_plane = Label(root, image=image_plane)
 label_plane.place(x=240/2, y=240-50)
 
 
-# ######################################
-# ### 2. Keyboard Input Check ###
-# ######################################
+# ###################################
+# ### 2. Keyboard Input Check     ###
+# ###    (ตรวจสอบอินพุตของแป้นพิมพ์) ###
+# ###################################
 # keyboard input check function
+# ฟังก์ชั่นที่ตรวจสอบ อินพุตของแป้นพิมพ์
 def keyboard_input(event):
-    # move plane
+    # check & move plane
+    # ตรวจสอบ และ ย้าย เครื่องบิน
     input.key(event, label_plane)
 
-    # Check (Game Lose? Game Win?)
+    # check Lose or Win
+    # ตรวจสอบเกมแพ้หรือชนะ
     result = check.check_position(label_plane, nglabel_list)
     if (result < 0):
-        # if Game Lose, result is -1
-        messagebox.showinfo("info", "Game Lose... Don't Touch X")
+        # if you lose, result of "check.check_position" is -1
+        # ถ้าคุณแพ้  ผลลัพธ์ของ ฟังก์ชัน "check.check_position" คือ -1
+        messagebox.showinfo("info", "You Lose...")
         label_plane.place(x=240/2, y=240-50)
 
     if (result > 0):
-        # if Game Win, result is 1
-        messagebox.showinfo("info", "Game Win!")
+        # if you win, result of "check.check_position" is 1
+        # ถ้าคุณแพ้  ผลลัพธ์ของ ฟังก์ชัน "check.check_position" คือ 1
+        messagebox.showinfo("info", "You Win!")
         label_plane.place(x=240/2, y=240-50)
 
 
-# If keyboard pressed, function "keyboard_input" called
+# If keyboard pressed, function "keyboard_input" will be called
+# หากแป้นพิมพ์ถูกกด  ฟังก์ชัน "keyboard_input" จะถูกเรียก
 root.bind("<Key>", keyboard_input)
 
 
