@@ -19,16 +19,21 @@ root.geometry("400x400")  # ความกว้าง=400 ความสู�
 # ##########################
 # สร้าง label
 label_shooting_star = Label(root, text="★")
-label_shooting_star.place(x=0, y=random.randint(0, 300))
+random_y = random.randint(0, 200)
+label_shooting_star.place(x=0, y=random_y)
 
 
+# ##########################
+# ###  Create GUI Parts  ###
+# ##########################
 def move():
     position = (label_shooting_star.winfo_x() + 3,
                 label_shooting_star.winfo_y() + 3)
     label_shooting_star.place(x=position[0], y=position[1])
 
-    if(position[0] > 400 or position[1] > 400):
-        label_shooting_star.place(x=0, y=random.randint(0, 200))
+    if position[0] > 400 or position[1] > 400:
+        random_y = random.randint(0, 200)
+        label_shooting_star.place(x=0, y=random_y)
 
     root.after(10, move)
 
