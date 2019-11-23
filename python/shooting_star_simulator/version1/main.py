@@ -10,7 +10,7 @@ import random
 # These are necessary for GUI program.
 # 2 บรรทัดเหล่านี้กำลังสร้างเค้าโครงหน้าต่าง GUI
 # สิ่งเหล่านี้จำเป็นสำหรับโปรแกรม GUI
-root = Tk(className='shooting star simulator')
+root = Tk(className='shooting star simulator ver.1')
 root.geometry("400x400")  # ความกว้าง=400 ความสูง=400
 
 
