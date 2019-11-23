@@ -2,13 +2,13 @@ import data
 
 
 # This is a function to show information in screen
-# argument1 = name_edit    = where input "Fruit Name"
-# argument2 = fruit_label1 = where show "Fruit Color"
-# argument3 = fruit_label2 = where show "Fruit Price"
+# argument(name_edit)    = where input "Fruit Name"
+# argument(fruit_label1) = where show "Fruit Color"
+# argument(fruit_label2) = where show "Fruit Price"
 # นี่คือฟังก์ชั่นเพื่อแสดงข้อมูลในหน้าต่าง GUI
-# อาร์กิวเมนต์ 1 = name_edit    = ชิ้นส่วนอินพุต สำหรับ"ชื่อผลไม้"
-# อาร์กิวเมนต์ 2 = fruit_label1 = ชิ้นส่วนเอาท์พุต สำหรับ"สีผลไม้"
-# อาร์กิวเมนต์ 3 = fruit_label2 = ชิ้นส่วนเอาท์พุต สำหรับ"ราคาผลไม้"
+# อาร์กิวเมนต์(name_edit)    = ชิ้นส่วนอินพุต สำหรับ"ชื่อผลไม้"
+# อาร์กิวเมนต์(fruit_label1) = ชิ้นส่วนเอาท์พุต สำหรับ"สีผลไม้"
+# อาร์กิวเมนต์(fruit_label2) = ชิ้นส่วนเอาท์พุต สำหรับ"ราคาผลไม้"
 def set_text(name_edit, fruit_label1, fruit_label2):
     # get "Fruit Name" from screen by "get" function
     # รับ "ชื่อผลไม้" จากหน้าต่าง โดยฟังก์ชั่น "get"

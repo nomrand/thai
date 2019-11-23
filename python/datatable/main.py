@@ -38,6 +38,7 @@ label2_2.grid(row=2, column=2)
 
 
 # Make a function which will work when button pressed
+# ฟังก์ชั่นซึ่งจะทำงานเมื่อกดปุ่ม
 def when_button_pressed():
     textset.set_text(entry0, label1_1, label2_1)
 
