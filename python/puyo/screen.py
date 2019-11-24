@@ -1,5 +1,6 @@
 from tkinter import Tk, Canvas, NW
 from random import randint
+import os
 from PIL import Image, ImageTk
 import input
 import check
@@ -47,7 +48,8 @@ def start():
 
 
 def create_image(path):
-    img = Image.open(path)
+    real_path = os.path.join(os.path.dirname(__file__), path)
+    img = Image.open(real_path)
     img = img.resize((SIZE, SIZE), Image.ADAPTIVE)
     img = ImageTk.PhotoImage(image=img)
     return img
