@@ -44,7 +44,7 @@ def predict(imgpath):
     input_operation = graph.get_operation_by_name(input_name)
     output_operation = graph.get_operation_by_name(output_name)
 
-    with tf.Session(graph=graph) as sess:
+    with tf.compat.v1.Session(graph=graph) as sess:
         results = sess.run(output_operation.outputs[0], {
             input_operation.outputs[0]: t
         })
@@ -52,14 +52,12 @@ def predict(imgpath):
 
     top_k = results.argsort()[:][::-1]
     labels = label_image.load_labels(label_file)
-    labels_sorted = []
     results_sorted = []
     for i in top_k:
-        labels_sorted.append(labels[i])
-        results_sorted.append(results[i])
+        results_sorted.append((labels[i], results[i]))
         # print(labels[i], results[i])
 
-    return (labels_sorted, results_sorted)
+    return results_sorted
 
 
 def retain():

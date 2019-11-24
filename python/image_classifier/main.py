@@ -10,4 +10,5 @@ image_path = os.path.join(os.path.dirname(__file__), image_path)
 result = calltf.predict(image_path)
 
 
-print(result)
+for r in result[-10:]:
+    print(r[0], r[1])
