@@ -54,7 +54,7 @@ def predict(imgpath):
     labels = label_image.load_labels(label_file)
     results_sorted = []
     for i in top_k:
-        results_sorted.append((labels[i], results[i]))
+        results_sorted.append((str(labels[i]), float(results[i])))
         # print(labels[i], results[i])
 
     return results_sorted
