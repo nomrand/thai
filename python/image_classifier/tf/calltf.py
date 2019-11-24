@@ -4,15 +4,18 @@ from __future__ import print_function
 
 import argparse
 import os
+import sys
 
 import numpy as np
 import tensorflow as tf
 
-from .label_image import *
+from . import label_image
+from . import retrain
 
 toppath = os.path.dirname(os.path.dirname(__file__))
 model_file = os.path.join(toppath, "model", "trained_model.pb")
 label_file = os.path.join(toppath, "model", "trained_label.txt")
+modified = os.path.join(toppath, "model", "modified")
 train_images = os.path.join(toppath, "train_images")
 
 
@@ -24,9 +27,12 @@ def predict(imgpath):
     input_std = 255
     input_layer = "input"
     output_layer = "InceptionV3/Predictions/Reshape_1"
+    if os.path.exists(modified):
+        input_layer = "Placeholder"
+        output_layer = "final_result"
 
-    graph = load_graph(model_file)
-    t = read_tensor_from_image_file(
+    graph = label_image.load_graph(model_file)
+    t = label_image.read_tensor_from_image_file(
         file_name,
         input_height=input_height,
         input_width=input_width,
@@ -44,42 +50,64 @@ def predict(imgpath):
         })
     results = np.squeeze(results)
 
-    top_k = results.argsort()[-5:][::-1]
-    labels = load_labels(label_file)
+    top_k = results.argsort()[:][::-1]
+    labels = label_image.load_labels(label_file)
+    labels_sorted = []
+    results_sorted = []
     for i in top_k:
-        print(labels[i], results[i])
+        labels_sorted.append(labels[i])
+        results_sorted.append(results[i])
+        # print(labels[i], results[i])
+
+    return (labels_sorted, results_sorted)
 
 
 def retain():
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        '--image_dir',
+        type=str,
+        default=train_images,
+        help='Path to folders of labeled images.'
+    )
+    parser.add_argument(
         '--output_graph',
         type=str,
         default=model_file,
-        help='Where to save summary logs for TensorBoard.'
+        help='Where to save the trained graph.'
+    )
+    parser.add_argument(
+        '--intermediate_output_graphs_dir',
+        type=str,
+        default=os.path.join(toppath, '.result/intermediate_graph'),
+        help='Where to save the intermediate graphs.'
+    )
+    parser.add_argument(
+        '--intermediate_store_frequency',
+        type=int,
+        default=0,
+        help="""\
+         How many steps to store intermediate graph. If "0" then will not
+         store.\
+      """
     )
     parser.add_argument(
         '--output_labels',
         type=str,
         default=label_file,
-        help='Where to save summary logs for TensorBoard.'
-    )
-    parser.add_argument(
-        '--image_dir',
-        type=str,
-        default=train_images,
-        help='Where to save summary logs for TensorBoard.'
+        help='Where to save the trained graph\'s labels.'
     )
     parser.add_argument(
         '--summaries_dir',
         type=str,
-        default='training_summaries/basic',
+        default=os.path.join(toppath, '.result/retrain_logs'),
         help='Where to save summary logs for TensorBoard.'
     )
     parser.add_argument(
         '--how_many_training_steps',
         type=int,
-        default=100,
+        # default=4000,
+        default=400,
         help='How many training steps to run before ending.'
     )
     parser.add_argument(
@@ -147,7 +175,7 @@ def retain():
     parser.add_argument(
         '--bottleneck_dir',
         type=str,
-        default='bottlenecks',
+        default=os.path.join(toppath, '.result/bottleneck'),
         help='Path to cache bottleneck layer values as files.'
     )
     parser.add_argument(
@@ -216,8 +244,11 @@ def retain():
     parser.add_argument(
         '--checkpoint_path',
         type=str,
-        default='/tmp/_retrain_checkpoint',
+        default=os.path.join(toppath, '.result/_retrain_checkpoint'),
         help='Where to save checkpoint files.'
     )
-    FLAGS, unparsed = parser.parse_known_args()
-    tf.compat.v1.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+    retrain.FLAGS, unparsed = parser.parse_known_args()
+    tf.compat.v1.app.run(main=retrain.main, argv=[sys.argv[0]] + unparsed)
+
+    # create modified-flag file
+    open(modified, "w").close()
