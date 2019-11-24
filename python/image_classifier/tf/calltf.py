@@ -61,6 +61,10 @@ def predict(imgpath):
 
 
 def retain():
+    # create modified-flag file
+    with open(modified, "w") as f:
+        f.write(modified)
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--image_dir',
@@ -247,6 +251,3 @@ def retain():
     )
     retrain.FLAGS, unparsed = parser.parse_known_args()
     tf.compat.v1.app.run(main=retrain.main, argv=[sys.argv[0]] + unparsed)
-
-    # create modified-flag file
-    open(modified, "w").close()
