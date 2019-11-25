@@ -1,3 +1,7 @@
+# Requirements on Your Computer (ความต้องการ ในคอมพิวเตอร์ของคุณ)
+# ต้องติดตั้งโมดูล "tensorflow (vesion 1.15)"
+# ต้องติดตั้งโมดูล "tensorflow_hub"
+
 from tkinter import filedialog
 from tkinter import font
 from tkinter import *
@@ -6,8 +10,6 @@ from PIL import Image, ImageTk
 # import calltf.py ใน โฟลเดอร์ tf
 from tf import calltf
 
-# requirements (ความต้องการ)
-# ต้องติดตั้งโมดูล "tensorflow (vesion 1.15)"
 
 # This is main part of program
 

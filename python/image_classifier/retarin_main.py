@@ -1,9 +1,10 @@
+# Requirements on Your Computer (ความต้องการ ในคอมพิวเตอร์ของคุณ)
+# ต้องติดตั้งโมดูล "tensorflow (vesion 1.15)"
+# ต้องติดตั้งโมดูล "tensorflow_hub"
+
 # import calltf.py ใน โฟลเดอร์ tf
 from tf import calltf
 
-# requirements (ความต้องการ)
-# ต้องติดตั้งโมดูล "tensorflow (vesion 1.15)"
-# ต้องติดตั้งโมดูล "tensorflow_hub"
 
 # ในโฟลเดอร์ "train_images"  ต้องมี บางโฟลเดอร์ย่อย
 # ในโฟลเดอร์ย่อย  ต้องมี ไฟล์ภาพมากมาย (มาก 20 ไฟล์ขึ้นไป)
