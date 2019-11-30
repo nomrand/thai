@@ -19,8 +19,11 @@ let DATA_SETS = [
 
 $(function () {
     $("#date1, #date2").datepicker();
-    $("#date1").datepicker("setDate", new Date());
-    $("#date2").datepicker("setDate", new Date());
+    let nowdate = new Date();
+    let lastmonth = new Date();
+    lastmonth.setDate(1);
+    $("#date1").datepicker("setDate", lastmonth);
+    $("#date2").datepicker("setDate", nowdate);
 
     $("#date1, #date2").change(function () {
         chartRemake();
