@@ -36,8 +36,7 @@ $(function () {
         },
         options: {
             responsive: true,
-            aspectRatio: 3,
-            //            maintainAspectRatio: false,
+            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     type: 'time',
@@ -56,13 +55,14 @@ $(function () {
                         id: 'y-axis-1',
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
-                            labelString: 'Temperature',  // ラベル
+                            labelString: 'Temperature [°C]',  // ラベル
                             fontSize: 20,         // フォントサイズ
-                            fontColor: "#DDD",
+                            fontColor: "#D93",
                         },
                         ticks: {
                             fontSize: 12,         // フォントサイズ
                             fontColor: "#DDD",
+                            stepSize: 5,
                         },
                         gridLines: {
                             color: "#444",
@@ -73,16 +73,18 @@ $(function () {
                         id: 'y-axis-2',
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
-                            labelString: 'Humidity',  // ラベル
+                            labelString: 'Humidity [%]',  // ラベル
                             fontSize: 20,         // フォントサイズ
-                            fontColor: "#DDD",
+                            fontColor: "#0AD",
                         },
                         ticks: {
                             fontSize: 12,         // フォントサイズ
                             fontColor: "#DDD",
+                            stepSize: 5,
                         },
                         gridLines: {
                             color: "#444",
+                            borderDash: [5, 10],
                         },
                     },
                 ],
@@ -95,6 +97,11 @@ $(function () {
                     fontColor: "#FFF",
                 },
                 display: true,
+            },
+            elements: {
+                line: {
+                    tension: 0, // ベジェ曲線を無効にする
+                }
             },
             // for straight line
             /* bezierCurve: false */
