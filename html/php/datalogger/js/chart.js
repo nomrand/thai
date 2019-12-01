@@ -110,8 +110,6 @@ $(function () {
             /* bezierCurve: false */
         }
     });
-
-    chartRemake();
 });
 
 function chartRemake() {
@@ -122,7 +120,7 @@ function chartRemake() {
     for (key in DATA_SETS) {
         DATA_SETS[key].data = [];
     }
-    $.each(data, function (index, val) {
+    $.each(CHART_DATA, function (index, val) {
         let millisec = val.date * 1000;
         if (millisec < start_millisec) {
             return;
