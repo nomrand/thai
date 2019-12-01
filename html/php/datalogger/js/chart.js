@@ -1,3 +1,4 @@
+const MAX_DATA_NUM = 200;
 let CHART;
 
 // *** data for display ***
@@ -122,7 +123,7 @@ function chartRemake() {
     for (key in DATA_SETS) {
         DATA_SETS[key].data = [];
     }
-    $.each(CHART_DATA, function (index, val) {
+    $.each(compressarr(CHART_DATA, MAX_DATA_NUM), function (index, val) {
         let millisec = val.date * 1000;
         if (millisec < start_millisec) {
             return;
