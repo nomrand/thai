@@ -18,7 +18,9 @@ let DATA_SETS = [
 ];
 
 $(function () {
-    $("#date1, #date2").datepicker();
+    $("#date1, #date2").datepicker({
+        dateFormat: "dd M yy"
+    });
     let nowdate = new Date();
     let lastmonth = new Date();
     lastmonth.setDate(1);
