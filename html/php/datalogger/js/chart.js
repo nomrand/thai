@@ -18,9 +18,24 @@ let DATA_SETS = [
     },
 ];
 
+function getDateFormat(start, end) {
+    let dif = end - start;
+    let oneday = 1000 * 60 * 60 * 24;
+    if (dif > oneday * 500) {
+        return 'MMM YYYY';
+    }
+    if (dif > oneday * 200) {
+        return 'MMM DD YYYY';
+    }
+    if (dif > oneday * 10) {
+        return 'MMM DD YYYY ha';
+    }
+    return 'MMM DD YYYY h:mma';
+}
+
 $(function () {
     $("#date1, #date2").datepicker({
-        dateFormat: "dd M yy"
+        dateFormat: "M dd yy"
     });
     let nowdate = new Date();
     let lastmonth = new Date();
@@ -46,6 +61,11 @@ $(function () {
             scales: {
                 xAxes: [{
                     type: 'time',
+                    time: {
+                        displayFormats: {
+                            hour: '  MMM D, ha  ',
+                        }
+                    },
                     stacked: true,              //積み上げ棒グラフの設定
                     ticks: {
                         fontSize: 16,         // フォントサイズ
@@ -137,15 +157,18 @@ function chartRemake() {
 
         DATA_SETS[0].data.push({
             x: d,
-            y: val.tm,
+            y: flr(val.tm, 1),
         });
         DATA_SETS[1].data.push({
             x: d,
-            y: val.hm,
+            y: flr(val.hm, 1),
         });
     });
 
     CHART.data.datasets = DATA_SETS;
+
+    CHART.options.scales.xAxes[0].time.tooltipFormat = getDateFormat(start_millisec, end_millisec);
+
     CHART.update({
         duration: 800,
     });
