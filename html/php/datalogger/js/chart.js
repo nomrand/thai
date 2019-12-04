@@ -4,6 +4,7 @@ let CHART;
 // *** data for display ***
 let DATA_SETS = [
     {
+        borderWidth: 4,
         label: "Temperature (温度:อุณหภูมิ)",
         borderColor: "rgba(220, 100, 0, 1)",
         yAxisID: 'y-axis-1',
@@ -11,9 +12,15 @@ let DATA_SETS = [
     },
     {
         label: "Humidity (湿度:ความชื้น)",
-        borderColor: "rgba(0, 150, 220, 1)",
-        backgroundColor: "rgba(0, 150, 255, 0.4)",
+        borderColor: "rgba(0, 120, 255, 0.3)",
         yAxisID: 'y-axis-2',
+        data: []
+    },
+    {
+        label: "Brightness (照度:ความสว่าง)",
+        borderColor: "rgba(255, 255, 50, 0.2)",
+        backgroundColor: "rgba(220, 255, 50, 0.1)",
+        yAxisID: 'y-axis-3',
         data: []
     },
 ];
@@ -83,7 +90,7 @@ $(function () {
                             display: true,          // 表示設定
                             labelString: 'Temperature [°C]',  // ラベル
                             fontSize: 20,         // フォントサイズ
-                            fontColor: "#D93",
+                            fontColor: "#F83",
                         },
                         ticks: {
                             fontSize: 12,         // フォントサイズ
@@ -108,6 +115,14 @@ $(function () {
                             fontColor: "#DDD",
                             stepSize: 5,
                         },
+                        gridLines: {
+                            color: "#444",
+                            borderDash: [5, 10],
+                        },
+                    },
+                    {
+                        id: 'y-axis-3',
+                        display: false,
                         gridLines: {
                             color: "#444",
                             borderDash: [5, 10],
@@ -163,6 +178,12 @@ function chartRemake() {
             x: d,
             y: flr(val.hm, 1),
         });
+        if (val.li != null) {
+            DATA_SETS[2].data.push({
+                x: d,
+                y: parseInt(val.li * 100),
+            });
+        }
     });
 
     CHART.data.datasets = DATA_SETS;
