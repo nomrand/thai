@@ -4,22 +4,24 @@ let CHART;
 // *** data for display ***
 let DATA_SETS = [
     {
-        borderWidth: 4,
+        borderWidth: 2,
         label: "Temperature (温度:อุณหภูมิ)",
         borderColor: "rgba(220, 100, 0, 1)",
         yAxisID: 'y-axis-1',
         data: []
     },
     {
+        borderWidth: 1,
         label: "Humidity (湿度:ความชื้น)",
-        borderColor: "rgba(0, 120, 255, 0.3)",
+        borderColor: "rgba(0, 120, 255, 0.5)",
         yAxisID: 'y-axis-2',
         data: []
     },
     {
+        borderWidth: 1,
         label: "Brightness (照度:ความสว่าง)",
-        borderColor: "rgba(255, 255, 50, 0.2)",
-        backgroundColor: "rgba(220, 255, 50, 0.1)",
+        borderColor: "rgba(255, 255, 50, 0.5)",
+        backgroundColor: "rgba(220, 255, 50, 0.3)",
         yAxisID: 'y-axis-3',
         data: []
     },
@@ -127,6 +129,10 @@ $(function () {
                             color: "#444",
                             borderDash: [5, 10],
                         },
+                        ticks: {
+                            max: 100,
+                            min: 0,
+                        },
                     },
                 ],
             },
@@ -181,7 +187,7 @@ function chartRemake() {
         if (val.li != null) {
             DATA_SETS[2].data.push({
                 x: d,
-                y: parseInt(val.li * 100),
+                y: flr(val.li, 1),
             });
         }
     });
