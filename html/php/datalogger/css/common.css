@@ -37,6 +37,7 @@ header h1 {
 .datepicker {
     width : 5.5rem;
     border-radius: 5px;
+    text-align: center;
 }
 
 .datepicker:disabled {

@@ -19,8 +19,9 @@ const DATA_SETS = [
     },
     {
         borderWidth: 1,
+        pointRadius: 0,
         label: "Brightness (照度:ความสว่าง)",
-        borderColor: "rgba(255, 255, 50, 0.5)",
+        borderColor: "rgba(255, 255, 50, 0.3)",
         backgroundColor: "rgba(220, 255, 50, 0.3)",
         yAxisID: 'y-axis-3',
         data: []
