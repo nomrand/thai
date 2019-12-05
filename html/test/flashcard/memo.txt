@@ -1,0 +1,7 @@
+https://qiita.com/h-sto/items/fdde0905d0a4070d18fc
+
+表示→マニフェスト ファイルを表示 で表示されるマニフェストファイルに，以下の一行を追加
+
+"oauthScopes": ["https://www.googleapis.com/auth/spreadsheets.currentonly", "https://www.googleapis.com/auth/spreadsheets"]
+
+関数を再度実行すると，”承認が必要です”と出るので，あとは表示通りに進めていくだけ

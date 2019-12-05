@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @charset "utf-8";
+
+        html,
+        body {
+            height: 100%;
+            margin: 0px;
+            font-size: 8vw;
+            background-color: skyblue;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 5px;
+            position: relative;
+            float: left;
+        }
+
+        body>div {
+            box-shadow: 2px 2px 2px;
+        }
+
+        .button {
+            width: calc(50% - 10px);
+            height: 20%;
+        }
+
+        .card {
+            width: calc(100% - 10px);
+            height: calc(80% - 20px);
+        }
+
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbro6iSieTkjtjSg4EMOwG8iNttUArpZOgI7NIsFmF0GFilr6t&s");
+            background-size: cover;
+        }
+
+        .button {
+            background-color: rgba(200, 200, 220, 0.5);
+        }
+
+        .card {
+            background-color: rgba(200, 200, 220, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button leftbutton" onclick="backcard();">Back</div>
+    <div class="button rightbutton" onclick="nextcard();">Next</div>
+    <div class="card" onclick="speak();">
+        <div id="carddiv">
+        </div>
+        <img id="img">
+    </div>
+
+    <script>
+        let index = -1;
+        let face = 1;
+        let DATA = [
+            ["WORD1", "WORD2"],
+            ["HELLO", "こんにちは"],
+            ["GOOD MORNING", "おはようございます"],
+            ["THANK YOU", "ありがとうございます"],
+            ["สวย", "ありがとうございます"],
+        ];
+        //<?!= "\nDATA = " + JSON.stringify(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('word').getDataRange().getValues()); ?>;
+
+        DATA = DATA.slice(1);
+        DATA.sort(function () { return Math.random() - 0.5; });
+
+
+        nextcard();
+
+        function nextcard() {
+            face = face + 1;
+            if (face == 2) {
+                face = 0;
+                index = index + 1;
+            }
+            if (index >= DATA.length) {
+                index = 0;
+            }
+            document.getElementById("carddiv").innerHTML = DATA[index][face];
+            document.getElementById("img").src = DATA[index][face + 2];
+        }
+
+        function backcard() {
+            face = face - 1;
+            if (face < 0) {
+                face = 1;
+                index = index - 1;
+            }
+            if (index < 0) {
+                index = DATA.length - 1;
+            }
+            document.getElementById("carddiv").innerHTML = DATA[index][face];
+            document.getElementById("img").src = DATA[index][face + 2];
+        }
+
+        function speak() {
+            var msg = new SpeechSynthesisUtterance();
+
+            msg.text = DATA[index][face];
+            msg.lang = 'en-EN';
+            if (msg.text.match(/[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]/)) {
+                msg.lang = 'ja-JP';
+            }
+
+            window.speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+
+</html>
