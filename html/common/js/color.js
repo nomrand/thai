@@ -18,6 +18,9 @@ function hueRGB(huemax, huei) {
     while (huemax <= huei) {
         huei -= huemax;
     }
+    while (0 > huei) {
+        huei += huemax;
+    }
 
     let decAfter = (HueConst.length - 1) / huemax * huei;
     let decBefore = Math.floor(decAfter);

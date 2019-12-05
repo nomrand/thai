@@ -19,10 +19,16 @@
         <h1>Temperature Report</h1>
     </header>
 
-    <div class="datepickerdiv">
-        <span>From:<input type="text" class="datepicker" id="date1"></span>
-        -
-        <span>To:<input type="text" class="datepicker" id="date2"></span>
+    <div class="headelement">
+        <div class="modediv">
+            <input type="radio" name="mode" value="normal" checked> Normal Mode
+            <input type="radio" name="mode" value="monthly"> Monthly Average
+        </div>
+        <div class="datepickerdiv">
+            <span>From:<input type="text" class="datepicker" id="date1"></span>
+            -
+            <span>To:<input type="text" class="datepicker" id="date2"></span>
+        </div>
     </div>
 
     <div id="chartdiv">
@@ -42,6 +48,7 @@
     <script src="../../common/js/str.js"></script>
     <script src="../../common/js/num.js"></script>
     <script src="../../common/js/arr.js"></script>
+    <script src="../../common/js/color.js"></script>
     <script src="js/chart.js"></script>
 </body>
 

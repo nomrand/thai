@@ -2,7 +2,7 @@ const MAX_DATA_NUM = 200;
 let CHART;
 
 // *** data for display ***
-let DATA_SETS = [
+const DATA_SETS = [
     {
         borderWidth: 2,
         label: "Temperature (温度:อุณหภูมิ)",
@@ -27,6 +27,16 @@ let DATA_SETS = [
     },
 ];
 
+const MONTHLY_DATA = [];
+for (let i = 0; i < 12; i++) {
+    MONTHLY_DATA.push({
+        borderWidth: 1,
+        label: monthStr(i),
+        borderColor: rgbaStr(hueRGB(12, i - 4)),
+        data: []
+    });
+}
+
 function getDateFormat(start, end) {
     let dif = end - start;
     let oneday = 1000 * 60 * 60 * 24;
@@ -43,6 +53,7 @@ function getDateFormat(start, end) {
 }
 
 $(function () {
+    // datepicker
     $("#date1, #date2").datepicker({
         dateFormat: "M dd yy"
     });
@@ -55,6 +66,17 @@ $(function () {
     $("#date1, #date2").change(function () {
         chartRemake();
     });
+
+    // radio
+    $('input[name="mode"]').change(function () {
+        if ($(this).val() != "normal") {
+            $("#date1, #date2").prop("disabled", true);
+        } else {
+            $("#date1, #date2").prop("disabled", false);
+        }
+
+        chartRemake();
+    })
 
     // *** display chart ***
     var ctx = $("#chart").get(0).getContext("2d");
@@ -157,44 +179,67 @@ $(function () {
 });
 
 function chartRemake() {
-    let start_millisec = $("#date1").datepicker("getDate").getTime();
-    let end_millisec = new Date($("#date2").datepicker("getDate").getTime() + (24 * 60 * 60 * 1000)).getTime();
-
     // *** get & set data ***
     for (key in DATA_SETS) {
         DATA_SETS[key].data = [];
+        for (mon in MONTHLY_DATA) {
+            MONTHLY_DATA[mon].data = []
+        }
     }
-    $.each(compressarr(CHART_DATA, MAX_DATA_NUM), function (index, val) {
-        let millisec = val.date * 1000;
-        if (millisec < start_millisec) {
-            return;
-        }
-        if (millisec > end_millisec) {
-            return;
-        }
 
-        let d = new Date();
-        d.setTime(millisec);
+    // normal mode
+    if ($('input[name="mode"]:checked').val() == "normal") {
+        let start_millisec = $("#date1").datepicker("getDate").getTime();
+        let end_millisec = new Date($("#date2").datepicker("getDate").getTime() + (24 * 60 * 60 * 1000)).getTime();
+        let sliced = timeslicearr(CHART_DATA, start_millisec / 1000, end_millisec / 1000);
 
-        DATA_SETS[0].data.push({
-            x: d,
-            y: flr(val.tm, 1),
-        });
-        DATA_SETS[1].data.push({
-            x: d,
-            y: flr(val.hm, 1),
-        });
-        if (val.li != null) {
+        $.each(compressarr(sliced, MAX_DATA_NUM), function (index, val) {
+            let millisec = val.date * 1000;
+            let d = new Date();
+            d.setTime(millisec);
+
+            DATA_SETS[0].data.push({
+                x: d,
+                y: flr(val.tm, 1),
+            });
+            DATA_SETS[1].data.push({
+                x: d,
+                y: flr(val.hm, 1),
+            });
             DATA_SETS[2].data.push({
                 x: d,
                 y: flr(val.li, 1),
             });
+        });
+
+        CHART.data.datasets = DATA_SETS;
+        CHART.options.scales.xAxes[0].time.displayFormats.hour = '  MMM D, ha  ';
+        CHART.options.scales.xAxes[0].time.tooltipFormat = getDateFormat(start_millisec, end_millisec);
+        CHART.options.scales.yAxes[0].display = true;
+        CHART.options.scales.yAxes[1].display = true;
+    }
+    if ($('input[name="mode"]:checked').val() == "monthly") {
+        // monthly mode
+        let monthly = monthlyarr(CHART_DATA, "date");
+        for (mon in monthly) {
+            $.each(compressarr(dayflatarr(monthly[mon], "date"), 24), function (index, val) {
+                let millisec = val.date * 1000;
+                let d = new Date();
+                d.setTime(millisec);
+
+                MONTHLY_DATA[mon].data.push({
+                    x: d,
+                    y: flr(val.tm, 1),
+                });
+            });
+
+            CHART.data.datasets = MONTHLY_DATA;
+            CHART.options.scales.xAxes[0].time.displayFormats.hour = ' ha ';
+            CHART.options.scales.xAxes[0].time.tooltipFormat = "h:mma";
+            CHART.options.scales.yAxes[0].display = true;
+            CHART.options.scales.yAxes[1].display = false;
         }
-    });
-
-    CHART.data.datasets = DATA_SETS;
-
-    CHART.options.scales.xAxes[0].time.tooltipFormat = getDateFormat(start_millisec, end_millisec);
+    }
 
     CHART.update({
         duration: 800,

@@ -25,11 +25,20 @@ header h1 {
     min-height: 70vh;
 }
 
-.datepickerdiv {
-    font-weight: bold;
+.headelement{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modediv, .datepickerdiv {
     margin:5px;
 }
 
 .datepicker {
     width : 5.5rem;
+    border-radius: 5px;
+}
+
+.datepicker:disabled {
+    background-color: rgb(125, 125, 125);
 }
