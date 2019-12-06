@@ -19,10 +19,10 @@ const DATA_SETS = [
     },
     {
         borderWidth: 1,
-        pointRadius: 0,
+        pointRadius: 1,
         label: "Brightness (照度:ความสว่าง)",
-        borderColor: "rgba(255, 255, 50, 0.3)",
-        backgroundColor: "rgba(220, 255, 50, 0.3)",
+        borderColor: "rgba(220, 255, 100, 0.1)",
+        backgroundColor: "rgba(220, 255, 100, 0.1)",
         yAxisID: 'y-axis-3',
         data: []
     },
@@ -209,7 +209,7 @@ function chartRemake() {
             });
             DATA_SETS[2].data.push({
                 x: d,
-                y: flr(val.li, 1),
+                y: flr(rt(val.li), 1),
             });
         });
 
@@ -245,4 +245,11 @@ function chartRemake() {
     CHART.update({
         duration: 800,
     });
+}
+
+function rt(val) {
+    if (val == null) {
+        return null;
+    }
+    return val;
 }

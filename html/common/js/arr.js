@@ -78,7 +78,7 @@ function timeslicearr(arr, start, end) {
             break;
         }
     }
-    for (let i = arr.length - 2; i >= 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i].date <= end) {
             e = i + 1;
             break;
