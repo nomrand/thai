@@ -67,6 +67,13 @@ $(function () {
     $("#date2").datepicker("setDate", nowdate);
 
     $("#date1, #date2").change(function () {
+        let start_millisec = $("#date1").datepicker("getDate");
+        let end_millisec = $("#date2").datepicker("getDate");
+        if (start_millisec.getTime() > end_millisec.getTime()) {
+            $("#date1").datepicker("setDate", end_millisec);
+            $("#date2").datepicker("setDate", start_millisec);
+        }
+
         chartRemake();
     });
 
