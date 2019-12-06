@@ -15,6 +15,11 @@ header h1 {
     text-decoration: underline #007bff;
 }
 
+.noreturn {
+    white-space: nowrap;
+    float : left;
+}
+
 #chartdiv {
     position: relative;
     background-color: rgb(25, 25, 25);

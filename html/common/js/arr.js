@@ -52,20 +52,15 @@ function monthlyarr(arr) {
     return result;
 }
 
-function dayflatarr(arr) {
-    let result = [];
+function hourlyarr(arr) {
+    let result = [[], [], [], [], [], [], [], [], [], [], [], [],
+    [], [], [], [], [], [], [], [], [], [], [], [],];
     for (i in arr) {
         let d = new Date();
         d.setTime(arr[i].date * 1000);
-        d.setFullYear(1900, 0, 1);
 
-        let arrcopy = Object.create(arr[i]);
-        arrcopy.date = d.getTime() / 1000;
-        result.push(arrcopy);
+        result[d.getHours()].push(arr[i]);
     }
-    result.sort(function (a, b) {
-        return a.date - b.date;
-    });
     return result;
 }
 

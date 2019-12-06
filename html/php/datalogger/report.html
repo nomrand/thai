@@ -21,13 +21,21 @@
 
     <div class="headelement">
         <div class="modediv">
-            <input type="radio" name="mode" value="normal" checked> Normal Mode
-            <input type="radio" name="mode" value="monthly"> Monthly Average
+            <div class="noreturn">
+                <label><input type="radio" name="mode" value="normal" checked>Normal Mode</label>
+            </div>
+            <div class="noreturn">
+                <label><input type="radio" name="mode" value="monthly">Monthly Average</label>
+            </div>
         </div>
         <div class="datepickerdiv">
-            <span>From:<input type="text" class="datepicker" id="date1"></span>
-            -
-            <span>To:<input type="text" class="datepicker" id="date2"></span>
+            <div class="noreturn">
+                <label>From:<input type="text" class="datepicker" id="date1"></label>
+            </div>
+            <div class="noreturn">&nbsp;-&nbsp;</div>
+            <div class="noreturn">
+                <label>To:<input type="text" class="datepicker" id="date2"></label>
+            </div>
         </div>
     </div>
 

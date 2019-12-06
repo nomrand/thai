@@ -21,8 +21,8 @@ const DATA_SETS = [
         borderWidth: 1,
         pointRadius: 1,
         label: "Brightness (照度:ความสว่าง)",
-        borderColor: "rgba(220, 255, 100, 0.1)",
-        backgroundColor: "rgba(220, 255, 100, 0.1)",
+        borderColor: "rgba(255, 255, 255, 0.1)",
+        backgroundColor: "rgba(220, 220, 220, 0.1)",
         yAxisID: 'y-axis-3',
         data: []
     },
@@ -114,7 +114,7 @@ $(function () {
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'Temperature [°C]',  // ラベル
-                            fontSize: 20,         // フォントサイズ
+                            fontSize: 14,         // フォントサイズ
                             fontColor: "#F83",
                         },
                         ticks: {
@@ -132,7 +132,7 @@ $(function () {
                         scaleLabel: {            // 軸ラベル
                             display: true,          // 表示設定
                             labelString: 'Humidity [%]',  // ラベル
-                            fontSize: 20,         // フォントサイズ
+                            fontSize: 14,         // フォントサイズ
                             fontColor: "#0AD",
                         },
                         ticks: {
@@ -165,6 +165,13 @@ $(function () {
                     padding: 10,        //凡例の各要素間の距離
                     fontSize: 16,
                     fontColor: "#FFF",
+                    filter: function (items, chartData) {
+                        let yesno = true;
+                        if (DATA_SETS[2].label == items.text) {
+                            yesno = false;
+                        }
+                        return yesno;
+                    },
                 },
                 display: true,
             },
@@ -221,15 +228,16 @@ function chartRemake() {
     }
     if ($('input[name="mode"]:checked').val() == "monthly") {
         // monthly mode
-        let monthly = monthlyarr(CHART_DATA, "date");
+        let monthly = monthlyarr(CHART_DATA);
         for (mon in monthly) {
-            $.each(compressarr(dayflatarr(monthly[mon], "date"), 24), function (index, val) {
-                let millisec = val.date * 1000;
-                let d = new Date();
-                d.setTime(millisec);
+            $.each(hourlyarr(monthly[mon]), function (index, hourlys) {
+                let val = avgarr(hourlys);
 
+                let tmp = new Date();
+                tmp.setHours(index);
+                tmp.setMinutes(0);
                 MONTHLY_DATA[mon].data.push({
-                    x: d,
+                    x: tmp,
                     y: flr(val.tm, 1),
                 });
             });
