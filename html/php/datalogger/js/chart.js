@@ -32,7 +32,7 @@ const MONTHLY_DATA = [];
 for (let i = 0; i < 12; i++) {
     MONTHLY_DATA.push({
         borderWidth: 1,
-        label: monthStr(i),
+        label: monthStr(i).slice(0, 3),
         borderColor: rgbaStr(hueRGB(12, i - 4)),
         data: []
     });
@@ -60,7 +60,9 @@ $(function () {
     });
     let nowdate = new Date();
     let lastmonth = new Date();
-    lastmonth.setDate(1);
+    if (window.innerWidth > 640) {
+        lastmonth.setDate(1);
+    }
     $("#date1").datepicker("setDate", lastmonth);
     $("#date2").datepicker("setDate", nowdate);
 
