@@ -107,7 +107,6 @@ $(function () {
                             hour: '  MMM D, ha  ',
                         }
                     },
-                    stacked: true,              //積み上げ棒グラフの設定
                     ticks: {
                         fontSize: 16,         // フォントサイズ
                         fontColor: "#DDD",
@@ -204,10 +203,15 @@ function chartRemake() {
         }
     }
 
+    let isOneDay = false;
+
     // normal mode
     if ($('input[name="mode"]:checked').val() == "normal") {
         let start_millisec = $("#date1").datepicker("getDate").getTime();
         let end_millisec = new Date($("#date2").datepicker("getDate").getTime() + (24 * 60 * 60 * 1000)).getTime();
+        if (end_millisec - start_millisec <= (24 * 60 * 60 * 1000)) {
+            isOneDay = true;
+        }
         let sliced = timeslicearr(CHART_DATA, start_millisec / 1000, end_millisec / 1000);
 
         $.each(compressarr(sliced, MAX_DATA_NUM), function (index, val) {
@@ -230,13 +234,18 @@ function chartRemake() {
         });
 
         CHART.data.datasets = DATA_SETS;
-        CHART.options.scales.xAxes[0].time.displayFormats.hour = '  MMM D, ha  ';
+        if (isOneDay) {
+            CHART.options.scales.xAxes[0].time.displayFormats.hour = ' ha ';
+        } else {
+            CHART.options.scales.xAxes[0].time.displayFormats.hour = ' MMM D, ha ';
+        }
         CHART.options.scales.xAxes[0].time.tooltipFormat = getDateFormat(start_millisec, end_millisec);
         CHART.options.scales.yAxes[0].display = true;
         CHART.options.scales.yAxes[1].display = true;
     }
     if ($('input[name="mode"]:checked').val() == "monthly") {
         // monthly mode
+        isOneDay = true;
         let monthly = monthlyarr(CHART_DATA);
         for (mon in monthly) {
             $.each(hourlyarr(monthly[mon]), function (index, hourlys) {
@@ -250,15 +259,13 @@ function chartRemake() {
                     y: flr(val.tm, 1),
                 });
             });
-
-            CHART.data.datasets = MONTHLY_DATA;
-            CHART.options.scales.xAxes[0].time.displayFormats.hour = ' ha ';
-            CHART.options.scales.xAxes[0].time.tooltipFormat = "h:mma";
-            CHART.options.scales.yAxes[0].display = true;
-            CHART.options.scales.yAxes[1].display = false;
         }
+        CHART.data.datasets = MONTHLY_DATA;
+        CHART.options.scales.xAxes[0].time.displayFormats.hour = ' ha ';
+        CHART.options.scales.xAxes[0].time.tooltipFormat = "h:mma";
+        CHART.options.scales.yAxes[0].display = true;
+        CHART.options.scales.yAxes[1].display = false;
     }
-
     CHART.update({
         duration: 800,
     });
