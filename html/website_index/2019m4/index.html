@@ -82,6 +82,33 @@
             text-decoration: underline #007bff;
         }
 
+        .pulldowndiv#specialCourse h4 {
+            color: white;
+            transition: all 3s;
+        }
+
+        .pulldowndiv#specialCourse:target h4 {
+            color: rgb(220, 60, 90);
+            text-shadow: 5px 5px 20px darkmagenta;
+        }
+
+        .pulldowndiv#specialCourse:target h4::first-letter {
+            color: rgb(220, 60, 90);
+        }
+
+        .pulldowndiv#specialCourse:target h4 a {
+            text-decoration: underline rgb(220, 60, 90);
+        }
+
+        .pulldowndiv#specialCourse li.list-group-item {
+            transition: all 3s;
+            font-weight: bold;
+        }
+
+        .pulldowndiv#specialCourse:target li.list-group-item {
+            background-color: rgb(220, 60, 90);
+        }
+
         table {
             border-radius: 5px;
         }
@@ -256,6 +283,16 @@
                         <li>ในการนำเสนอ ถ้าครูคิดว่าคุณขี้เกียจมาก(คุณไม่ได้เขียนโปรแกรมใด ๆ เลย) คุณจะได้รับโทษ</li>
                     </ul>
                 </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="pulldowndiv" id="specialCourse">
+        <h4><a href="#specialCourse">5. Satoshi's Special Course</a></h4>
+        <ul class="list-group">
+            <a target="_blank" href="../../points/special_m4.html">
+                <li class="list-group-item">
+                    Special Course Score</li>
             </a>
         </ul>
     </div>
