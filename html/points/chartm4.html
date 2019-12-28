@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Optional CSS -->
+    <link rel="stylesheet" href="css/common.css">
+
+    <title>Point Chart</title>
+</head>
+
+<body>
+    <header>
+        <h1>Student Score</h1>
+    </header>
+    <div class="flexdix">
+        <form>
+            <input type="checkbox" name="disp" id="cls1" value="4/1"><label for="cls1">4/1</label>
+            <input type="checkbox" name="disp" id="cls2" value="4/2"><label for="cls2">4/2</label>
+            <input type="checkbox" name="disp" id="cls3" value="4/3"><label for="cls3">4/3</label>
+            <input type="checkbox" name="disp" id="cls4" value="4/4"><label for="cls4">4/4</label>
+            <input type="checkbox" name="disp" id="cls5" value="4/5"><label for="cls5">4/5</label>
+            <input type="checkbox" name="disp" id="cls6" value="4/6"><label for="cls6">4/6</label>
+        </form>
+    </div>
+    <div id="chartdiv">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <!-- Library Script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="../common/js/str.js"></script>
+    <script src="../common/js/color.js"></script>
+    <script>
+        let CHART_DATA = {
+            "data": [
+            ],
+            "work": [
+            ],
+            "maxpoints": [
+            ]
+        };
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "https://script.google.com/macros/s/AKfycbxU1qSNqWMQ6n1Cqb8ogiEGI3FFgo15O7P4_U0Zq7wIlLAMsuY/exec",
+            success: function (data) {
+                CHART_DATA = data;
+                chartRemake();
+            }
+        });
+    </script>
+    <script src="js/point_chart.js"></script>
+</body>
+
+</html>
