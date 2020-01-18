@@ -6,7 +6,7 @@ let DISPLAY_TARGET_DATA = [];
 $(function () {
     const param = getUrlParam();
     if (param["class"]) {
-        $('input#cls5' + param["class"]).prop('checked', true);
+        $('input#cls' + param["class"]).prop('checked', true);
     }
 
     $('input[name=disp]').change(function () {
