@@ -11,77 +11,115 @@
         body {
             height: 100%;
             margin: 0px;
-            font-size: 8vw;
+            font-size: 3vmin;
             background-color: skyblue;
+            color: black;
+            text-shadow: 1px 1px 1px white;
+
+            background-size: cover;
         }
 
         div {
             display: flex;
+            flex-wrap: wrap;
+            /* Horizontal Centering */
             justify-content: center;
             align-items: center;
+
             border-radius: 10px;
             margin: 5px;
             position: relative;
             float: left;
         }
 
-        body>div {
-            box-shadow: 2px 2px 2px;
+        span {
+            max-width: calc(100% - 20px);
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        b {
+            color: red;
+        }
+
+        #info {
+            width: calc(50% - 10px);
+            height: 5%;
+            justify-content: flex-start;
+        }
+
+        #setting {
+            width: calc(50% - 10px);
+            height: 5%;
+            justify-content: flex-end;
         }
 
         .button {
+            background-color: rgba(200, 200, 220, 0.5);
+            font-size: 8vmin;
+            box-shadow: 2px 2px 2px;
+        }
+
+        .rightbutton,
+        .leftbutton {
             width: calc(50% - 10px);
             height: 20%;
         }
 
-        .card {
+        #card {
             width: calc(100% - 10px);
-            height: calc(80% - 20px);
+            height: calc(75% - 30px);
         }
 
-        body {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbro6iSieTkjtjSg4EMOwG8iNttUArpZOgI7NIsFmF0GFilr6t&s");
-            background-size: cover;
-        }
-
-        .button {
-            background-color: rgba(200, 200, 220, 0.5);
-        }
-
-        .card {
-            background-color: rgba(200, 200, 220, 0.5);
+        #cardimg {
+            max-width: calc(100% - 10px);
+            max-height: calc(75% - 30px);
         }
     </style>
 </head>
 
-<body>
-    <div class="button leftbutton" onclick="backcard();">Back</div>
-    <div class="button rightbutton" onclick="nextcard();">Next</div>
-    <div class="card" onclick="speak();">
-        <div id="carddiv">
-        </div>
-        <img id="img">
+<body onload="init();">
+    <div id="info"></div>
+    <div id="setting">
+        <label for="isRandom"><input type="checkbox" id="isRandom" onchange="init();">Random</label>
+    </div>
+    <div class="button rightbutton" onclick="backCard();">Back</div>
+    <div class="button leftbutton" onclick="nextCard();">Next</div>
+    <div id="card" class="button cardfront" onclick="speak();">
+        <span id="carddiv"></span>
+        <img id="cardimg">
     </div>
 
     <script>
-        let index = -1;
-        let face = 1;
         let DATA = [
-            ["WORD1", "WORD2"],
-            ["HELLO", "こんにちは"],
-            ["GOOD MORNING", "おはようございます"],
-            ["THANK YOU", "ありがとうございます"],
-            ["สวย", "ありがとうございます"],
+            ["", "", "DUMMY_BACKGROUND = ", "", "en-EN", "en-EN"],
+            ["DUMMY_HEADER", "DUMMY_HEADER"],
+            ["DUMMY QUESTION1", "DUMMY ANSWER1", "", ""],
+            ["DUMMY QUESTION2", "DUMMY ANSWER2", "01.png", ""],
+            ["DUMMY QUESTION3", "DUMMY ANSWER3", "02.jpg", ""],
         ];
         //<?!= "\nDATA = " + JSON.stringify(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('word').getDataRange().getValues()); ?>;
+        let BG_IMAGE = DATA[0][3];
+        let FRONT_LANG = DATA[0][4];
+        let BACK_LANG = DATA[0][5];
+        document.body.style.backgroundImage = "url(" + BG_IMAGE + ")";
+        DATA = DATA.slice(2);
+        let ORG_DATA = DATA.slice();
 
-        DATA = DATA.slice(1);
-        DATA.sort(function () { return Math.random() - 0.5; });
+        let index = -1;
+        let face = 1;
+        function init() {
+            index = -1;
+            face = 1;
+            if (document.getElementById("isRandom").checked) {
+                DATA.sort(function () { return Math.random() - 0.5; });
+            } else {
+                DATA = ORG_DATA.slice();
+            }
+            nextCard();
+        }
 
-
-        nextcard();
-
-        function nextcard() {
+        function nextCard() {
             face = face + 1;
             if (face == 2) {
                 face = 0;
@@ -90,11 +128,10 @@
             if (index >= DATA.length) {
                 index = 0;
             }
-            document.getElementById("carddiv").innerHTML = DATA[index][face];
-            document.getElementById("img").src = DATA[index][face + 2];
+            setCard(index, face);
         }
 
-        function backcard() {
+        function backCard() {
             face = face - 1;
             if (face < 0) {
                 face = 1;
@@ -103,20 +140,43 @@
             if (index < 0) {
                 index = DATA.length - 1;
             }
+            setCard(index, face);
+        }
+
+        function setCard(index, face) {
             document.getElementById("carddiv").innerHTML = DATA[index][face];
-            document.getElementById("img").src = DATA[index][face + 2];
+            if (DATA[index].length - 1 >= face + 2) {
+                document.getElementById("cardimg").src = DATA[index][face + 2];
+            }
+
+            let facestr = "";
+            if (face == 0) {
+                document.getElementById("card").className = "button cardfront";
+                facestr = "front";
+            } else {
+                document.getElementById("card").className = "button cardback";
+                facestr = "back";
+            }
+
+            document.getElementById("info").innerHTML =
+                (index + 1) + "/" + DATA.length + " (" + facestr + " side)";
         }
 
         function speak() {
             var msg = new SpeechSynthesisUtterance();
 
             msg.text = DATA[index][face];
-            msg.lang = 'en-EN';
-            if (msg.text.match(/[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]/)) {
-                msg.lang = 'ja-JP';
+            if (face == 0) {
+                msg.lang = FRONT_LANG;
+            } else {
+                msg.lang = BACK_LANG;
             }
 
             window.speechSynthesis.speak(msg);
+            console.log(window.speechSynthesis
+                .getVoices()
+                .map(x => [x.name, x.lang].join("\t"))
+                .join("\r\n"));
         }
     </script>
 </body>
