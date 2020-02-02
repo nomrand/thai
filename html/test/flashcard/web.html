@@ -173,10 +173,6 @@
             }
 
             window.speechSynthesis.speak(msg);
-            console.log(window.speechSynthesis
-                .getVoices()
-                .map(x => [x.name, x.lang].join("\t"))
-                .join("\r\n"));
         }
     </script>
 </body>
