@@ -12,7 +12,6 @@
             height: 100%;
             margin: 0px;
             font-size: 3vmin;
-            background-color: skyblue;
             color: black;
             text-shadow: 1px 1px 1px white;
 
@@ -99,10 +98,16 @@
             ["DUMMY QUESTION3", "DUMMY ANSWER3", "02.jpg", ""],
         ];
         //<?!= "\nDATA = " + JSON.stringify(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('word').getDataRange().getValues()); ?>;
-        let BG_IMAGE = DATA[0][3];
+        let BACKGROUND = DATA[0][3];
+        if (BACKGROUND) {
+            if (BACKGROUND.indexOf(":") >= 0) {
+                document.body.style.backgroundImage = "url(" + BACKGROUND + ")";
+            } else {
+                document.body.style.backgroundColor = BACKGROUND;
+            }
+        }
         let FRONT_LANG = DATA[0][4];
         let BACK_LANG = DATA[0][5];
-        document.body.style.backgroundImage = "url(" + BG_IMAGE + ")";
         DATA = DATA.slice(2);
         let ORG_DATA = DATA.slice();
 
