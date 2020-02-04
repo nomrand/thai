@@ -4,9 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+        CSS Area
+    -->
     <style>
         @charset "utf-8";
 
+        /*
+         * Global Setting (การตั้งค่าส่วนกลาง)
+         */
         html,
         body {
             height: 100%;
@@ -31,25 +37,24 @@
             float: left;
         }
 
-        span {
-            max-width: calc(100% - 20px);
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
         b {
             color: red;
         }
 
+        /*
+         * Specific CSS Setting (การตั้งค่าเฉพาะ)
+         */
         #info {
             width: calc(50% - 10px);
             height: 5%;
+            /* Left side */
             justify-content: flex-start;
         }
 
         #setting {
             width: calc(50% - 10px);
             height: 5%;
+            /* Right side */
             justify-content: flex-end;
         }
 
@@ -59,8 +64,8 @@
             box-shadow: 2px 2px 2px;
         }
 
-        .rightbutton,
-        .leftbutton {
+        #rightbutton,
+        #leftbutton {
             width: calc(50% - 10px);
             height: 20%;
         }
@@ -68,6 +73,12 @@
         #card {
             width: calc(100% - 10px);
             height: calc(75% - 30px);
+        }
+
+        #cardtext {
+            max-width: calc(100% - 20px);
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         #cardimg {
@@ -78,78 +89,153 @@
 </head>
 
 <body onload="init();">
+    <!-- 
+        HTML Area
+    -->
+    <!-- Infomation (สว่นแสดงสถานะ) & Setting (สว่นการปรับแต่ง) -->
     <div id="info"></div>
     <div id="setting">
         <label for="isRandom"><input type="checkbox" id="isRandom" onchange="init();">Random</label>
     </div>
-    <div class="button rightbutton" onclick="backCard();">Back</div>
-    <div class="button leftbutton" onclick="nextCard();">Next</div>
+    <!-- Next & Back Button (ปุ่มถัดไป & ก่อนหน้า) -->
+    <div id="rightbutton" class="button" onclick="backCard();">Back</div>
+    <div id="leftbutton" class="button" onclick="nextCard();">Next</div>
+    <!-- Card (การ์ด) -->
     <div id="card" class="button cardfront" onclick="speak();">
-        <span id="carddiv"></span>
+        <span id="cardtext"></span>
         <img id="cardimg">
     </div>
 
+    <!--
+        JavaScript Area
+    -->
     <script>
+        // ****************************************************************
+        // Initializing Data
+        // ****************************************************************
+        // This is dummy data
+        // It will be overwritten & not used
         let DATA = [
             ["", "", "DUMMY_BACKGROUND = ", "", "en-EN", "en-EN"],
             ["DUMMY_HEADER", "DUMMY_HEADER"],
-            ["DUMMY QUESTION1", "DUMMY ANSWER1", "", ""],
-            ["DUMMY QUESTION2", "DUMMY ANSWER2", "01.png", ""],
-            ["DUMMY QUESTION3", "DUMMY ANSWER3", "02.jpg", ""],
+            ["DUMMY_QUESTION1", "DUMMY-ANSWER1", "", ""],
+            ["DUMMY_QUESTION2", "<DUMMY>+ANSWER2", "01.png", ""],
+            ["DUMMY_QUESTION3", "<b>DUMMY</b>*ANSWER3", "02.jpg", ""],
         ];
+        // The line below is reading real data from SpreadSheet. It is very important
+        // This line is commented out for technical reasons, but cannot be removed
+        // บรรทัดด้านล่างกำลังอ่านข้อมูลจริงจาก สเปรดชีต มันสำคัญมาก
+        // บรรทัดนี้ไม่สามารถลบออกได้
+        // ********* READING REAL DATA START *********
         //<?!= "\nDATA = " + JSON.stringify(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('word').getDataRange().getValues()); ?>;
+        // ********* READING REAL DATA END *********
+
+        // set the background color / image
+        // กำหนด สีหรือภาพ พื้นหลัง
         let BACKGROUND = DATA[0][3];
         if (BACKGROUND) {
             if (BACKGROUND.indexOf(":") >= 0) {
+                // setting background image (ภาพพื้นหลัง)
+                // ตัวอย่างเช่น  "http://xxx/xxx/xxx.jpg"
                 document.body.style.backgroundImage = "url(" + BACKGROUND + ")";
             } else {
+                // setting background color (สีพื้นหลัง)
+                // ตัวอย่างเช่น  "lightgreen" or "red" or "rgb(100, 100, 100)"
                 document.body.style.backgroundColor = BACKGROUND;
             }
         }
+        // Language for speaking
+        // ภาษาสำหรับการออกเสียง
         let FRONT_LANG = DATA[0][4];
         let BACK_LANG = DATA[0][5];
+        // Card data will start from 3rd line. So 1st and 2nd line are removed
+        // ข้อมูลการ์ดจะเริ่มจากบรรทัดที่ 3  ดังนั้นบรรทัดที่ 1 และ 2 จะถูกลบออก
         DATA = DATA.slice(2);
         let ORG_DATA = DATA.slice();
 
-        let index = -1;
-        let face = 1;
+        // Position of card in all data
+        // ตำแหน่งของการ์ดในข้อมูลทั้งหมด
+        let index = 0;
+        // Front side (=0) / Back side (=1) of card
+        // ด้านหน้าหรือด้านหลังของการ์ด
+        let face = 0;
+
+        // ****************************************************************
+        // Creating Functions
+        // ****************************************************************
+        // Initializing function. Reset data
+        // ฟังก์ชั่นการเริ่มต้น รีเซ็ตข้อมูล
         function init() {
-            index = -1;
-            face = 1;
+            index = 0;
+            face = 0;
             if (document.getElementById("isRandom").checked) {
+                // Randomly sort data
+                // เรียงลำดับข้อมูลแบบสุ่ม
                 DATA.sort(function () { return Math.random() - 0.5; });
             } else {
                 DATA = ORG_DATA.slice();
             }
-            nextCard();
+
+            // แสดงการ์ด
+            showCard(index, face);
         }
 
+        // ********************************
+        // Changing card function. Show next
+        // ฟังก์ชั่นเปลี่ยนการ์ด แสดงถัดไป
+        // ********************************
         function nextCard() {
             face = face + 1;
             if (face == 2) {
+                // if current face is back side,
+                // show front side of next card
+                // หากหน้าปัจจุบันเป็นด้านหลัง
+                // ให้แสดงด้านหน้าการ์ดถัดไป
                 face = 0;
                 index = index + 1;
             }
             if (index >= DATA.length) {
+                // if current card is the last,
+                // show first card
+                // หากการ์ดปัจจุบันเป็นใบสุดท้ายแสดงการ์ดใบแรก
                 index = 0;
             }
-            setCard(index, face);
+            // แสดงการ์ด
+            showCard(index, face);
         }
 
+        // ********************************
+        // Changing card function. Show previous
+        // ฟังก์ชั่นเปลี่ยนการ์ด แสดงก่อนหน้า
+        // ********************************
         function backCard() {
             face = face - 1;
             if (face < 0) {
+                // if current face is front side,
+                // show back side of previous card
+                // หากใบหน้าปัจจุบันเป็นด้านหน้า
+                // แสดงด้านหลังของการ์ดก่อนหน้า
                 face = 1;
                 index = index - 1;
             }
             if (index < 0) {
+                // if current card is the first,
+                // show last card
+                // หากการ์ดปัจจุบันเป็นใบแรกให้แสดงใบสุดท้าย
                 index = DATA.length - 1;
             }
-            setCard(index, face);
+            // แสดงการ์ด
+            showCard(index, face);
         }
 
-        function setCard(index, face) {
-            document.getElementById("carddiv").innerHTML = DATA[index][face];
+        // ********************************
+        // Showing card function
+        // ฟังก์ชั่นแสดงการ์ด
+        // ********************************
+        function showCard(index, face) {
+            // Show text  แสดงข้อความ
+            document.getElementById("cardtext").innerHTML = DATA[index][face];
+            // Show image  แสดงภาพ
             if (DATA[index].length - 1 >= face + 2) {
                 document.getElementById("cardimg").src = DATA[index][face + 2];
             }
@@ -163,20 +249,32 @@
                 facestr = "back";
             }
 
+            // Show app status   แสดงสถานะของแอพ
             document.getElementById("info").innerHTML =
                 (index + 1) + "/" + DATA.length + " (" + facestr + " side)";
         }
 
         function speak() {
-            var msg = new SpeechSynthesisUtterance();
+            let msg = new SpeechSynthesisUtterance();
 
-            msg.text = DATA[index][face];
+            // Customize the text to speak
+            // ปรับแต่งข้อความสำหรับการออกเสียง
+            let tmp = String(DATA[index][face]);
+            // delete HTML tags
+            tmp = tmp.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+            // replace no sound text
+            tmp = tmp.replace(/[\*<>_]/g, ' ');
+            msg.text = tmp;
+
+            // Set language for speaking
+            // ตั้งภาษาสำหรับการออกเสียง
             if (face == 0) {
                 msg.lang = FRONT_LANG;
             } else {
                 msg.lang = BACK_LANG;
             }
 
+            // Speak
             window.speechSynthesis.speak(msg);
         }
     </script>
