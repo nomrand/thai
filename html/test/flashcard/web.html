@@ -45,17 +45,21 @@
          * Specific CSS Setting (การตั้งค่าเฉพาะ)
          */
         #info {
-            width: calc(50% - 10px);
+            width: calc(20% - 10px);
             height: 5%;
             /* Left side */
             justify-content: flex-start;
         }
 
         #setting {
-            width: calc(50% - 10px);
+            width: calc(80% - 10px);
             height: 5%;
             /* Right side */
             justify-content: flex-end;
+        }
+
+        #speakSpeed {
+            min-width: 300px;
         }
 
         .button {
@@ -95,7 +99,14 @@
     <!-- Infomation (สว่นแสดงสถานะ) & Setting (สว่นการปรับแต่ง) -->
     <div id="info"></div>
     <div id="setting">
-        <label for="isRandom"><input type="checkbox" id="isRandom" onchange="init();">Random</label>
+        <label for="speakSpeed">
+            Speed(<span id="speed">1</span>):
+            <input id="speakSpeed" type="range" value="1" min="0.1" max="5" step="0.1" value="1"
+                oninput="document.getElementById('speed').innerHTML=this.value">
+        </label>
+        <label for="isRandom">
+            <input type="checkbox" id="isRandom" onchange="init();">Random
+        </label>
     </div>
     <!-- Next & Back Button (ปุ่มถัดไป & ก่อนหน้า) -->
     <div id="rightbutton" class="button" onclick="backCard();">Back</div>
@@ -256,6 +267,10 @@
 
         function speak() {
             let msg = new SpeechSynthesisUtterance();
+
+            // Set rate to speak
+            // ตั้งค่าความเร็วในการพูด
+            msg.rate = document.getElementById("speakSpeed").value;
 
             // Customize the text to speak
             // ปรับแต่งข้อความสำหรับการออกเสียง
