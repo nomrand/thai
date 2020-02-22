@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" rel="stylesheet" />
     <!-- 
         CSS Area
     -->
@@ -16,6 +19,7 @@
         html,
         body {
             height: 100%;
+            width: 100%;
             margin: 0px;
             font-size: 3vmin;
             color: black;
@@ -58,10 +62,30 @@
             justify-content: flex-end;
         }
 
-        #speakSpeed {
-            min-width: 300px;
+        #setting>* {
+            flex-grow: 1;
+            text-align: right;
         }
 
+        #speakSpeed {
+            flex-grow: 12;
+        }
+
+        /* Icons on the right-top setting */
+        .material-icons,
+        .material-icons:link,
+        .material-icons:visited {
+            font-size: 6vmin;
+            text-decoration: none;
+            color: black;
+        }
+
+        input#isShuffle {
+            /* Don't use default shuffle image */
+            display: none;
+        }
+
+        /* Set layout of card & buttons */
         .button {
             background-color: rgba(200, 200, 220, 0.5);
             font-size: 8vmin;
@@ -77,17 +101,33 @@
         #card {
             width: calc(100% - 10px);
             height: calc(75% - 30px);
+            text-align: center;
         }
+
 
         #cardtext {
             max-width: calc(100% - 20px);
+            /* Text will be multiple lines */
             overflow-wrap: break-word;
             word-wrap: break-word;
         }
 
+        /* Adjust image size in the card */
+        #cardimgParent {
+            width: 80%;
+            height: 60%;
+            float: left;
+        }
+
+        #cardimgParent:empty {
+            display: none;
+        }
+
         #cardimg {
-            max-width: calc(100% - 10px);
-            max-height: calc(75% - 30px);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
@@ -99,14 +139,19 @@
     <!-- Infomation (สว่นแสดงสถานะ) & Setting (สว่นการปรับแต่ง) -->
     <div id="info"></div>
     <div id="setting">
-        <label for="speakSpeed">
-            Speed(<span id="speed">1</span>):
-            <input id="speakSpeed" type="range" value="1" min="0.1" max="5" step="0.1" value="1"
-                oninput="document.getElementById('speed').innerHTML=this.value">
+        <input id="speakSpeed" type="range" value="1" min="0.1" max="5" step="0.1" value="1"
+            oninput="this.title='Speek Speed=' + (this.value*100) + '%'" list="tickmarks">
+        <datalist id="tickmarks">
+            <option value="1" label="100%"></option>
+        </datalist>
+
+        <input type="checkbox" id="isShuffle" onchange="init();"><label for="isShuffle">
+            <i id="shuffleIcon" class="material-icons">shuffle</i>
         </label>
-        <label for="isRandom">
-            <input type="checkbox" id="isRandom" onchange="init();">Random
-        </label>
+        <a id="qrCode" href="" target="_blank" title="QR Code">
+            <i class="material-icons">face</i></a>
+        <a id="manageSS" href="" target="_blank" title="SpreadSheet for Management">
+            <i class="material-icons">description</i></a>
     </div>
     <!-- Next & Back Button (ปุ่มถัดไป & ก่อนหน้า) -->
     <div id="rightbutton" class="button" onclick="backCard();">Back</div>
@@ -114,32 +159,48 @@
     <!-- Card (การ์ด) -->
     <div id="card" class="button cardfront" onclick="speak();">
         <span id="cardtext"></span>
-        <img id="cardimg">
+        <span id="cardimgParent"></span>
     </div>
 
     <!--
         JavaScript Area
     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox-plus-jquery.min.js"></script>
     <script>
         // ****************************************************************
         // Initializing Data
         // ****************************************************************
+        const QR_API_URL_HEAD = "https://api.qrserver.com/v1/create-qr-code/?size=450x450&margin=50&data=";
+        const LANG_MAP = {
+            "Thai": "th-TH",
+            "English": "en-EN",
+            "Japanese": "ja-JP",
+            "Chinese": "zh",
+        };
+        let CURRENT_URL = "";
         // This is dummy data
         // It will be overwritten & not used
         let DATA = [
-            ["", "", "DUMMY_BACKGROUND = ", "", "en-EN", "en-EN"],
+            ["English", "Japanese", "DUMMY_BACKGROUND = ", ""],
             ["DUMMY_HEADER", "DUMMY_HEADER"],
-            ["DUMMY_QUESTION1", "DUMMY-ANSWER1", "", ""],
+            ["DUMMY_QUESTION1", "DUMMY-ANSWER1", "<iframe src='02.jpg'></iframe>", ""],
             ["DUMMY_QUESTION2", "<DUMMY>+ANSWER2", "01.png", ""],
-            ["DUMMY_QUESTION3", "<b>DUMMY</b>*ANSWER3", "02.jpg", ""],
+            ["DUMMY_QUESTION3", "<b>DUMMY</b>*ANSWER3", "", ""],
         ];
+        let SS_URL = "";
         // The line below is reading real data from SpreadSheet. It is very important
         // This line is commented out for technical reasons, but cannot be removed
         // บรรทัดด้านล่างกำลังอ่านข้อมูลจริงจาก สเปรดชีต มันสำคัญมาก
         // บรรทัดนี้ไม่สามารถลบออกได้
         // ********* READING REAL DATA START *********
         //<?!= "\nDATA = " + JSON.stringify(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('word').getDataRange().getValues()); ?>;
+        //<?!= "\nSS_URL = '" + SpreadsheetApp.getActiveSpreadsheet().getUrl() +"'"; ?>;
+        //<?!= "\nCURRENT_URL = '" + ScriptApp.getService().getUrl() +"'"; ?>;
         // ********* READING REAL DATA END *********
+
+        // set links
+        document.getElementById("qrCode").href = QR_API_URL_HEAD + CURRENT_URL;
+        document.getElementById("manageSS").href = SS_URL;
 
         // set the background color / image
         // กำหนด สีหรือภาพ พื้นหลัง
@@ -157,8 +218,8 @@
         }
         // Language for speaking
         // ภาษาสำหรับการออกเสียง
-        let FRONT_LANG = DATA[0][4];
-        let BACK_LANG = DATA[0][5];
+        let FRONT_LANG = DATA[0][0];
+        let BACK_LANG = DATA[0][1];
         // Card data will start from 3rd line. So 1st and 2nd line are removed
         // ข้อมูลการ์ดจะเริ่มจากบรรทัดที่ 3  ดังนั้นบรรทัดที่ 1 และ 2 จะถูกลบออก
         DATA = DATA.slice(2);
@@ -179,12 +240,16 @@
         function init() {
             index = 0;
             face = 0;
-            if (document.getElementById("isRandom").checked) {
+            if (document.getElementById("isShuffle").checked) {
                 // Randomly sort data
                 // เรียงลำดับข้อมูลแบบสุ่ม
                 DATA.sort(function () { return Math.random() - 0.5; });
+                document.getElementById("shuffleIcon").innerHTML = "shuffle";
+                document.getElementById("shuffleIcon").title = "shuffle order";
             } else {
                 DATA = ORG_DATA.slice();
+                document.getElementById("shuffleIcon").innerHTML = "compare_arrows";
+                document.getElementById("shuffleIcon").title = "correct order";
             }
 
             // แสดงการ์ด
@@ -247,22 +312,53 @@
             // Show text  แสดงข้อความ
             document.getElementById("cardtext").innerHTML = DATA[index][face];
             // Show image  แสดงภาพ
-            if (DATA[index].length - 1 >= face + 2) {
-                document.getElementById("cardimg").src = DATA[index][face + 2];
+            let parent = document.getElementById("cardimgParent");
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+            if (DATA[index][face + 2]) {
+                let images = DATA[index][face + 2].match(/<img[^>]+>/i);
+                let iframes = DATA[index][face + 2].match(/<iframe[^>]+>/i);
+                if (images) {
+                    // img tag
+                    parent.innerHTML = images[0];
+                    parent.firstChild.id = "cardimg";
+                } else if (iframes) {
+                    // iframe tag
+                    parent.innerHTML = iframes[0];
+                    parent.firstChild.id = "cardimg";
+                    $(parent.firstChild).width($("#card").width());
+                    $(parent.firstChild).height($("#card").height());
+                    $(parent.firstChild).css({
+                        "border-width": "0px"
+                    });
+                } else if (/(gif|jpg|jpeg|png|bmp|tiff|tif)$/i.test(DATA[index][face + 2])) {
+                    // image files
+                    parent.innerHTML = "<img id='cardimg' src='" + DATA[index][face + 2] + "'>";
+                } else {
+                    // other data
+                    parent.innerHTML = '<a id="cardimg" href="' + DATA[index][face + 2] + '" data-lightbox="iframe">(Click Here)</a>';
+                }
             }
 
             let facestr = "";
             if (face == 0) {
                 document.getElementById("card").className = "button cardfront";
-                facestr = "front";
+                document.getElementById("card").title = "Speak in " + FRONT_LANG;
+                facestr = " front (" + FRONT_LANG + ")";
             } else {
                 document.getElementById("card").className = "button cardback";
-                facestr = "back";
+                document.getElementById("card").title = "Speak in " + BACK_LANG;
+                facestr = " back (" + BACK_LANG + ")";
             }
 
             // Show app status   แสดงสถานะของแอพ
             document.getElementById("info").innerHTML =
-                (index + 1) + "/" + DATA.length + " (" + facestr + " side)";
+                (index + 1) + "/" + DATA.length + facestr;
+
+            // Stop speak
+            window.speechSynthesis.cancel();
+
         }
 
         function speak() {
@@ -284,14 +380,19 @@
             // Set language for speaking
             // ตั้งภาษาสำหรับการออกเสียง
             if (face == 0) {
-                msg.lang = FRONT_LANG;
+                msg.lang = LANG_MAP[FRONT_LANG];
             } else {
-                msg.lang = BACK_LANG;
+                msg.lang = LANG_MAP[BACK_LANG];
             }
 
             // Speak
             window.speechSynthesis.speak(msg);
         }
+
+
+        lightbox.option({
+            'disableScrolling': true
+        })
     </script>
 </body>
 
