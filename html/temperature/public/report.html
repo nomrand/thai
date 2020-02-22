@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css">
+
+    <!-- Optional CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" media="(max-width: 640px)" href="css/resp_small.css">
+
+    <title>Temperature Report</title>
+</head>
+
+<body>
+    <header>
+        <h1>Temperature Report</h1>
+    </header>
+
+    <div class="headelement">
+        <div class="modediv">
+            <div class="noreturn">
+                <label><input type="radio" name="mode" value="normal" checked>Normal Mode</label>
+            </div>
+            <div class="noreturn">
+                <label><input type="radio" name="mode" value="monthly">Monthly Average</label>
+            </div>
+        </div>
+        <div class="datepickerdiv">
+            <div class="noreturn">
+                <label>From:<input type="text" class="datepicker" id="date1"></label>
+            </div>
+            <div class="noreturn">&nbsp;-&nbsp;</div>
+            <div class="noreturn">
+                <label>To:<input type="text" class="datepicker" id="date2"></label>
+            </div>
+        </div>
+    </div>
+
+    <div id="chartdiv">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+    <!-- SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDmaVdHUfh_6Yup4Ez4aEFng69BXUSId6Q",
+            authDomain: "temperature-260701.firebaseapp.com",
+            databaseURL: "https://temperature-260701.firebaseio.com",
+            projectId: "temperature-260701",
+            storageBucket: "temperature-260701.appspot.com",
+            messagingSenderId: "192446180810",
+            appId: "1:192446180810:web:3149b6a5434a15b3a17333",
+            measurementId: "G-0H9YEXZLBZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        let db = firebase.firestore();
+    </script>
+
+    <!-- Library Script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
+    <script src="data.js"></script>
+    <script src="../common/js/str.js"></script>
+    <script src="../common/js/num.js"></script>
+    <script src="../common/js/arr.js"></script>
+    <script src="../common/js/color.js"></script>
+    <script src="js/chart.js"></script>
+</body>
+
+</html>
