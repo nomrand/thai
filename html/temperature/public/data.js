@@ -3,6 +3,7 @@ let CHART_DATA = [
     // "date": 0,
     // "tm": 0,
     // "hm": 0,
+    // "li": 0,
     //}
 ];
 
@@ -22,8 +23,12 @@ db.collection("values").orderBy('date').onSnapshot(function (snapshot) {
     logdata.forEach(function (change) {
         if (change.type === "added") {
             // Support Adding Only
-            CHART_DATA.push(change.doc.data());
-            chartRemake();
+            let data = change.doc.data();
+            data["date"] = Number(data["date"]);
+            data["tm"] = Number(data["tm"]);
+            data["hm"] = Number(data["hm"]);
+            data["li"] = Number(data["li"]);
+            CHART_DATA.push(data);
         }
         if (change.type === "modified") {
             console.log("Modified: ", change.doc.data());
@@ -32,6 +37,7 @@ db.collection("values").orderBy('date').onSnapshot(function (snapshot) {
             console.log("Removed: ", change.doc.data());
         }
     });
+    chartRemake();
 });
 
 const BATCH_DATA = [
