@@ -192,6 +192,8 @@ $(function () {
             /* bezierCurve: false */
         }
     });
+
+    chartRemake();
 });
 
 function chartRemake() {

@@ -7,56 +7,35 @@ let CHART_DATA = [
     //}
 ];
 
-// $.ajax({
-//     type: "GET",
-//     dataType: "json",
-//     url: "XXXXX",
-//     success: function (data) {
-//         CHART_DATA = data;
-//         chartRemake();
-//     }
-// });
+let newestDate = 0;
 
-db.collection("values").orderBy('date').onSnapshot(function (snapshot) {
-    let logdata = snapshot.docChanges();
-
-    logdata.forEach(function (change) {
-        if (change.type === "added") {
-            // Support Adding Only
-            let data = change.doc.data();
-            data["date"] = Number(data["date"]);
-            data["tm"] = Number(data["tm"]);
-            data["hm"] = Number(data["hm"]);
-            data["li"] = Number(data["li"]);
-            CHART_DATA.push(data);
-        }
-        if (change.type === "modified") {
-            console.log("Modified: ", change.doc.data());
-        }
-        if (change.type === "removed") {
-            console.log("Removed: ", change.doc.data());
-        }
-    });
-    chartRemake();
-});
-
-const BATCH_DATA = [
-];
-let count = 2000;
-function batchUpdate(arr) {
-    let target = arr.splice(0, 500);
-
-    // Get a new write batch
-    var batch = db.batch();
-
-    // Set the value
-    target.forEach(element => batch.set(db.collection("values").doc((count++).toString(10)), element));
-
-    // Commit the batch
-    batch.commit().then(function () {
-        if (arr.length > 0) {
-            batchUpdate(arr);
-        }
-    });
+const DATA_KEY = "temperture_report";
+var storedData = store.get(DATA_KEY);
+if (storedData) {
+    CHART_DATA = storedData;
+    newestDate = CHART_DATA[CHART_DATA.length - 1].date;
 }
-// batchUpdate(BATCH_DATA);
+
+db.collection("values")
+    .where("date", ">", newestDate)
+    .orderBy('date')
+    .onSnapshot(function (snapshot) {
+        let logdata = snapshot.docChanges();
+
+        logdata.forEach(function (change) {
+            if (change.type === "added") {
+                // Support Adding Only
+                let data = change.doc.data();
+                CHART_DATA.push(data);
+            }
+            if (change.type === "modified") {
+                console.log("Modified: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed: ", change.doc.data());
+            }
+        });
+
+        store.set(DATA_KEY, CHART_DATA);
+        chartRemake();
+    });
