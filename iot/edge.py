@@ -4,6 +4,7 @@ import cv2
 
 def detect_red(cvimage, minsize):
     hsv = cv2.cvtColor(cvimage, cv2.COLOR_BGR2HSV)
+
     hsv_min = np.array([0, 100, 0])
     hsv_max = np.array([30, 255, 255])
     range1 = cv2.inRange(hsv, hsv_min, hsv_max)
@@ -12,7 +13,7 @@ def detect_red(cvimage, minsize):
     hsv_max = np.array([179, 255, 255])
     range2 = cv2.inRange(hsv, hsv_min, hsv_max)
 
-    return detect(range1 + range2, minsize)
+    return detect(range1 + range2, minsize, cvimage)
 
 
 def detect_blue(cvimage, minsize):
@@ -20,7 +21,7 @@ def detect_blue(cvimage, minsize):
     hsv_min = np.array([90, 100, 0])
     hsv_max = np.array([130, 255, 255])
     range1 = cv2.inRange(hsv, hsv_min, hsv_max)
-    return detect(range1, minsize)
+    return detect(range1, minsize, cvimage)
 
 
 def detect_green(cvimage, minsize):
@@ -28,44 +29,39 @@ def detect_green(cvimage, minsize):
     hsv_min = np.array([30, 100, 0])
     hsv_max = np.array([65, 255, 255])
     range1 = cv2.inRange(hsv, hsv_min, hsv_max)
-    return detect(range1, minsize)
+    return detect(range1, minsize, cvimage)
 
 
-def detect(cvimage, minsize):
+def detect(cvimage, minsize, orgimage):
     # Find
     contours, _ = cv2.findContours(
         cvimage, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    # Draw the edges
+    cvimage = cv2.drawContours(
+        orgimage, contours, -1, (0, 255, 0), 1)
+
     # count & draw sub info
-    count = 0
-    maxcontour = None
-    maxarea = 0
+    results = []
     for i in range(0, len(contours)):
-        if len(contours[i]) > 0:
+        # remove small objects
+        area = cv2.contourArea(contours[i])
+        if area < minsize:
+            continue
 
-            # remove small objects
-            area = cv2.contourArea(contours[i])
-            if area < minsize:
-                continue
-            if area > maxarea:
-                maxcontour = contours[i]
+        # Draw the count of contours
+        cv2.putText(
+            cvimage,
+            str(len(results) + 1),
+            (contours[i][0][0][0], contours[i][0][0][1]),
+            cv2.FONT_HERSHEY_PLAIN,
+            3,
+            (255, 0, 0)
+        )
 
-            # Draw the edges
-            cvimage = cv2.drawContours(
-                cvimage, contours, -1, (0, 255, 0), 1)
+        results.append({"area": area, "pos": contours[i]})
 
-            # Draw the count of contours
-            count += 1
-            cv2.putText(
-                cvimage,
-                str(count),
-                (contours[i][0][0][0], contours[i][0][0][1]),
-                cv2.FONT_HERSHEY_PLAIN,
-                3,
-                (255, 0, 0)
-            )
-
-    return cvimage, count, maxcontour
+    return cvimage, results
 
 
 if __name__ == '__main__':
@@ -73,10 +69,11 @@ if __name__ == '__main__':
     while(True):
         # Capture frame-by-frame
         ret, frame = cap.read()
+        frame = cv2.GaussianBlur(frame, (5, 5), 2)
 
         # Do
-        result_img, count, maxcontour = detect_blue(frame, 1000)
-        print("detect:" + str(count))
+        result_img, results = detect_red(frame, 500)
+        print("detect:" + str(len(results)))
 
         # Display the resulting frame
         cv2.imshow('frame', result_img)
