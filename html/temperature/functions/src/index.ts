@@ -26,6 +26,22 @@ exports.setValue = functions.https.onRequest(async (request, response) => {
     response.json(data);
 });
 
+exports.setInfo = functions.https.onRequest(async (request, response) => {
+
+    let data: any = {};
+    Object.assign(data, request.query);
+
+    for (let key in data) {
+        data[key] = Number(data[key]);
+    }
+
+    // Push the new message into the Realtime Database using the Firebase Admin SDK.
+    const ref = await fireStore.collection('infos').add(data);
+
+    data.id = ref.id;
+    response.json(data);
+});
+
 exports.update = functions.https.onRequest(async (request, response) => {
     fireStore.collection('values').get()
         .then(function (querySnapshot: any) {
