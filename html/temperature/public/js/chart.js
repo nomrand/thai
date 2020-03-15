@@ -165,6 +165,9 @@ $(function () {
                             min: 0,
                         },
                     },
+                    {
+                        id: 'y-axis-x',
+                    },
                 ],
             },
             legend: {
@@ -234,6 +237,36 @@ function chartRemake() {
                 y: flr(rt(val.li), 1),
             });
         });
+        if (INFOSW) {
+            let keys = Object.keys(CHART_DATA_INFO[0]);
+            let sliced = timeslicearr(CHART_DATA_INFO, start_millisec / 1000, end_millisec / 1000);
+            $.each(compressarr(sliced, MAX_DATA_NUM), function (index, val) {
+                let millisec = val.date * 1000;
+                let d = new Date();
+                d.setTime(millisec);
+
+                let datanum = 3;
+                for (let i in keys) {
+                    let key = keys[i];
+                    if (key == "date") {
+                        continue;
+                    }
+                    if (!DATA_SETS[datanum]) {
+                        DATA_SETS[datanum] = {
+                            label: key,
+                            data: [],
+                            borderColor: rgbaStr(hueRGB(keys.length, i)),
+                            yAxisID: 'y-axis-x',
+                        };
+                    }
+                    DATA_SETS[datanum].data.push({
+                        x: d,
+                        y: flr(val[key], 1),
+                    });
+                    datanum++;
+                }
+            });
+        }
 
         CHART.data.datasets = DATA_SETS;
         if (isOneDay) {

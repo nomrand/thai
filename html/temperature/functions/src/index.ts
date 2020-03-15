@@ -31,7 +31,7 @@ exports.setInfo = functions.https.onRequest(async (request, response) => {
     let data: any = {};
     Object.assign(data, request.query);
 
-    for (let key in data) {
+    for (const key in data) {
         data[key] = Number(data[key]);
     }
 
@@ -48,7 +48,7 @@ exports.update = functions.https.onRequest(async (request, response) => {
             querySnapshot.forEach(function (doc: any) {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
-                let up: any = {};
+                const up: any = {};
                 up["date"] = Number(doc.data().date);
                 up["tm"] = Number(doc.data().tm);
                 up["hm"] = Number(doc.data().hm);
