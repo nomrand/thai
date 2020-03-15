@@ -259,9 +259,14 @@ function chartRemake() {
                             yAxisID: 'y-axis-x',
                         };
                     }
+                    let data_value = val[key];
+                    if (MAX_VAL[key]) {
+                        data_value = data_value / MAX_VAL[key] * 100;
+                        DATA_SETS[datanum].label = key + "[%]";
+                    }
                     DATA_SETS[datanum].data.push({
                         x: d,
-                        y: flr(val[key], 1),
+                        y: flr(data_value, 1),
                     });
                     datanum++;
                 }

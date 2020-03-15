@@ -43,6 +43,13 @@ let CHART_DATA = [
 
 let CHART_DATA_INFO = [
 ];
+
+const MAX_VAL = {
+    "cpu": 100,
+    "mem": 432,
+    "disk": 6958,
+    "diskhome": 6958,
+};
 if (INFOSW) {
     let newestDate = 0;
     const DATA_KEY = "temperture_report_info";
